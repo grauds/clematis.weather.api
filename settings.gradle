@@ -1,0 +1,10 @@
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'clematis.weather.api'
+
+include 'parser'
+project(':parser').projectDir = file('tools/parser')

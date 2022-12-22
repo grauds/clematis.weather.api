@@ -1,0 +1,28 @@
+apply from: file("${project.rootDir}/libraries.gradle")
+
+dependencies {
+
+    annotationProcessor 'com.google.auto.service:auto-service:1.0'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    checkstyle libs.checkstyle
+
+    implementation libs.commonsLang3
+    implementation "org.slf4j:slf4j-api:1.7.32"
+    implementation "org.slf4j:slf4j-simple:2.0.5"
+
+    // to use regexp in logback.xml
+    implementation 'org.codehaus.janino:janino:3.1.6'
+
+    compileOnly "org.projectlombok:lombok:1.18.22"
+    compileOnly 'com.google.code.findbugs:annotations:3.0.1u2'
+
+    testCompileOnly libs.jupiter
+    testCompileOnly libs.testContainers
+    testCompileOnly libs.testContainersJupiter
+    testCompileOnly 'com.google.code.findbugs:annotations:3.0.1u2'
+
+    testImplementation platform(libs.testContainersBom)
+
+    testRuntimeOnly libs.jupiterEngine
+}
