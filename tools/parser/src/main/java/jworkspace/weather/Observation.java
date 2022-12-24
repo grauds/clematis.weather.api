@@ -30,6 +30,7 @@ import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import jworkspace.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -51,7 +52,7 @@ public class Observation extends BaseEntity<Long> {
      */
     private Integer weatherStationId;
     /**
-     * Local time in this location. Summer time (Daylight Saving Time) is taken into consideration
+     * Local time in this location. Summertime (Daylight Saving Time) is taken into consideration
      */
     @SuppressFBWarnings("EI_EXPOSE_REP")
     private Date date;

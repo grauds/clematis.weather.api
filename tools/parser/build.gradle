@@ -6,38 +6,32 @@ plugins {
 version '0.0.1-SNAPSHOT'
 apply plugin: "org.flywaydb.flyway"
 
-ext {
-    flywayVersion = "4.0.3"
-    hsqldbVersion = "2.5.0"
-    hibernateVersion = "5.0.12.Final"
-
-    groovyVersion = "2.4.11"
-    spockVersion = "1.1-groovy-2.4"
-    ivyVersion = "2.1.0"
-    poiOoxmlVersion = "4.0.0"
-    commonsCsvVersion = "1.5"
-    guavaVersion = "19.0"
-
-    h2Version = "1.4.192"
-}
 
 dependencies {
 
     // for groovy
-    implementation "org.codehaus.groovy:groovy-all:$groovyVersion"
-    implementation "org.spockframework:spock-core:$spockVersion"
-    implementation "org.apache.ivy:ivy:$ivyVersion"
-    implementation "org.apache.poi:poi-ooxml:$poiOoxmlVersion"
-    implementation "org.apache.commons:commons-csv:$commonsCsvVersion"
-    implementation "com.google.guava:guava:$guavaVersion"
+    implementation "org.codehaus.groovy:groovy-all:3.0.13"
+    implementation "org.spockframework:spock-core:2.2-groovy-3.0"
+    implementation "org.apache.ivy:ivy:2.5.0"
+
+    // for parsing CSV files
+    implementation "org.apache.poi:poi-ooxml:5.2.2"
+    implementation "org.apache.commons:commons-csv:1.9.0"
+
+    // for parsing images EXIF
+    implementation "com.drewnoakes:metadata-extractor:2.18.0"
+    implementation "org.apache.commons:commons-math3:3.6.1"
+
+    // guava
+    implementation "com.google.guava:guava:31.0.1-jre"
 
     // for persistence
-    implementation "org.flywaydb:flyway-core:$flywayVersion"
-    implementation "org.hibernate:hibernate-java8:$hibernateVersion"
-    implementation "org.hsqldb:hsqldb:$hsqldbVersion"
+    implementation "org.flywaydb:flyway-core:9.10.1"
+    implementation "org.hibernate:hibernate-java8:5.6.14.Final"
+    implementation "org.hsqldb:hsqldb:2.7.1"
 
     // for testing persistence
-    testImplementation "com.h2database:h2:$h2Version"
+    testImplementation "com.h2database:h2:1.4.200"
     testImplementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
     testImplementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
 }
