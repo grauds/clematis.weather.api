@@ -24,4 +24,7 @@ dependencies {
     testCompileOnly libs.spotbugs
 
     testImplementation libs.commonsLang3
+    testImplementation libs.log4j
+    testImplementation "org.slf4j:slf4j-api:1.7.32"
+    testImplementation "org.slf4j:slf4j-simple:2.0.5"
 }

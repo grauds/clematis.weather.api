@@ -30,7 +30,10 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Anton Troshin
@@ -50,7 +53,7 @@ public class ImportPipelineTest {
         configuration.addAnnotatedClass(Observation.class);
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         configuration.setProperty("hibernate.connection.driver_class", "org.h2.Driver");
-        configuration.setProperty("hibernate.connection.url", "jdbc:h2:./test/resources/db/mem");
+        configuration.setProperty("hibernate.connection.url", "jdbc:h2:./src/test/resources/db/mem");
         configuration.setProperty("hibernate.hbm2ddl.auto", "create");
         sessionFactory = configuration.buildSessionFactory();
         session = sessionFactory.openSession();

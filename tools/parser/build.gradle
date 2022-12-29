@@ -6,6 +6,8 @@ plugins {
 version '0.0.1-SNAPSHOT'
 apply plugin: "org.flywaydb.flyway"
 
+sourceCompatibility = '11'
+targetCompatibility = '11'
 
 dependencies {
 
@@ -34,4 +36,8 @@ dependencies {
     testImplementation "com.h2database:h2:1.4.200"
     testImplementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
     testImplementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
+}
+
+test {
+    useJUnitPlatform()
 }
