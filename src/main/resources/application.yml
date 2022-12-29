@@ -1,0 +1,46 @@
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include: "health,info,env,beans"
+    web:
+      exposure:
+        include: "health,info,env,beans"
+
+spring:
+
+  datasource:
+    hikari:
+      maximum-pool-size: 25
+      minimum-idle: 1
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+    continue-on-error: true
+
+  jpa:
+    database-platform: org.hibernate.dialect.FirebirdDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+  data:
+    rest:
+      basePath: /api
+
+  jmx:
+    enabled: true
+    url: service:jmx:jmxmp://${JMXMP_HOST}:${JMXMP_PORT}/
+
+logging:
+  file:
+    path:
+      ${LOG_PATH}
+
+springdoc:
+  swagger-ui:
+    display-request-duration: true
+    groups-order: ASC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    use-root-path: true
+  show-actuator: true

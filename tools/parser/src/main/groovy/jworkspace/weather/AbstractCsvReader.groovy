@@ -1,7 +1,7 @@
 package jworkspace.weather
 /* ----------------------------------------------------------------------------
    Java Workspace
-   Copyright (C) 2019 Anton Troshin
+   Copyright (C) 1999 - 2022 Anton Troshin
 
    This file is part of Java Workspace.
 

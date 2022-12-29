@@ -1,11 +1,37 @@
 package jworkspace.exif;
+/* ----------------------------------------------------------------------------
+   Java Workspace
+   Copyright (C) 1999 - 2022 Anton Troshin
 
-import javax.persistence.Entity;
+   This file is part of Java Workspace.
+
+   This application is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Library General Public
+   License as published by the Free Software Foundation; either
+   version 2 of the License, or (at your option) any later version.
+
+   This application is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Library General Public License for more details.
+
+   You should have received a copy of the GNU Library General Public
+   License along with this application; if not, write to the Free
+   Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+   The author may be contacted at:
+
+   anton.troshin@gmail.com
+  ----------------------------------------------------------------------------
+*/
+
 import java.util.Date;
 
-import jworkspace.BaseEntity;
+import javax.persistence.Entity;
+
 import org.apache.commons.math3.fraction.Fraction;
 
+import jworkspace.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -32,6 +58,7 @@ import lombok.ToString;
  * <li>[ICC Profile] Chromatic Adaptation - sf32 (0x73663332): 44 bytes</li>
  * <li>[ICC Profile] XYZ values - 0.964 1 0.825</li>
  * </ul>
+ * @author Anton Troshin
  */
 @Entity
 @Getter

@@ -1,12 +1,17 @@
 buildscript {
     repositories {
+        mavenCentral()
         maven {
             url "https://plugins.gradle.org/m2/"
         }
+        google()
     }
 }
 
+// plugins declarations, applied actually in allprojects section
 plugins {
+    id 'org.springframework.boot' version '2.6.14'
+    id 'io.spring.dependency-management' version '1.1.0' // needed for resolving spring boot deps
     id 'java'
 
     id 'com.github.spotbugs' version '4.7.1'
@@ -15,12 +20,89 @@ plugins {
     id 'checkstyle'
     id 'idea'
     id 'eclipse'
+
+    id 'com.palantir.docker' version '0.30.0'
+    id 'com.palantir.docker-run' version '0.30.0'
+    id 'com.palantir.docker-compose' version '0.30.0'
 }
 
 group 'name.troshin.anton.clematis'
 version '0.0.1-SNAPSHOT'
 
-subprojects {
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+configurations {
+    implementation.exclude group: "org.slf4j", module: "slf4j-log4j12"
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply from: file("${project.rootDir}/dependencies.gradle")
+
+
+// ------------ JaCoCo test coverage + ascii doctor as a post processor
+
+ext {
+    setProperty('snippetsDir', file("build/generated-snippets"))
+}
+
+test {
+    outputs.dir snippetsDir
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+        classDumpDir = file("$buildDir/jacoco/classpathdumps")
+    }
+}
+
+// Do not generate reports for individual projects
+tasks.named("jacocoTestReport") {
+    enabled = false
+}
+
+// dependencies for the root web project
+dependencies {
+
+    implementation project(path: ':parser')
+
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    implementation 'com.google.auto.service:auto-service:1.0'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'org.glassfish.main.external:jmxremote_optional-repackaged:5.0'
+
+    implementation "org.springdoc:springdoc-openapi-ui:1.6.14"
+    implementation "org.springdoc:springdoc-openapi-security:1.6.14"
+    implementation "org.springdoc:springdoc-openapi-hateoas:1.6.14"
+    implementation "org.springdoc:springdoc-openapi-data-rest:1.6.14"
+
+    implementation 'mysql:mysql-connector-java'
+
+    testCompileOnly libs.testContainers
+
+    testImplementation 'io.rest-assured:rest-assured'
+
+    testImplementation 'io.netty:netty-all:4.1.60.Final'
+    testImplementation (libs.springStarterTest) {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+    testImplementation platform(libs.testContainersBom)
+    testImplementation libs.testContainerMySQL
+    testImplementation libs.sprintMockMvc
+}
+
+// dependencies for the root web project and for the other subprojects
+allprojects {
 
     apply plugin: 'java'
 
@@ -29,34 +111,9 @@ subprojects {
     apply plugin: 'idea'
     apply plugin: 'eclipse'
 
-    sourceCompatibility = '11'
-    targetCompatibility = '11'
-
     apply from: file("${project.rootDir}/dependencies.gradle")
 
-    configurations {
-        implementation.exclude group: "org.slf4j", module: "slf4j-log4j12"
-    }
-// ------------ JaCoCo test coverage + ascii doctor as a post processor
 
-    ext {
-        setProperty('snippetsDir', file("build/generated-snippets"))
-    }
-
-    test {
-        outputs.dir snippetsDir
-        useJUnitPlatform()
-        testLogging.showStandardStreams = true
-        jacoco {
-            destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
-            classDumpDir = file("$buildDir/jacoco/classpathdumps")
-        }
-    }
-
-    // Do not generate reports for individual projects
-    tasks.named("jacocoTestReport") {
-        enabled = false
-    }
 
 // Share sources folder with other projects for aggregated JaCoCo reports
     configurations.create('transitiveSourcesElements') {
@@ -144,6 +201,7 @@ subprojects {
         inputs.dir snippetsDir
         dependsOn test
     }
+
     // ------------ Spotbugs configuration  ---------
     spotbugsMain {
         reports {
@@ -168,6 +226,7 @@ subprojects {
             }
         }
     }
+
     // ------------ Checkstyle configuration  ---------
     checkstyle {
         configProperties.configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
@@ -188,3 +247,33 @@ subprojects {
         exclude '**/*Test*'
     }
 }
+
+docker {
+    name = "atroshin/${project.name}:${version}"
+    dockerfile = file('Dockerfile')
+    copySpec.from("${buildDir}").into("build")
+    pull true
+    noCache true
+}
+
+dockerCompose {
+    dockerComposeFile file("${project.rootDir}/docker/docker-compose.yml")
+}
+
+dockerRun {
+    name 'clematis.weather.api'
+    image "atroshin/${project.name}:${version}"
+    ports '18087:8080'
+}
+
+springBoot {
+    buildInfo {
+        properties {
+            artifact = 'clematis-weather-api'
+            version = version
+            group = 'org.clematis.weather'
+            name = 'Clematis Weather API'
+        }
+    }
+}
+

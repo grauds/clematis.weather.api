@@ -1,18 +1,18 @@
 ext {
     var commonsIoVersion = '2.6'
 
-    var checkstyleVersion = '7.6'
-    var spotbugsVersion = '4.7.0'
+    var checkstyleVersion = '7.6.1'
+    var spotbugsVersion = '4.7.1'
 
     var junitJupiterVersion = '5.6.2'
     var testContainersVersion = '1.17.3'
-    var firebirdTestContainersVersion = '1.2.0'
 
     libs = [
+
             // loggers
             slf4j                : "org.slf4j:slf4j-api",
             slf4jSimple          : "org.slf4j:slf4j-simple",
-            log4j                : "log4j:log4j:1.2.17",
+            log4j                : "log4j:log4j",
             commonsLogging       : "commons-logging:commons-logging",
 
             // code patterns
@@ -24,21 +24,25 @@ ext {
             args4j               : "args4j:args4j",
 
             // code generation
-            lombok               : "org.projectlombok:lombok",
+            lombok               : "org.projectlombok:lombok:1.18.24",
 
             // code quality
             checkstyle           : "com.puppycrawl.tools:checkstyle:$checkstyleVersion",
-            spotbugs             : "com.github.spotbugs:$spotbugsVersion",
+            spotbugs             : ["com.github.spotbugs:spotbugs:$spotbugsVersion",
+                                    "com.google.code.findbugs:annotations:3.0.1u2"
+            ],
 
             // JUnit 5
-            jupiter              : "org.junit.jupiter:junit-jupiter:$junitJupiterVersion",
-            jupiterEngine        : "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion",
+            jupiter              : ["org.junit.jupiter:junit-jupiter:$junitJupiterVersion",
+                                    "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
+            ],
 
             // test docker containers
-            testContainers       : "org.testcontainers:testcontainers:$testContainersVersion",
-            testContainersJupiter: "org.testcontainers:junit-jupiter:$testContainersVersion",
+            testContainers       : ["org.testcontainers:testcontainers:$testContainersVersion",
+                                    "org.testcontainers:junit-jupiter:$testContainersVersion"
+            ],
             testContainersBom    : "org.testcontainers:testcontainers-bom:$testContainersVersion",
-            testContainerFirebird: "org.firebirdsql:firebird-testcontainers-java:$firebirdTestContainersVersion",
+            testContainerMySQL   : "org.testcontainers:mysql",
 
             // test spring framework
             springStarterTest    : 'org.springframework.boot:spring-boot-starter-test',

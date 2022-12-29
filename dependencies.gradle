@@ -14,15 +14,14 @@ dependencies {
     // to use regexp in logback.xml
     implementation 'org.codehaus.janino:janino:3.1.6'
 
-    compileOnly "org.projectlombok:lombok:1.18.22"
-    compileOnly 'com.google.code.findbugs:annotations:3.0.1u2'
+    compileOnly libs.commonsIO
+    compileOnly libs.lombok
+    compileOnly libs.spotbugs
 
     testCompileOnly libs.jupiter
     testCompileOnly libs.testContainers
-    testCompileOnly libs.testContainersJupiter
-    testCompileOnly 'com.google.code.findbugs:annotations:3.0.1u2'
+    testCompileOnly libs.lombok
+    testCompileOnly libs.spotbugs
 
-    testImplementation platform(libs.testContainersBom)
-
-    testRuntimeOnly libs.jupiterEngine
+    testImplementation libs.commonsLang3
 }
