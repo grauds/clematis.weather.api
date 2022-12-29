@@ -28,6 +28,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.Table;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import jworkspace.BaseEntity;
@@ -45,6 +46,7 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
+@Table(name = "observations")
 @ToString
 public class Observation extends BaseEntity<Long> {
     /**

@@ -25,3 +25,5 @@ hs_err_pid*
 /LOG_PATH_IS_UNDEFINED/
 /.logs/
 /.gradle/
+/build/
+/logs/

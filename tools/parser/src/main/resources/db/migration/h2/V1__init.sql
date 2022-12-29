@@ -31,7 +31,7 @@ CREATE TABLE `observations` (
      `tr` float(11) DEFAULT NULL,
      `e` varchar(255) DEFAULT NULL,
      `tg` float(11) DEFAULT NULL,
-     `eApos` varchar(255) DEFAULT NULL,
+     `e_apostrophe` varchar(255) DEFAULT NULL,
      `sss` float(11) DEFAULT NULL,
      PRIMARY KEY (`id`)
 );
