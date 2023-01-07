@@ -21,7 +21,7 @@ pipeline {
         stage('Get code') {
             steps {
                // Get some code from a GitHub repository
-               git 'https://github.com/grauds/clematis.weather.api.git'
+               git 'https://github.com/grauds/clematis.weather.api.git#main'
                sh 'chmod +x gradlew'
             }
         }
