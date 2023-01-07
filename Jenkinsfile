@@ -47,7 +47,7 @@ pipeline {
                  cd jenkins
                  docker compose stop
                  docker stop clematis-weather-api || true && docker rm clematis-weather-api || true
-                 docker compose build --build-arg --build-arg SPRING_DATASOURCE_MYSQL_PASSWORD='SPRING_DATASOURCE_MYSQL_PASSWORD'
+                 docker compose build --build-arg --build-arg SPRING_DATASOURCE_MYSQL_PASSWORD='$SPRING_DATASOURCE_MYSQL_PASSWORD'
                  docker compose up -d 
               '''
           }
