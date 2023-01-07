@@ -1,0 +1,21 @@
+services:
+  clematis-weather-api:
+    container_name: clematis-weather-api
+    image: clematis.weather.api:latest
+    networks:
+      - clematis_wth
+    ports:
+      - "18087:8080"
+      - "15089:5000"
+      - "15090:5001"
+    env_file:
+      - weather_api_demo.env
+    volumes:
+      - /home/clematis/weather/logs:/var/log/clematis
+    restart: unless-stopped
+
+  networks:
+    clematis_wth:
+      driver: bridge
+
+
