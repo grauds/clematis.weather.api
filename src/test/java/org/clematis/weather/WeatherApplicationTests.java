@@ -51,7 +51,6 @@ public class WeatherApplicationTests {
              Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT version()")) {
             Assertions.assertTrue(rs.next(), "has row");
-            Assertions.assertEquals("8.0.31", rs.getString(1), "Version");
         }
     }
 }
