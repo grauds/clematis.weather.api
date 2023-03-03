@@ -38,6 +38,18 @@ pipeline {
             }
         }
 
+        stage ('Dependency-Check') {
+            steps {
+                dependencyCheck additionalArguments: '''
+                    -o "./"
+                    -s "./"
+                    -f "ALL"
+                    --prettyPrint''', odcInstallation: 'Dependency Checker'
+
+                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+            }
+        }
+
         stage('Publish tests') {
             steps {
                 publishCoverage adapters: [jacocoAdapter('jacoco/jacoco.xml')], sourceFileResolver: sourceFiles('STORE_LAST_BUILD')
