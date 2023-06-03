@@ -1,10 +1,8 @@
 plugins {
-    id "org.flywaydb.flyway" version "3.2.1"
     id "groovy"
 }
 
 version '0.0.1-SNAPSHOT'
-apply plugin: "org.flywaydb.flyway"
 
 sourceCompatibility = '11'
 targetCompatibility = '11'
@@ -28,7 +26,6 @@ dependencies {
     implementation "com.google.guava:guava:31.0.1-jre"
 
     // for persistence
-    implementation "org.flywaydb:flyway-core:9.10.1"
     implementation "org.hibernate:hibernate-java8:5.6.14.Final"
     implementation "org.hsqldb:hsqldb:2.7.1"
 

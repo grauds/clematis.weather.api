@@ -25,39 +25,14 @@ package jworkspace.weather
   ----------------------------------------------------------------------------
 */
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-
-/* ----------------------------------------------------------------------------
-   Java Workspace
-   Copyright (C) 2019 Anton Troshin
-
-   This file is part of Java Workspace.
-
-   This application is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public
-   License as published by the Free Software Foundation; either
-   version 2 of the License, or (at your option) any later version.
-
-   This application is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
-
-   You should have received a copy of the GNU Library General Public
-   License along with this application; if not, write to the Free
-   Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-   The author may be contacted at:
-
-   anton.troshin@gmail.com
-  ----------------------------------------------------------------------------
-*/
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 
 import org.apache.commons.csv.CSVParser
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 
 /**
  * # Weather station Moscow, Russia, WMO_ID=27612,selection from 01.02.2005 till 01.02.2006, all days
@@ -70,15 +45,15 @@ import org.apache.commons.csv.CSVParser
  * @param fileName
  * @return array of observations
  */
-class CsvReader extends AbstractCsvReader<Observation> {
+class WeatherParser extends AbstractCsvReader<Observation> {
 
-    public static final Logger LOG = LoggerFactory.getLogger(CsvReader.class)
+    public static final Logger LOG = LoggerFactory.getLogger(WeatherParser.class)
 
     static String DATE_FORMAT = "DD.MM.YYYY hh:mm"
 
     static DateFormat df = new SimpleDateFormat(DATE_FORMAT)
 
-    CsvReader(boolean hasHeader, String csvFileName) {
+    WeatherParser(boolean hasHeader, String csvFileName) {
         super(hasHeader, csvFileName)
     }
 

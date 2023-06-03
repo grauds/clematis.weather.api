@@ -28,6 +28,7 @@ package jworkspace.exif;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import org.apache.commons.math3.fraction.Fraction;
 
@@ -63,6 +64,7 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
+@Table(name = "images")
 @ToString
 public class WeatherImage extends BaseEntity<Long> {
 

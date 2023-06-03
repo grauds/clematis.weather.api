@@ -61,21 +61,29 @@ public class ImportPipelineTest {
 
     @Test
     public void test() {
+        int imported = loadWeatherData(this.session);
+        Assertions.assertEquals(ImportPipelineTest.TEST_DATA_SIZE, imported);
+    }
 
-        List<Observation> result = new CsvReader(true, "27612.01.02.2005.01.02.2006.1.0.0.en.unic.00000000.csv").read();
+    static int loadWeatherData(Session session) {
 
-        result.addAll(new CsvReader(true, "27612.01.02.2006.01.02.2010.1.0.0.en.unic.00000000.csv").read());
-        result.addAll(new CsvReader(true, "27612.01.02.2010.01.02.2015.1.0.0.en.unic.00000000.csv").read());
-        result.addAll(new CsvReader(true, "27612.01.02.2015.01.02.2021.1.0.0.en.unic.00000000.csv").read());
-        result.addAll(new CsvReader(true, "27612.01.02.2021.01.02.2022.1.0.0.en.unic.00000000.csv").read());
-        result.addAll(new CsvReader(true, "27612.01.02.2022.21.12.2022.1.0.0.en.unic.00000000.csv").read());
+        if (session != null && session.isOpen()) {
 
-        Assertions.assertEquals(TEST_DATA_SIZE, result.size());
+            List<Observation> result = new WeatherParser(true, "27612.01.02.2005.01.02.2006.1.0.0.en.unic.00000000.csv").read();
 
-        for (Observation observation : result) {
-            session.save(observation);
+            result.addAll(new WeatherParser(true, "27612.01.02.2006.01.02.2010.1.0.0.en.unic.00000000.csv").read());
+            result.addAll(new WeatherParser(true, "27612.01.02.2010.01.02.2015.1.0.0.en.unic.00000000.csv").read());
+            result.addAll(new WeatherParser(true, "27612.01.02.2015.01.02.2021.1.0.0.en.unic.00000000.csv").read());
+            result.addAll(new WeatherParser(true, "27612.01.02.2021.01.02.2022.1.0.0.en.unic.00000000.csv").read());
+            result.addAll(new WeatherParser(true, "27612.01.02.2022.21.12.2022.1.0.0.en.unic.00000000.csv").read());
+
+            for (Observation observation : result) {
+                session.saveOrUpdate(observation);
+            }
+
+            return result.size();
         }
-
+        return 0;
     }
 
     @AfterEach

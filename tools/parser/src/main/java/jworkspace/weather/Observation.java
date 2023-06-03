@@ -54,7 +54,7 @@ public class Observation extends BaseEntity<Long> {
      */
     private Integer weatherStationId;
     /**
-     * Local time in this location. Summertime (Daylight Saving Time) is taken into consideration
+     * Local time in this location. Summer (Daylight Saving Time) is taken into consideration
      */
     @SuppressFBWarnings("EI_EXPOSE_REP")
     private Date date;
