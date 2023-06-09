@@ -12,6 +12,7 @@ plugins {
     id "org.springframework.boot" version "2.7.12"
     id 'io.spring.dependency-management' version '1.1.0' // needed for resolving spring boot deps
     id 'java'
+    id 'groovy'
 
     id "org.flywaydb.flyway" version "9.8.1"
 
@@ -47,6 +48,11 @@ dependencies {
     implementation project(path: ':parser')
 
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    // for groovy
+    implementation "org.codehaus.groovy:groovy-all:3.0.13"
+    implementation "org.spockframework:spock-core:2.2-groovy-3.0"
+    implementation "org.apache.ivy:ivy:2.5.0"
 
     implementation "com.google.auto.service:auto-service:1.0"
     implementation "org.springframework.boot:spring-boot-starter-actuator"

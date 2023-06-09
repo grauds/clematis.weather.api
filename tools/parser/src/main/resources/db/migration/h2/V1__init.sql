@@ -2,7 +2,7 @@
 -- // "H";"Cm";"Ch";"VV";"Td";"RRR";"tR";"E";"Tg";"E'";"sss"
 
 CREATE TABLE `observations` (
-     `id` binary(16) NOT NULL,
+     `id` INT NOT NULL AUTO_INCREMENT,
      `weather_station_id` int(11) NOT NULL,
      `date` datetime NOT NULL,
      `t` float(11) DEFAULT NULL,

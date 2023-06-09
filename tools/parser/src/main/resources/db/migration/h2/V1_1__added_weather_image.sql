@@ -1,5 +1,6 @@
 CREATE TABLE `images` (
-  `id` binary(16) NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `date` datetime NOT NULL,
-  `path` varchar(512) NOT NULL
+  `path` varchar(512) NOT NULL,
+  PRIMARY KEY (`id`)
 )
