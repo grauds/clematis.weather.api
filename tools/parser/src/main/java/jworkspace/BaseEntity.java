@@ -52,8 +52,8 @@ public abstract class BaseEntity<PKType extends Serializable> implements Seriali
     private static final StandardToStringStyle TO_STRING_STYLE = new StandardToStringStyle();
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
-    @GenericGenerator(name = "native",strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     @Column(name = "ID", nullable = false, updatable = false)
     @Getter
     @Setter
