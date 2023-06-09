@@ -1,5 +1,7 @@
 package org.clematis.weather.config
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
+
 import javax.persistence.EntityManager
 
 import jworkspace.weather.Observation
@@ -16,6 +18,7 @@ import org.springframework.transaction.support.TransactionTemplate
  * @author Anton Troshin
  */
 @Component
+@SuppressFBWarnings
 class DataImporterConfig {
 
     @Bean
