@@ -26,6 +26,7 @@ package jworkspace.weather;
 */
 
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -40,7 +41,7 @@ import org.junit.jupiter.api.Test;
  */
 public class ImportPipelineTest {
 
-    private static final int TEST_DATA_SIZE = 61951;
+    private static final int TEST_DATA_SIZE = 61862;
 
     private SessionFactory sessionFactory;
 
@@ -69,7 +70,7 @@ public class ImportPipelineTest {
 
         if (session != null && session.isOpen()) {
 
-            List<Observation> result = new WeatherParser(true, "27612.01.02.2005.01.02.2006.1.0.0.en.unic.00000000.csv").read();
+            Set<Observation> result = new WeatherParser(true, "27612.01.02.2005.01.02.2006.1.0.0.en.unic.00000000.csv").read();
 
             result.addAll(new WeatherParser(true, "27612.01.02.2006.01.02.2010.1.0.0.en.unic.00000000.csv").read());
             result.addAll(new WeatherParser(true, "27612.01.02.2010.01.02.2015.1.0.0.en.unic.00000000.csv").read());
@@ -78,7 +79,7 @@ public class ImportPipelineTest {
             result.addAll(new WeatherParser(true, "27612.01.02.2022.21.12.2022.1.0.0.en.unic.00000000.csv").read());
 
             for (Observation observation : result) {
-                session.saveOrUpdate(observation);
+                session.merge(observation);
             }
 
             return result.size();

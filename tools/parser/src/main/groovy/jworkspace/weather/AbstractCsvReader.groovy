@@ -43,9 +43,9 @@ abstract class AbstractCsvReader<T> {
 
     String csvFileName
 
-    abstract List<T> mapToItems(CSVParser records)
+    abstract Set<T> mapToItems(CSVParser records)
 
-    List<T> read() {
+    Set<T> read() {
         def stopwatch = Stopwatch.createStarted()
         LOG.info(String.format("Started reading %s", csvFileName))
 

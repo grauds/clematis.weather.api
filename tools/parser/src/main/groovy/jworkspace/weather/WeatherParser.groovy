@@ -49,7 +49,7 @@ class WeatherParser extends AbstractCsvReader<Observation> {
 
     public static final Logger LOG = LoggerFactory.getLogger(WeatherParser.class)
 
-    static String DATE_FORMAT = "DD.MM.YYYY hh:mm"
+    static String DATE_FORMAT = "dd.MM.yyyy hh:mm"
 
     static DateFormat df = new SimpleDateFormat(DATE_FORMAT)
 
@@ -63,7 +63,7 @@ class WeatherParser extends AbstractCsvReader<Observation> {
 
     @Override
     @SuppressFBWarnings("SE_NO_SERIALVERSIONID")
-    List<Observation> mapToItems(CSVParser parser) {
+    Set<Observation> mapToItems(CSVParser parser) {
         int counter = 0
 
         return parser.records.stream().filter( {
