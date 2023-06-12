@@ -63,7 +63,7 @@ class WeatherParser extends AbstractCsvReader<Observation> {
 
     @Override
     @SuppressFBWarnings("SE_NO_SERIALVERSIONID")
-    Set<Observation> mapToItems(CSVParser parser) {
+    List<Observation> mapToItems(CSVParser parser) {
         int counter = 0
 
         return parser.records.stream().filter( {
