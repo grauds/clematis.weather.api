@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.persistence.Embeddable;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
