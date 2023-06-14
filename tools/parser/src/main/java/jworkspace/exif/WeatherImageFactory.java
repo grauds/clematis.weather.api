@@ -20,7 +20,9 @@ import lombok.extern.java.Log;
 @Log
 public class WeatherImageFactory {
 
-    private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
+    private static final SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
+
+    private WeatherImageFactory() {}
 
     public static WeatherImage create(Path imageFile) {
         if (imageFile != null && Files.exists(imageFile)) {
@@ -34,7 +36,7 @@ public class WeatherImageFactory {
                     for (Tag tag : directory.getTags()) {
                         if (tag.getTagName().equals("Date/Time")) {
                             weatherImage.getKey().setDate(
-                                formatter.parse(tag.getDescription())
+                                FORMATTER.parse(tag.getDescription())
                             );
                         }
                     }
