@@ -33,6 +33,9 @@ dependencies {
     testImplementation "com.h2database:h2:1.4.200"
     testImplementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
     testImplementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
+
+    // for testing images sync
+    testImplementation "com.google.jimfs:jimfs:1.1"
 }
 
 test {

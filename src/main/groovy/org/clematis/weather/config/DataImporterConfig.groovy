@@ -1,12 +1,11 @@
 package org.clematis.weather.config
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
-
 import javax.persistence.EntityManager
 
 import jworkspace.weather.Observation
 import jworkspace.weather.WeatherParser
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.hibernate.Session
 import org.springframework.boot.CommandLineRunner
 import org.springframework.context.annotation.Bean
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Component
 import org.springframework.transaction.TransactionStatus
 import org.springframework.transaction.support.TransactionCallbackWithoutResult
 import org.springframework.transaction.support.TransactionTemplate
+
 /**
  * @author Anton Troshin
  */

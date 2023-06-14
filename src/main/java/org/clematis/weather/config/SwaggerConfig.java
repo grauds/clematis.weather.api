@@ -64,6 +64,14 @@ public class SwaggerConfig {
     }
 
     @Bean
+    public GroupedOpenApi imagesApi() {
+        return GroupedOpenApi.builder()
+            .group("Images")
+            .pathsToMatch("/api/images")
+            .build();
+    }
+
+    @Bean
     SwaggerUiConfigProperties swaggerUiConfig() {
         SwaggerUiConfigProperties config = new SwaggerUiConfigProperties();
         config.setShowCommonExtensions(true);

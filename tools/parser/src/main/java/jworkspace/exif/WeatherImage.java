@@ -25,14 +25,14 @@ package jworkspace.exif;
   ----------------------------------------------------------------------------
 */
 
-import java.util.Date;
+import java.io.Serializable;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import org.apache.commons.math3.fraction.Fraction;
 
-import jworkspace.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -66,11 +66,10 @@ import lombok.ToString;
 @Setter
 @Table(name = "images")
 @ToString
-public class WeatherImage extends BaseEntity<Long> {
+public class WeatherImage implements Serializable {
 
-    private Date date;
-
-    private String path;
+    @EmbeddedId
+    private WeatherImageKey key = new WeatherImageKey();
 
     private Fraction exposureTime;
 
