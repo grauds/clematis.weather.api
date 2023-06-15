@@ -3,8 +3,8 @@ package org.clematis.weather.repository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import jworkspace.weather.Observation;
-import jworkspace.weather.ObservationKey;
+import jworkspace.weather.model.Observation;
+import jworkspace.weather.model.ObservationKey;
 
 /**
  * @author Anton Troshin

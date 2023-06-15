@@ -1,4 +1,4 @@
-package jworkspace.weather
+package jworkspace.weather.parser
 /* ----------------------------------------------------------------------------
    Java Workspace
    Copyright (C) 1999 - 2022 Anton Troshin

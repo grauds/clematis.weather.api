@@ -1,3 +1,8 @@
+jworkspace:
+  weather:
+    images:
+      dir: ${WEATHER_IMAGES_PATH}
+
 management:
   endpoints:
     jmx:

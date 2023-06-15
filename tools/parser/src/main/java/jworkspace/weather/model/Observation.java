@@ -1,4 +1,4 @@
-package jworkspace.weather;
+package jworkspace.weather.model;
 /* ----------------------------------------------------------------------------
    Java Workspace
    Copyright (C) 2019 Anton Troshin

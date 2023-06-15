@@ -1,4 +1,8 @@
-package jworkspace.weather
+package jworkspace.weather.parser
+
+import jworkspace.weather.model.Observation
+import jworkspace.weather.model.WindDirection
+
 /* ----------------------------------------------------------------------------
    Java Workspace
    Copyright (C) 1999 - 2022 Anton Troshin

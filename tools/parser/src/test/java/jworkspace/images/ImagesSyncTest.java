@@ -5,7 +5,6 @@ import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.hibernate.Session;
@@ -18,8 +17,8 @@ import org.junit.jupiter.api.Test;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 
-import jworkspace.exif.WeatherImage;
-import jworkspace.exif.WeatherImageFactory;
+import jworkspace.weather.model.WeatherImage;
+import jworkspace.weather.service.WeatherImagesImporter;
 
 /**
  * Test image DB sync
@@ -74,20 +73,7 @@ public class ImagesSyncTest {
            Assertions.assertEquals(2, stream.count());
         }
 
-        if (session != null && session.isOpen()) {
-
-            try (Stream<Path> stream = Files.list(path)) {
-                stream.map(WeatherImageFactory::create)
-                    .filter(Objects::nonNull)
-                    .collect(Collectors.toList())
-                    .forEach((weatherImage) -> {
-                        WeatherImage existing = session.find(WeatherImage.class, weatherImage.getKey());
-                        if (existing == null) {
-                            session.merge(weatherImage);
-                        }
-                    });
-            }
-        }
+        WeatherImagesImporter.loadWeatherImages(path, session);
     }
 
     @AfterAll

@@ -58,14 +58,15 @@ pipeline {
 
         stage("Build and start docker compose services") {
           environment {
-                SPRING_DATASOURCE_MYSQL_PASSWORD = credentials('SPRING_DATASOURCE_MYSQL_PASSWORD')
+              SPRING_DATASOURCE_MYSQL_PASSWORD = credentials('SPRING_DATASOURCE_MYSQL_PASSWORD')
+              WEATHER_IMAGES_PATH = credentials('WEATHER_IMAGES_PATH')
           }
           steps {
               sh '''
                  cd jenkins
                  docker compose stop
                  docker stop clematis-weather-api || true && docker rm clematis-weather-api || true
-                 docker compose build --build-arg SPRING_DATASOURCE_MYSQL_PASSWORD='$SPRING_DATASOURCE_MYSQL_PASSWORD'
+                 docker compose build --build-arg SPRING_DATASOURCE_MYSQL_PASSWORD='$SPRING_DATASOURCE_MYSQL_PASSWORD' --build-arg WEATHER_IMAGES_PATH='$WEATHER_IMAGES_PATH'
                  docker compose up -d 
               '''
           }
