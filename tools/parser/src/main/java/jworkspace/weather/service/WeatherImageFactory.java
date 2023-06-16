@@ -44,12 +44,10 @@ public class WeatherImageFactory {
                         }
                     }
                 }
-                if (weatherImage.getKey().getDate() == null) {
-                    return null;
+                if (weatherImage.getKey().getDate() != null) {
+                    weatherImage.getKey().setPath(imageFile.toAbsolutePath().toString());
+                    return weatherImage;
                 }
-
-                weatherImage.getKey().setPath(imageFile.toAbsolutePath().toString());
-                return weatherImage;
 
             } catch (ImageProcessingException | IOException | ParseException e) {
                 log.log(Level.SEVERE, e.getMessage());
