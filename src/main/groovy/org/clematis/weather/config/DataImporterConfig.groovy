@@ -32,7 +32,10 @@ class DataImporterConfig {
         return (args) -> transactionTemplate.execute(new TransactionCallbackWithoutResult() {
             @Override
             protected void doInTransactionWithoutResult(TransactionStatus status) {
-                WeatherImporter.loadWeatherData(entityManager.unwrap(Session.class))
+                Session session = entityManager.unwrap(Session.class)
+                if (session.createQuery("select 1 from Observation").list().isEmpty()) {
+                    WeatherImporter.loadWeatherData(session)
+                }
             }
         })
     }
