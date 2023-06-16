@@ -12,6 +12,7 @@
         - weather_api_demo.env
       volumes:
         - /home/clematis/weather/logs:/var/log/clematis
+        - /home/clematis/weather/images:/home/clematis/weather/images
       restart: unless-stopped
 
   networks:
