@@ -28,6 +28,8 @@ public class ImagesSyncTest {
     public static final String PATH = "/home/clematis/weather/images";
     public static final String HEIC_RESOURCE = "2022-07-11 09-58-21.HEIC";
     public static final String IMAGE_RESOURCE = "20191216_060646475_iOS.jpg";
+    public static final String NOT_AN_IMAGE_DUMMY = "not_an_image.dummy";
+    public static final String DIRECTORY = "directory";
 
     private static FileSystem fileSystem;
 
@@ -51,6 +53,14 @@ public class ImagesSyncTest {
             Objects.requireNonNull(ImagesSyncTest.class.getResourceAsStream(IMAGE_RESOURCE)),
             path.resolve(IMAGE_RESOURCE)
         );
+        Files.copy(
+            Objects.requireNonNull(ImagesSyncTest.class.getResourceAsStream(NOT_AN_IMAGE_DUMMY)),
+            path.resolve(NOT_AN_IMAGE_DUMMY)
+        );
+        Files.copy(
+            Objects.requireNonNull(ImagesSyncTest.class.getResourceAsStream(DIRECTORY)),
+            path.resolve(DIRECTORY)
+        );
 
         // set up the session factory
 
@@ -70,7 +80,7 @@ public class ImagesSyncTest {
         Path path = fileSystem.getPath(PATH);
 
         try (Stream<Path> stream = Files.list(path)) {
-           Assertions.assertEquals(2, stream.count());
+           Assertions.assertEquals(4, stream.count());
         }
 
         WeatherImagesImporter.loadWeatherImages(path, session);

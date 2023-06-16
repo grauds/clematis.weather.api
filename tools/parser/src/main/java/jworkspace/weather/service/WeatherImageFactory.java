@@ -29,12 +29,11 @@ public class WeatherImageFactory {
 
     public static WeatherImage create(Path imageFile) {
 
-        if (imageFile != null && Files.exists(imageFile)) {
+        if (imageFile != null && Files.exists(imageFile) && !Files.isDirectory(imageFile)) {
             try {
                 Metadata metadata = ImageMetadataReader.readMetadata(Files.newInputStream(imageFile));
 
                 WeatherImage weatherImage = new WeatherImage();
-
                 // [Exif IFD0] Date/Time - 2022:07:11 09:58:21
                 for (Directory directory : metadata.getDirectories()) {
                     for (Tag tag : directory.getTags()) {
@@ -45,8 +44,11 @@ public class WeatherImageFactory {
                         }
                     }
                 }
-                weatherImage.getKey().setPath(imageFile.toString());
+                if (weatherImage.getKey().getDate() == null) {
+                    return null;
+                }
 
+                weatherImage.getKey().setPath(imageFile.toAbsolutePath().toString());
                 return weatherImage;
 
             } catch (ImageProcessingException | IOException | ParseException e) {
