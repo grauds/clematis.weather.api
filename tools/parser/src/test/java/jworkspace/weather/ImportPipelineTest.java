@@ -31,9 +31,9 @@ import jworkspace.weather.service.WeatherImporter;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -43,12 +43,12 @@ public class ImportPipelineTest {
 
     private static final int TEST_DATA_SIZE = 63237;
 
-    private SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory;
 
-    private Session session = null;
+    private static Session session = null;
 
-    @BeforeEach
-    public void before() {
+    @BeforeAll
+    public static void before() {
         // set up the session factory
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(Observation.class);
@@ -62,12 +62,12 @@ public class ImportPipelineTest {
 
     @Test
     public void test() {
-        int imported = WeatherImporter.loadWeatherData(this.session);
+        int imported = WeatherImporter.loadWeatherData(session);
         Assertions.assertEquals(ImportPipelineTest.TEST_DATA_SIZE, imported);
     }
 
-    @AfterEach
-    public void after() {
+    @AfterAll
+    public static void after() {
         session.close();
         sessionFactory.close();
     }

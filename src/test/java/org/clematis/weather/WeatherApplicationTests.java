@@ -20,7 +20,7 @@ import org.testcontainers.utility.DockerImageName;
 
 @Testcontainers
 @SpringBootTest(classes = WeatherApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("local")
+@ActiveProfiles("test")
 public class WeatherApplicationTests {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(WeatherApplication.class);

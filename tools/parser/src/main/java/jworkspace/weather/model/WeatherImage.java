@@ -24,10 +24,8 @@ package jworkspace.weather.model;
    anton.troshin@gmail.com
   ----------------------------------------------------------------------------
 */
+import java.util.Date;
 
-import java.io.Serializable;
-
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -66,10 +64,11 @@ import lombok.ToString;
 @Setter
 @Table(name = "images")
 @ToString
-public class WeatherImage implements Serializable {
+public class WeatherImage extends IdAware {
 
-    @EmbeddedId
-    private WeatherImageKey key = new WeatherImageKey();
+    private Date date;
+
+    private String path;
 
     private Fraction exposureTime;
 

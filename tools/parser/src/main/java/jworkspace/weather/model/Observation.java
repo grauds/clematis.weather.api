@@ -24,19 +24,16 @@ package jworkspace.weather.model;
    anton.troshin@gmail.com
   ----------------------------------------------------------------------------
 */
-import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
-import lombok.EqualsAndHashCode;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
 
 /**
  * A weather observation in accordance with Moscow VDNH station logs.
@@ -47,13 +44,19 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
 @Table(name = "observations")
 @ToString
-public class Observation implements Serializable {
+public class Observation extends IdAware {
 
-    @EmbeddedId
-    private ObservationKey key = new ObservationKey();
+    /**
+     * Weather station unique id (27612 for VDNH)
+     */
+    private Integer weatherStationId;
+    /**
+     * Local time in this location. Summer (Daylight Saving Time) is taken into consideration
+     */
+    @SuppressFBWarnings("EI_EXPOSE_REP")
+    private Date date;
 
     /**
      * Air temperature (degrees Celsius) at 2 metre height above the earth's surface
@@ -72,7 +75,7 @@ public class Observation implements Serializable {
      */
     private Float pA;
     /**
-     * Relative humidity (%) at a height of 2 metres above the earth's surface'
+     * Relative humidity (%) at a height of 2 metres above the earth's surface
      */
     private Float u;
     /**
@@ -172,20 +175,4 @@ public class Observation implements Serializable {
      * Snow depth (cm)
      */
     private Float sss;
-
-    public void setDate(Date date) {
-        this.key.setDate(date);
-    }
-
-    public Date getDate() {
-        return this.key.getDate();
-    }
-
-    public void setWeatherStationId(int id) {
-        this.key.setWeatherStationId(id);
-    }
-
-    public int getWeatherStationId() {
-        return this.key.getWeatherStationId();
-    }
 }

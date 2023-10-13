@@ -29,7 +29,7 @@ public class WeatherImagesImporter {
                     .filter(Objects::nonNull)
                     .collect(Collectors.toList())
                     .forEach((weatherImage) -> {
-                        WeatherImage existing = session.find(WeatherImage.class, weatherImage.getKey());
+                        WeatherImage existing = session.find(WeatherImage.class, weatherImage.getId());
                         if (existing == null) {
                             session.merge(weatherImage);
                         }

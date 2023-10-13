@@ -1,10 +1,8 @@
 package org.clematis.weather.config
 
-import java.nio.file.Path
-import javax.persistence.EntityManager
 
-import jworkspace.weather.service.WeatherImporter
-import jworkspace.weather.service.WeatherImagesImporter
+import javax.persistence.EntityManager
+import java.nio.file.Path
 
 import org.hibernate.Session
 import org.springframework.beans.factory.annotation.Value
@@ -17,14 +15,17 @@ import org.springframework.transaction.support.TransactionCallbackWithoutResult
 import org.springframework.transaction.support.TransactionTemplate
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
+import jworkspace.weather.model.Observation
+import jworkspace.weather.parser.WeatherParser
+import jworkspace.weather.service.WeatherImagesImporter
 
 /**
  * @author Anton Troshin
  */
 @Component
 @SuppressFBWarnings
-@Profile(value = "uat")
-class DataImporterConfig {
+@Profile(value = "test")
+class TestDataImporterConfig {
 
     @Value('${jworkspace.weather.images.dir}')
     private String path
@@ -35,7 +36,14 @@ class DataImporterConfig {
             @Override
             protected void doInTransactionWithoutResult(TransactionStatus status) {
                 Session session = entityManager.unwrap(Session.class)
-                WeatherImporter.loadWeatherData(session)
+                List<Observation> result = new WeatherParser(true,
+                        "27612.01.02.2005.01.02.2006.1.0.0.en.unic.00000000.csv").read()
+                for (Observation observation : result) {
+                    Observation existing = session.find(Observation.class, observation.getId())
+                    if (existing == null) {
+                        session.saveOrUpdate(observation)
+                    }
+                }
             }
         })
     }
@@ -45,7 +53,8 @@ class DataImporterConfig {
         return (args) -> transactionTemplate.execute(new TransactionCallbackWithoutResult() {
             @Override
             protected void doInTransactionWithoutResult(TransactionStatus status) {
-                WeatherImagesImporter.loadWeatherImages(Path.of(path), entityManager.unwrap(Session.class))
+                Session session = entityManager.unwrap(Session.class)
+                WeatherImagesImporter.loadWeatherImages(Path.of(path), session)
             }
         })
     }

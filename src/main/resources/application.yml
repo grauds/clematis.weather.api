@@ -2,6 +2,7 @@ jworkspace:
   weather:
     images:
       dir: ${WEATHER_IMAGES_PATH}
+      url: ${WEATHER_URL}
 
 management:
   endpoints:
@@ -14,13 +15,19 @@ management:
 
 spring:
 
+  profiles:
+    active: "dev"
+
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+
   datasource:
     hikari:
       maximum-pool-size: 25
       minimum-idle: 1
     driver-class-name: com.mysql.cj.jdbc.Driver
-    initialization-mode: always
-    continue-on-error: true
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect

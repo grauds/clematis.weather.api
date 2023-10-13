@@ -2,6 +2,7 @@
 -- // "H";"Cm";"Ch";"VV";"Td";"RRR";"tR";"E";"Tg";"E'";"sss"
 
 CREATE TABLE `observations` (
+     `id` INT NOT NULL AUTO_INCREMENT,
      `weather_station_id` int(11) NOT NULL,
      `date` datetime NOT NULL,
      `t` float(11) DEFAULT NULL,
@@ -31,5 +32,6 @@ CREATE TABLE `observations` (
      `e` varchar(255) DEFAULT NULL,
      `tg` float(11) DEFAULT NULL,
      `e_apostrophe` varchar(255) DEFAULT NULL,
-     `sss` float(11) DEFAULT NULL
+     `sss` float(11) DEFAULT NULL,
+     PRIMARY KEY (`id`)
 );
