@@ -24,13 +24,12 @@ package jworkspace.weather.model;
    anton.troshin@gmail.com
   ----------------------------------------------------------------------------
 */
-import java.util.Date;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -46,18 +45,10 @@ import lombok.ToString;
 @Setter
 @Table(name = "observations")
 @ToString
-public class Observation extends IdAware {
+public class Observation {
 
-    /**
-     * Weather station unique id (27612 for VDNH)
-     */
-    private Integer weatherStationId;
-    /**
-     * Local time in this location. Summer (Daylight Saving Time) is taken into consideration
-     */
-    @SuppressFBWarnings("EI_EXPOSE_REP")
-    private Date date;
-
+    @EmbeddedId
+    ObservationKey key = new ObservationKey();
     /**
      * Air temperature (degrees Celsius) at 2 metre height above the earth's surface
      */

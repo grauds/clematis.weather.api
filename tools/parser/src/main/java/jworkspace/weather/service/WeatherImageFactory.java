@@ -38,14 +38,14 @@ public class WeatherImageFactory {
                 for (Directory directory : metadata.getDirectories()) {
                     for (Tag tag : directory.getTags()) {
                         if (tag.getTagName().equals(TAG_DATE_TIME)) {
-                            weatherImage.setDate(
+                            weatherImage.getKey().setDate(
                                 FORMATTER.parse(tag.getDescription())
                             );
                         }
                     }
                 }
-                if (weatherImage.getDate() != null) {
-                    weatherImage.setPath(imageFile.getFileName().toString());
+                if (weatherImage.getKey().getDate() != null) {
+                    weatherImage.getKey().setPath(imageFile.getFileName().toString());
                     return weatherImage;
                 }
 

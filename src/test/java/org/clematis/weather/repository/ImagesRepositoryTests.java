@@ -15,7 +15,7 @@ public class ImagesRepositoryTests extends WeatherApplicationTests {
 
     @Test
     void testImages() {
-        Assertions.assertEquals(1, imagesRepository.count());
+        Assertions.assertEquals(4, imagesRepository.count());
     }
 
 }

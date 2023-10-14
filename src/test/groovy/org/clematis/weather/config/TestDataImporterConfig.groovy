@@ -39,7 +39,7 @@ class TestDataImporterConfig {
                 List<Observation> result = new WeatherParser(true,
                         "27612.01.02.2005.01.02.2006.1.0.0.en.unic.00000000.csv").read()
                 for (Observation observation : result) {
-                    Observation existing = session.find(Observation.class, observation.getId())
+                    Observation existing = session.find(Observation.class, observation.getKey())
                     if (existing == null) {
                         session.saveOrUpdate(observation)
                     }

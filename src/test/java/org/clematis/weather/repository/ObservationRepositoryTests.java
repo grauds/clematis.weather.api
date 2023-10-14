@@ -15,7 +15,7 @@ public class ObservationRepositoryTests extends WeatherApplicationTests {
 
     @Test
     void testObservations() {
-        Assertions.assertEquals(1, observationRepository.count());
+        Assertions.assertEquals(2541, observationRepository.count());
     }
 
 

@@ -1,6 +1,7 @@
 package jworkspace.weather.parser
 
 import jworkspace.weather.model.Observation
+import jworkspace.weather.model.ObservationKey
 import jworkspace.weather.model.WindDirection
 
 /* ----------------------------------------------------------------------------
@@ -78,8 +79,10 @@ class WeatherParser extends AbstractCsvReader<Observation> {
             int pos = 0
             try {
                 return new Observation(
-                        weatherStationId: 27612,
-                        date: df.parse(it.get(pos++)),
+                        key: new ObservationKey(
+                            weatherStationId: 27612,
+                            date: df.parse(it.get(pos++))
+                        ),
                         t: safeParseFloat(it.get(pos++)),
                         pO: safeParseFloat(it.get(pos++)),
                         p: safeParseFloat(it.get(pos++)),
