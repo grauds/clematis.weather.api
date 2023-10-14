@@ -9,7 +9,7 @@
         - "15089:5000"
         - "15090:5001"
       env_file:
-        - weather_api_demo.env
+        - weather_api_qa.env
       volumes:
         - /home/clematis/weather/logs:/var/log/clematis
         - /home/clematis/weather/images:/home/clematis/weather/images
