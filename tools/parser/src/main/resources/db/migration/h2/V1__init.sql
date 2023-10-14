@@ -32,5 +32,5 @@ CREATE TABLE `observations` (
      `tg` float(11) DEFAULT NULL,
      `e_apostrophe` varchar(255) DEFAULT NULL,
      `sss` float(11) DEFAULT NULL,
-     PRIMARY KEY (`id`)
+     PRIMARY KEY (`weather_station_id`, `date`)
 );
