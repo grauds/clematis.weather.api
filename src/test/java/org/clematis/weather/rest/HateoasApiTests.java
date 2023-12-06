@@ -10,6 +10,10 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.hateoas.server.mvc.TypeConstrainedMappingJackson2HttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
+
+@SuppressFBWarnings("EI_EXPOSE_REP")
 public class HateoasApiTests extends WeatherApplicationTests {
 
     @Autowired

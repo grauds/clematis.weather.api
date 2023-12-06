@@ -18,9 +18,12 @@ import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 @Testcontainers
 @SpringBootTest(classes = WeatherApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
+@SuppressFBWarnings("RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE")
 public class WeatherApplicationTests {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(WeatherApplication.class);
@@ -48,8 +51,9 @@ public class WeatherApplicationTests {
     public void canConnectToContainer() throws Exception {
         try (Connection connection = DriverManager
                 .getConnection(container.getJdbcUrl(), container.getUsername(), container.getPassword());
-             Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT version()")) {
+            Statement stmt = connection.createStatement()) {
+
+            ResultSet rs = stmt.executeQuery("SELECT version()");
             Assertions.assertTrue(rs.next(), "has row");
         }
     }
