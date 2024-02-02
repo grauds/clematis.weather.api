@@ -4,9 +4,9 @@ pipeline {
 
     stages {
 
-        stage("Verify tooling") {
-            steps {
-                sh '''
+    stage("Verify tooling") {
+      steps {
+        sh '''
               cd jenkins
               docker version
               docker info
@@ -15,16 +15,15 @@ pipeline {
               jq --version
               docker compose ps
             '''
-            }
-        }
+      }
+    }
 
-        stage('Get code') {
-            steps {
-               // Get some code from a GitHub repository
-               git branch: 'main', url: 'https://github.com/grauds/clematis.weather.api.git'
-               sh 'chmod +x gradlew'
-            }
-        }
+    stage('Get code') {
+      steps {
+        git branch: 'main', url: 'https://github.com/grauds/clematis.weather.api.git'
+         sh 'chmod +x gradlew'
+      }
+    }
 
         stage('Gradle build') {
             steps {
