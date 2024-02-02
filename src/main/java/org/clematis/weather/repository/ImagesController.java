@@ -19,18 +19,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Component
 public class ImagesController {
-    
+
     private String path = "/home/clematis/weather/images";
 
     @Autowired
     private ImagesRepository imagesRepository;
 
-    @GetMapping(
-        value = "/image",
-        produces = MediaType.IMAGE_JPEG_VALUE
-    )
-    public @ResponseBody byte[] getImageWithMediaType(@RequestParam("date") @DateTimeFormat(pattern="yyyy-MM-dd")
-                                                      Date date) throws IOException {
+    @GetMapping(value = "/image", produces = MediaType.IMAGE_JPEG_VALUE)
+    @ResponseBody
+    public byte[] getImageWithMediaType(@RequestParam("date")
+                                        @DateTimeFormat(pattern = "yyyy-MM-dd")
+                                        Date date) throws IOException {
         List<String> filesNames = imagesRepository.getImages(date);
         return !filesNames.isEmpty() ? Files.readAllBytes(Paths.get(path, filesNames.get(0))) : new byte[0];
     }
