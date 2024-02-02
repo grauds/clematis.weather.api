@@ -1,5 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="WeatherApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <option name="ACTIVE_PROFILES" value="qa" />
     <module name="name.troshin.anton.clematis.clematis.weather.api.main" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="org.clematis.weather.WeatherApplication" />
     <extension name="net.ashald.envfile">
