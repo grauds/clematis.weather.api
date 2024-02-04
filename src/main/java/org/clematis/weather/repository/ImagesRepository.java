@@ -23,27 +23,28 @@ public interface ImagesRepository extends PagingAndSortingRepository<WeatherImag
            countQuery = "select count(*) from images where datediff(date, DATE(:date)) = 0",
            nativeQuery = true
     )
+    @RestResource(path = "byDay")
     List<String> getImages(@Param("date")
                            @DateTimeFormat(pattern = "yyyy-MM-dd")
                            Date date);
 
-    @Query(value = "select date, path from images where YEAR(date(date))=YEAR(date(DATE(:month))) "
-                   + "AND MONTH(date(date))=MONTH(date(DATE(:month)))",
-          countQuery = "select count(*) from images where YEAR(date(date))=YEAR(date(DATE(:month))) "
-                   + "AND MONTH(date(date))=MONTH(date(DATE(:month)))",
+    @Query(value = "select * from images where YEAR(date(date))=YEAR(DATE(:month)) "
+                   + "AND MONTH(date(date))=MONTH(DATE(:month))",
+          countQuery = "select count(*) from images where YEAR(date(date))=YEAR(DATE(:month)) "
+                   + "AND MONTH(date(date))=MONTH(DATE(:month))",
           nativeQuery = true
     )
     @RestResource(path = "byMonth")
-    List<IDateAndPath> getMonthImages(@Param("month")
+    List<WeatherImage> getMonthImages(@Param("month")
                                       @DateTimeFormat(pattern = "yyyy-MM-dd")
                                       Date date);
 
-    @Query(value = "select date, path from images where YEAR(date(date))=YEAR(date(DATE(:year)))",
-        countQuery = "select count(*) from images where YEAR(date(date))=YEAR(date(DATE(:year)))",
+    @Query(value = "select * from images where YEAR(date(date))=YEAR(DATE(:year))",
+        countQuery = "select count(*) from images where YEAR(date(date))=YEAR(DATE(:year))",
         nativeQuery = true
     )
     @RestResource(path = "byYear")
-    List<IDateAndPath> getYearImages(@Param("year")
+    List<WeatherImage> getYearImages(@Param("year")
                                      @DateTimeFormat(pattern = "yyyy-MM-dd")
                                      Date date);
 }

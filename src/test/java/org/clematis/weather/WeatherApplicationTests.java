@@ -28,12 +28,12 @@ public class WeatherApplicationTests {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(WeatherApplication.class);
 
-    private static final DockerImageName IMAGE = DockerImageName.parse(MySQLContainer.NAME);
+    private static final DockerImageName MYSQL_80_IMAGE = DockerImageName.parse("mysql:8.0.36");
 
     private final static MySQLContainer<?> container;
 
     static {
-        container = new MySQLContainer<>(IMAGE)
+        container = new MySQLContainer<>(MYSQL_80_IMAGE)
                 .withUsername("weather")
                 .withPassword("password")
                 .withLogConsumer(new Slf4jLogConsumer(LOGGER));

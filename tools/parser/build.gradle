@@ -23,7 +23,7 @@ dependencies {
     implementation "org.apache.commons:commons-math3:3.6.1"
 
     // guava
-    implementation "com.google.guava:guava:31.0.1-jre"
+    implementation "com.google.guava:guava:31.1-jre"
 
     // for persistence
     implementation "org.hibernate:hibernate-java8:5.6.14.Final"
