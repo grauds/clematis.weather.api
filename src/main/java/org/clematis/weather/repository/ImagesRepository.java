@@ -24,17 +24,17 @@ public interface ImagesRepository extends PagingAndSortingRepository<WeatherImag
     )
     List<String> getImages(@Param("date") Date date);
 
-    @Query(value = "select date, path from images where YEAR(date(date))=YEAR(date(:month)) "
-                   + "AND MONTH(date(date))=MONTH(date(:month))",
-          countQuery = "select count(*) from images where YEAR(date(date))=YEAR(date(:month)) "
-                   + "AND MONTH(date(date))=MONTH(date(:month))",
+    @Query(value = "select date, path from images where YEAR(date(date))=YEAR(date(DATE(:month))) "
+                   + "AND MONTH(date(date))=MONTH(date(DATE(:month)))",
+          countQuery = "select count(*) from images where YEAR(date(date))=YEAR(date(DATE(:month))) "
+                   + "AND MONTH(date(date))=MONTH(date(DATE(:month)))",
           nativeQuery = true
     )
     @RestResource(path = "byMonth")
     List<IDateAndPath> getMonthImages(@Param("month") Date date);
 
-    @Query(value = "select date, path from images where YEAR(date(date))=YEAR(date(:year))",
-        countQuery = "select count(*) from images where YEAR(date(date))=YEAR(date(:year))",
+    @Query(value = "select date, path from images where YEAR(date(date))=YEAR(date(DATE(:year)))",
+        countQuery = "select count(*) from images where YEAR(date(date))=YEAR(date(DATE(:year)))",
         nativeQuery = true
     )
     @RestResource(path = "byYear")
