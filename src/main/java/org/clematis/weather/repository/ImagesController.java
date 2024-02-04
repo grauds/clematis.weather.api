@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,8 @@ import lombok.extern.java.Log;
 @Log
 public class ImagesController {
 
-    private String path = "/home/clematis/weather/images/";
+    @Value("${jworkspace.weather.images.dir}")
+    private String path;
 
     @Autowired
     private ImagesRepository imagesRepository;
@@ -42,4 +44,6 @@ public class ImagesController {
             return new byte[0];
         }
     }
+
+
 }
