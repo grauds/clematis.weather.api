@@ -8,6 +8,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jworkspace.weather.model.WeatherImage;
 import jworkspace.weather.model.WeatherImageKey;
@@ -22,7 +23,9 @@ public interface ImagesRepository extends PagingAndSortingRepository<WeatherImag
            countQuery = "select count(*) from images where datediff(date, DATE(:date)) = 0",
            nativeQuery = true
     )
-    List<String> getImages(@Param("date") Date date);
+    List<String> getImages(@Param("date")
+                           @DateTimeFormat(pattern = "yyyy-MM-dd")
+                           Date date);
 
     @Query(value = "select date, path from images where YEAR(date(date))=YEAR(date(DATE(:month))) "
                    + "AND MONTH(date(date))=MONTH(date(DATE(:month)))",
@@ -31,12 +34,16 @@ public interface ImagesRepository extends PagingAndSortingRepository<WeatherImag
           nativeQuery = true
     )
     @RestResource(path = "byMonth")
-    List<IDateAndPath> getMonthImages(@Param("month") Date date);
+    List<IDateAndPath> getMonthImages(@Param("month")
+                                      @DateTimeFormat(pattern = "yyyy-MM-dd")
+                                      Date date);
 
     @Query(value = "select date, path from images where YEAR(date(date))=YEAR(date(DATE(:year)))",
         countQuery = "select count(*) from images where YEAR(date(date))=YEAR(date(DATE(:year)))",
         nativeQuery = true
     )
     @RestResource(path = "byYear")
-    List<IDateAndPath> getYearImages(@Param("year") Date date);
+    List<IDateAndPath> getYearImages(@Param("year")
+                                     @DateTimeFormat(pattern = "yyyy-MM-dd")
+                                     Date date);
 }
