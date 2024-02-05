@@ -24,6 +24,8 @@ package jworkspace.weather.model;
    anton.troshin@gmail.com
   ----------------------------------------------------------------------------
 */
+import java.util.Date;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -72,5 +74,11 @@ public class WeatherImage {
 
     private Double brightnessValue;
 
+    public String getPath() {
+        return key.getPath();
+    }
 
+    public Date getDate() {
+        return key.getDate();
+    }
 }

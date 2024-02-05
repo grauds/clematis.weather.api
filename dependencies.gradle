@@ -9,6 +9,8 @@ dependencies {
     implementation "org.slf4j:slf4j-api:1.7.32"
     implementation "org.slf4j:slf4j-simple:2.0.5"
 
+    implementation "org.modelmapper:modelmapper:3.1.1"
+
     // to use regexp in logback.xml
     implementation 'org.codehaus.janino:janino:3.1.6'
 

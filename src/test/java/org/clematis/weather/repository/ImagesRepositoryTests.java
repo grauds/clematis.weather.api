@@ -3,12 +3,13 @@ package org.clematis.weather.repository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import jworkspace.weather.model.WeatherImage;
 
 import org.clematis.weather.WeatherApplicationTests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import jworkspace.weather.model.WeatherImage;
 
 /**
  * @author Anton Troshin
@@ -31,8 +32,8 @@ public class ImagesRepositoryTests extends WeatherApplicationTests {
             new SimpleDateFormat(DATE_FORMAT).parse("2022-07-17")
         );
         Assertions.assertEquals(2, images.size());
-        Assertions.assertEquals("2022-07-11 09-58-21.HEIC", images.get(0).getKey().getPath());
-        Assertions.assertEquals("2022-07-11 09:58:21.0", images.get(0).getKey().getDate().toString());
+        Assertions.assertEquals("2022-07-11 09-58-21.HEIC", images.get(0).getPath());
+        Assertions.assertEquals("2022-07-11 09:58:21.0", images.get(0).getDate().toString());
     }
 
     @Test

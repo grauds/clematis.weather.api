@@ -19,12 +19,12 @@ import jworkspace.weather.model.WeatherImageKey;
 @RepositoryRestResource(path = "images")
 public interface ImagesRepository extends PagingAndSortingRepository<WeatherImage, WeatherImageKey> {
 
-    @Query(value = "select path from images where datediff(date, DATE(:date)) = 0",
+    @Query(value = "select * from images where datediff(date, DATE(:date)) = 0",
            countQuery = "select count(*) from images where datediff(date, DATE(:date)) = 0",
            nativeQuery = true
     )
     @RestResource(path = "byDay")
-    List<String> getImages(@Param("date")
+    List<WeatherImage> getImages(@Param("date")
                            @DateTimeFormat(pattern = "yyyy-MM-dd")
                            Date date);
 

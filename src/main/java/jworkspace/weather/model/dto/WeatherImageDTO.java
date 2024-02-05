@@ -1,4 +1,4 @@
-package org.clematis.weather.dto;
+package jworkspace.weather.model.dto;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -7,8 +7,6 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.Data;
 
 /**
- * This projection carries date and name of the image file. Used for calendars
- *
  * @author Anton Troshin
  */
 @Data
