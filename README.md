@@ -87,7 +87,7 @@ To get another set of data:
 2. Click on weather archive link next to the location name: https://rp5.ru/Weather_archive_in_Ioannina_(airport)
 3. Select date range, format CVS, unicode encoding and click 'Download'. 
 
-<img src="./images/selector.png" alt="drawing" width="50%"/>
+<img src="./docs/selector.png" alt="drawing" width="50%"/>
 
 ### Importing Custom Data
 
