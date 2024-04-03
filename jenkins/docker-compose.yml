@@ -5,14 +5,32 @@
       networks:
         - clematis_wth
       ports:
-        - "18087:8080"
+        - ${SPRING_LOCAL_PORT}:${SPRING_DOCKER_PORT}
         - "15089:5000"
         - "15090:5001"
       env_file:
-        - weather_api_qa.env
+        - .env
       volumes:
         - /home/clematis/weather/logs:/var/log/clematis
         - /home/clematis/weather/images:/home/clematis/weather/images
+      restart: unless-stopped
+
+    clematis-weather-db:
+      networks:
+        - clematis_wth
+      container_name: clematis-weather-mysql-db
+      image: library/mysql:latest
+      volumes:
+        - /home/clematis/weather/storage:/var/lib/mysql
+      env_file:
+        - .env
+      ports:
+        - ${MYSQL_LOCAL_PORT}:${MYSQL_DOCKER_PORT}
+      environment:
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
       restart: unless-stopped
 
   networks:
