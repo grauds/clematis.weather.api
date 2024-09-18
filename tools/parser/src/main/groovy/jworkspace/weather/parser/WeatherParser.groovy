@@ -40,12 +40,12 @@ import org.slf4j.LoggerFactory
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 
 /**
- * # Weather station Moscow, Russia, WMO_ID=27612,selection from 01.02.2005 till 01.02.2006, all days
- * # Encoding: Unicode
- * # The data is provided by the website 'Reliable Prognosis', rp5.ru
- * # If you use the data, please indicate the name of the website.
- * # For meteorological parameters see the address http://rp5.ru/archive.php?wmo_id=27612&lang=en
- * #
+ * Weather station Moscow, Russia, WMO_ID=27612,selection from 01.02.2005 till 01.02.2006, all days
+ * Encoding: Unicode
+ * The data is provided by the website 'Reliable Prognosis', rp5.ru
+ * If you use the data, please indicate the name of the website.
+ * For meteorological parameters see the address http://rp5.ru/archive.php?wmo_id=27612&lang=en
+ *
  *
  * @param fileName
  * @return array of observations

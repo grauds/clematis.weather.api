@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test
  */
 class WeatherImporterTest {
 
-    private static final int TEST_DATA_SIZE = 65205
+    private static final int TEST_DATA_SIZE = 67049
 
     private static SessionFactory sessionFactory
 

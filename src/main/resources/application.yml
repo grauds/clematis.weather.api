@@ -2,7 +2,6 @@ jworkspace:
   weather:
     images:
       dir: ${WEATHER_IMAGES_PATH}
-      url: ${WEATHER_URL}
 
 management:
   endpoints:

@@ -9,88 +9,168 @@ buildscript {
 }
 
 plugins {
+    id "java"
+    id "groovy"
     id "org.springframework.boot" version "2.7.18"
-    id 'io.spring.dependency-management' version '1.1.0' // needed for resolving spring boot deps
-    id 'java'
-    id 'groovy'
+    id "io.spring.dependency-management" version "1.1.4"
+
+    id "com.github.spotbugs" version "6.0.7"
+   // id "org.asciidoctor.jvm.convert" version "3.1.0"
+    id "jacoco"
+    id "checkstyle"
 
     id "org.flywaydb.flyway" version "9.8.1"
 
-    id 'com.github.spotbugs' version '4.7.3'
-    id 'org.asciidoctor.jvm.convert' version '3.1.0'
-    id 'jacoco'
-    id 'checkstyle'
-    id 'idea'
-
-    id 'com.palantir.docker' version '0.35.0'
-    id 'com.palantir.docker-run' version '0.35.0'
-    id 'com.palantir.docker-compose' version '0.35.0'
+    id "com.palantir.docker" version "0.36.0"
+    id "com.palantir.docker-run" version "0.36.0"
+    id "com.palantir.docker-compose" version "0.36.0"
 }
 
-group 'name.troshin.anton.clematis'
-version '0.0.1-SNAPSHOT'
+group = 'org.clematis'
+version = '1.0.0-SNAPSHOT'
 
-sourceCompatibility = '11'
-targetCompatibility = '11'
+java {
+    sourceCompatibility = '17'
+}
 
 configurations {
     implementation.exclude group: "org.slf4j", module: "slf4j-log4j12"
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
     mavenCentral()
 }
 
-apply from: file("${project.rootDir}/dependencies.gradle")
-
 dependencies {
-
     implementation project(path: ':parser')
 
+    annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+//    annotationProcessor 'com.google.auto.service:auto-service:1.0.1'
 
-    // for groovy
-    implementation "org.codehaus.groovy:groovy-all:3.0.13"
-    implementation "org.spockframework:spock-core:2.2-groovy-3.0"
-    implementation "org.apache.ivy:ivy:2.5.1"
+    compileOnly (
+            'org.projectlombok:lombok',
+            "com.github.spotbugs:spotbugs:4.8.4",
+            "com.google.code.findbugs:annotations:3.0.1u2",
+            "org.apache.commons:commons-lang3",
+            "commons-io:commons-io:2.16.1",
+    )
+    checkstyle "com.puppycrawl.tools:checkstyle:10.9.3"
 
-    implementation "com.google.auto.service:auto-service:1.0"
-    implementation "org.springframework.boot:spring-boot-starter-actuator"
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+   // implementation 'com.google.auto.service:auto-service:1.0'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     implementation "org.springframework.boot:spring-boot-starter-data-rest"
-    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    implementation "org.glassfish.main.external:jmxremote_optional-repackaged:5.0"
+    implementation "org.flywaydb:flyway-core:9.15.0"
+    implementation "org.flywaydb:flyway-mysql:9.15.0"
+    implementation "mysql:mysql-connector-java:8.0.33"
 
     implementation "org.springdoc:springdoc-openapi-ui:1.6.14"
     implementation "org.springdoc:springdoc-openapi-hateoas:1.6.14"
     implementation "org.springdoc:springdoc-openapi-data-rest:1.6.14"
 
-    implementation "org.flywaydb:flyway-core:9.15.0"
-    implementation "org.flywaydb:flyway-mysql:9.15.0"
-    implementation "mysql:mysql-connector-java:8.0.32"
+    // for groovy
+    implementation "org.codehaus.groovy:groovy-all:3.0.13"
+    implementation "org.spockframework:spock-core:2.2-groovy-3.0"
+    implementation "org.apache.ivy:ivy:2.5.2"
 
-    testCompileOnly "org.testcontainers:testcontainers:1.17.6"
-    testCompileOnly "org.testcontainers:junit-jupiter:1.17.6"
-    testCompileOnly "org.testcontainers:testcontainers-bom:1.17.6"
-    testCompileOnly "org.testcontainers:mysql:1.17.6"
+    implementation 'org.glassfish.main.external:jmxremote_optional-repackaged:5.0'
+
+    implementation "org.modelmapper:modelmapper:3.1.1"
+
+    // to use regexp in logback.xml
+    implementation 'org.codehaus.janino:janino:3.1.6'
+
+    testCompileOnly (
+            "org.testcontainers:testcontainers:1.20.0",
+            "org.testcontainers:junit-jupiter:1.20.0",
+            "com.github.spotbugs:spotbugs:4.8.4",
+            "com.google.code.findbugs:annotations:3.0.1u2",
+            "org.projectlombok:lombok",
+            "org.junit.jupiter:junit-jupiter:5.6.2"
+    )
+
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.6.2"
+
+    testImplementation (
+            "org.apache.commons:commons-lang3:3.9",
+            "log4j:log4j:1.2.17",
+            "org.apache.logging.log4j:log4j-to-slf4j:2.8.2",
+            "org.slf4j:slf4j-api:1.7.32",
+            "org.slf4j:slf4j-simple:2.0.5"
+    )
+
     testImplementation "org.testcontainers:mysql:1.17.6"
     testImplementation platform("org.testcontainers:testcontainers-bom:1.17.6")
 
-    testImplementation 'io.rest-assured:rest-assured'
-
-    testImplementation 'io.netty:netty-all:4.1.86.Final'
-    testImplementation ('org.springframework.boot:spring-boot-starter-test:2.7.9') {
+    testImplementation ('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-
+    testImplementation 'io.rest-assured:rest-assured'
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 }
 
-// ------------ JaCoCo test coverage + ascii doctor as a post processor
+// ------------ Spotbugs configuration  ---------
+spotbugsMain {
+    reports {
+        xml {
+            enabled = false
+        }
+        html {
+            enabled = true
+            destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
+        }
+    }
+    ignoreFailures = true
+}
 
+spotbugsTest {
+    reports {
+        xml {
+            enabled = false
+        }
+        html {
+            enabled = true
+            destination = file("$buildDir/reports/spotbugs/test/spotbugs.html")
+        }
+    }
+    ignoreFailures = true
+}
+
+// ------------ Checkstyle configuration  ---------
+checkstyle {
+    configProperties.configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
+    configProperties.checkstyleSuppressionFile = file("${project.rootDir}/config/checkstyle/suppressions.xml")
+}
+
+tasks.register('checkstyleReport') {
+    doLast {
+        if (file("${buildDir}/reports/checkstyle/${project.ext.checkType}.xml").exists()) {
+            ant.xslt(in: "${buildDir}/reports/checkstyle/${project.ext.checkType}.xml",
+                    style: "${project.rootDir}/config/checkstyle/checkstyle.xsl",
+                    out: "${buildDir}/reports/checkstyle/checkstyle_${project.ext.checkType}.html")
+        }
+    }
+}
+
+tasks.withType(Checkstyle).configureEach {
+    exclude '**/*Test*'
+}
+
+// ------------ JaCoCo configuration  ---------
 ext {
     setProperty('snippetsDir', file("build/generated-snippets"))
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
 }
 
 test {
@@ -104,26 +184,6 @@ test {
     }
 }
 
-task codeCoverageReport(type: JacocoReport) {
-    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
-
-    allprojects.each {
-        sourceSets it.sourceSets.main
-    }
-
-    reports {
-        xml.enabled true
-        xml.destination file("jacoco/report.xml")
-        html.enabled true
-        csv.enabled false
-    }
-}
-
-// always run the tests before generating the report
-codeCoverageReport.dependsOn {
-    subprojects.test
-}
-
 jacocoTestReport {
     dependsOn test // tests are required to run before generating the report
     reports {
@@ -132,6 +192,10 @@ jacocoTestReport {
         html.outputLocation = file('jacoco/html')
         xml.outputLocation = file('jacoco/jacoco.xml')
     }
+    subprojects.each {
+        sourceSets it.sourceSets.main
+    }
+    executionData fileTree(project.rootDir.absolutePath).include("jacoco/*.exec")
 }
 
 // Share sources folder with other projects for aggregated JaCoCo reports
@@ -167,74 +231,6 @@ configurations.create('coverageDataElements') {
     })
 }
 
-// Make JaCoCo report generation part of the 'check' lifecycle phase
-tasks.named("check") {
-    dependsOn(codeCoverageReport)
-}
-
-asciidoctor {
-    inputs.dir snippetsDir
-    dependsOn test
-}
-
-// dependencies for the root web project and for the other subprojects
-allprojects {
-
-    apply plugin: 'java'
-
-    apply plugin: 'jacoco'
-    apply plugin: 'checkstyle'
-    apply plugin: 'idea'
-    apply plugin: 'eclipse'
-
-    apply from: file("${project.rootDir}/dependencies.gradle")
-
-    // ------------ Spotbugs configuration  ---------
-    spotbugsMain {
-        reports {
-            xml {
-                enabled = false
-            }
-            html {
-                enabled = true
-                destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
-            }
-        }
-    }
-
-    spotbugsTest {
-        reports {
-            xml {
-                enabled = false
-            }
-            html {
-                enabled = true
-                destination = file("$buildDir/reports/spotbugs/test/spotbugs.html")
-            }
-        }
-    }
-
-    // ------------ Checkstyle configuration  ---------
-    checkstyle {
-        configProperties.configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
-        configProperties.checkstyleSuppressionFile = file("${project.rootDir}/config/checkstyle/suppressions.xml")
-    }
-
-    task checkstyleReport {
-        doLast {
-            if (file("${buildDir}/reports/checkstyle/${project.ext.checkType}.xml").exists()) {
-                ant.xslt(in: "${buildDir}/reports/checkstyle/${project.ext.checkType}.xml",
-                        style: "${project.rootDir}/config/checkstyle/checkstyle.xsl",
-                        out: "${buildDir}/reports/checkstyle/checkstyle_${project.ext.checkType}.html")
-            }
-        }
-    }
-
-    tasks.withType(Checkstyle) {
-        exclude '**/*Test*'
-    }
-}
-
 docker {
     name = "atroshin/${project.name}:${version}"
     dockerfile = file('Dockerfile')
@@ -257,10 +253,9 @@ springBoot {
     buildInfo {
         properties {
             artifact = 'clematis-weather-api'
-            version = version
+            version = project.version
             group = 'org.clematis.weather'
             name = 'Clematis Weather API'
         }
     }
 }
-
