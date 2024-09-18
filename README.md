@@ -1,4 +1,8 @@
 # Clematis World Weather API
+
+[![Docker](https://github.com/grauds/clematis.weather.api/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/grauds/clematis.weather.api/actions/workflows/docker-publish.yml)
+[![Docker Image CI](https://github.com/grauds/clematis.weather.api/actions/workflows/docker-image.yml/badge.svg)](https://github.com/grauds/clematis.weather.api/actions/workflows/docker-image.yml)
+
 This API is for storing and retrieving weather measurements in scientific form made by professional meteorologists along with images with dates which ideally are taken outdoors near the location of the weather station chosen. Clients like UI applications or scientific scripts may use this info to present and analyse images with related weather information.
 
 ## API
