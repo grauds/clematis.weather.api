@@ -7,8 +7,6 @@ import java.sql.Statement;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -19,6 +17,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import java.util.logging.Logger;
 
 @Testcontainers
 @SpringBootTest(classes = WeatherApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -26,7 +25,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 @SuppressFBWarnings("RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE")
 public class WeatherApplicationTests {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(WeatherApplication.class);
+    public static final Logger LOGGER = Logger.getLogger(WeatherApplication.class.getName());
 
     private static final DockerImageName MYSQL_80_IMAGE = DockerImageName.parse("mysql:8.0.36");
 
@@ -35,8 +34,7 @@ public class WeatherApplicationTests {
     static {
         container = new MySQLContainer<>(MYSQL_80_IMAGE)
                 .withUsername("weather")
-                .withPassword("password")
-                .withLogConsumer(new Slf4jLogConsumer(LOGGER));
+                .withPassword("password");
         container.start();
     }
 
