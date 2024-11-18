@@ -19,7 +19,7 @@ dependencies {
     implementation "org.apache.ivy:ivy:2.5.2"
 
     // for parsing CSV files
-    implementation "org.apache.poi:poi-ooxml:5.2.2"
+    implementation "org.apache.poi:poi-ooxml:5.3.0"
     implementation "org.apache.commons:commons-csv:1.9.0"
 
     // for parsing images EXIF

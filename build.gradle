@@ -90,8 +90,8 @@ dependencies {
     implementation 'org.codehaus.janino:janino:3.1.6'
 
     testCompileOnly (
-            "org.testcontainers:testcontainers:1.20.0",
-            "org.testcontainers:junit-jupiter:1.20.0",
+            "org.testcontainers:testcontainers:1.20.3",
+            "org.testcontainers:junit-jupiter:1.20.3",
             "com.github.spotbugs:spotbugs:4.8.4",
             "com.google.code.findbugs:annotations:3.0.1u2",
             "org.projectlombok:lombok",
@@ -101,11 +101,11 @@ dependencies {
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.6.2"
 
     testImplementation (
-            "org.apache.commons:commons-lang3:3.9"
+            "org.apache.commons:commons-lang3:3.15.0"
     )
 
-    testImplementation "org.testcontainers:mysql:1.17.6"
-    testImplementation platform("org.testcontainers:testcontainers-bom:1.17.6")
+    testImplementation platform("org.testcontainers:testcontainers-bom:1.20.3")
+    testImplementation "org.testcontainers:mysql:1.20.3"
 
     testImplementation ('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

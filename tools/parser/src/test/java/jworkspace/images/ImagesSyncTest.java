@@ -43,8 +43,7 @@ public class ImagesSyncTest {
         // setup file system with resources
 
         fileSystem = Jimfs.newFileSystem(Configuration.unix());
-        Path path = fileSystem.getPath(PATH);
-        path = Files.createDirectories(path);
+        Path path = Files.createDirectories(fileSystem.getPath(PATH));
         Files.copy(
             Objects.requireNonNull(ImagesSyncTest.class.getResourceAsStream(HEIC_RESOURCE)),
             path.resolve(HEIC_RESOURCE)
@@ -70,6 +69,7 @@ public class ImagesSyncTest {
         configuration.setProperty("hibernate.connection.driver_class", "org.h2.Driver");
         configuration.setProperty("hibernate.connection.url", "jdbc:h2:./src/test/resources/db/img");
         configuration.setProperty("hibernate.hbm2ddl.auto", "create");
+
         sessionFactory = configuration.buildSessionFactory();
         session = sessionFactory.openSession();
     }
