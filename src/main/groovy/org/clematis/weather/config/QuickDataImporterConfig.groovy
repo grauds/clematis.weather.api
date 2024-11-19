@@ -1,5 +1,9 @@
 package org.clematis.weather.config
 
+import java.nio.file.Path
+
+import jakarta.persistence.EntityManager
+
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import jworkspace.weather.service.WeatherImagesImporter
 import jworkspace.weather.service.WeatherImporter
@@ -13,8 +17,6 @@ import org.springframework.transaction.TransactionStatus
 import org.springframework.transaction.support.TransactionCallbackWithoutResult
 import org.springframework.transaction.support.TransactionTemplate
 
-import javax.persistence.EntityManager
-import java.nio.file.Path
 
 /**
  * @author Anton Troshin

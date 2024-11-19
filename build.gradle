@@ -11,11 +11,10 @@ buildscript {
 plugins {
     id "java"
     id "groovy"
-    id "org.springframework.boot" version "2.7.18"
+    id "org.springframework.boot" version "3.3.5"
     id "io.spring.dependency-management" version "1.1.4"
 
     id "com.github.spotbugs" version "6.0.7"
-   // id "org.asciidoctor.jvm.convert" version "3.1.0"
     id "jacoco"
     id "checkstyle"
 
@@ -73,17 +72,21 @@ dependencies {
     implementation "org.flywaydb:flyway-mysql:9.15.0"
     implementation "mysql:mysql-connector-java:8.0.33"
 
-    implementation "org.springdoc:springdoc-openapi-ui:1.6.14"
-    implementation "org.springdoc:springdoc-openapi-hateoas:1.6.14"
-    implementation "org.springdoc:springdoc-openapi-data-rest:1.6.14"
+    /*implementation 'org.springdoc:springdoc-openapi-ui:1.8.0'
+    implementation 'org.springdoc:springdoc-openapi-core:1.7.0'
+    implementation 'org.springdoc:springdoc-openapi-security:1.8.0'
+    implementation 'org.springdoc:springdoc-openapi-hateoas:1.8.0'
+    implementation 'org.springdoc:springdoc-openapi-data-rest:1.8.0'
 
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-api:2.3.0'
+    implementation 'org.springdoc:springdoc-openapi-starter-common:2.6.0'
+            */
     // for groovy
-    implementation "org.codehaus.groovy:groovy-all:3.0.13"
+//    implementation "org.codehaus.groovy:groovy-all:3.0.21"
     implementation "org.spockframework:spock-core:2.2-groovy-3.0"
     implementation "org.apache.ivy:ivy:2.5.2"
-
     implementation 'org.glassfish.main.external:jmxremote_optional-repackaged:5.0'
-
     implementation "org.modelmapper:modelmapper:3.1.1"
 
     // to use regexp in logback.xml
@@ -94,24 +97,19 @@ dependencies {
             "org.testcontainers:junit-jupiter:1.20.3",
             "com.github.spotbugs:spotbugs:4.8.4",
             "com.google.code.findbugs:annotations:3.0.1u2",
-            "org.projectlombok:lombok",
-            "org.junit.jupiter:junit-jupiter:5.6.2"
+            "org.projectlombok:lombok"
     )
 
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.6.2"
-
-    testImplementation (
-            "org.apache.commons:commons-lang3:3.15.0"
-    )
-
-    testImplementation platform("org.testcontainers:testcontainers-bom:1.20.3")
-    testImplementation "org.testcontainers:mysql:1.20.3"
+    testImplementation "org.apache.commons:commons-lang3:3.15.0"
 
     testImplementation ('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-    testImplementation 'io.rest-assured:rest-assured'
-    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+
+    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+    testImplementation 'org.apache.httpcomponents.client5:httpclient5'
+    testImplementation 'org.testcontainers:junit-jupiter'
+    testImplementation 'org.testcontainers:mysql'
 }
 
 // ------------ Spotbugs configuration  ---------

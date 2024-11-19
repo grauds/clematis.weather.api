@@ -1,9 +1,9 @@
 package org.clematis.weather.config
 
 
-import javax.persistence.EntityManager
 import java.nio.file.Path
 
+import jakarta.persistence.EntityManager
 import org.hibernate.Session
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.CommandLineRunner

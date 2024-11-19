@@ -1,11 +1,11 @@
 package jworkspace.weather.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Embeddable;
-
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,6 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ObservationKey  implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -3952895633364699023L;
     /**
      * Weather station unique id (27612 for VDNH)

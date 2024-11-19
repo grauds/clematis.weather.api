@@ -1,16 +1,16 @@
 package org.clematis.weather.config;
-
+/*
 import static org.springdoc.core.Constants.ALL_PATTERN;
 import org.springdoc.core.GroupedOpenApi;
 import org.springdoc.core.SwaggerUiConfigProperties;
-import org.springdoc.core.customizers.OpenApiCustomiser;
-import org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointProperties;
+import org.springdoc.core.customizers.OpenApiCustomiser;*/
+//import org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointProperties;
 import org.springframework.boot.info.BuildProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
+/*
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+*/
 /**
  *
  * @author Anton Troshin
@@ -24,7 +24,7 @@ public class SwaggerConfig {
     public SwaggerConfig(BuildProperties buildProperties) {
         this.buildProperties = buildProperties;
     }
-
+/*
 
     @Bean
     public OpenAPI openAPI() {
@@ -37,8 +37,8 @@ public class SwaggerConfig {
                 .description("")
                 .version(buildProperties.getVersion())
                 .description(buildProperties.getName());
-    }
-
+    }*/
+/*
     @Bean
     public GroupedOpenApi actuatorApi(OpenApiCustomiser actuatorOpenApiCustomiser,
                                       WebEndpointProperties endpointProperties) {
@@ -77,5 +77,5 @@ public class SwaggerConfig {
         config.setShowCommonExtensions(true);
         return config;
     }
-
+*/
 }

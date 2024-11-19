@@ -25,11 +25,11 @@ package jworkspace.weather.model;
   ----------------------------------------------------------------------------
 */
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
-
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -73,7 +73,7 @@ public class Observation {
      * Mean wind direction (compass points) at a height of 10-12 metres
      * above the earth’s surface over the 10-minute period immediately preceding the observation
      */
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private WindDirection dd;
     /**
      * Mean wind speed at a height of 10-12 metres above the earth’s surface over the

@@ -1,10 +1,10 @@
 package jworkspace.weather.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Embeddable;
-
+import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class WeatherImageKey implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -3952895677364699023L;
 
     private Date date;

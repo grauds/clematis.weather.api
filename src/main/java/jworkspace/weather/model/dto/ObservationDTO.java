@@ -2,9 +2,8 @@ package jworkspace.weather.model.dto;
 
 import java.util.Date;
 
-import javax.persistence.Enumerated;
-
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import jakarta.persistence.Enumerated;
 import jworkspace.weather.model.WindDirection;
 import lombok.Data;
 

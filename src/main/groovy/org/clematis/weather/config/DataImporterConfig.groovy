@@ -1,7 +1,7 @@
 package org.clematis.weather.config
 
 import java.nio.file.Path
-import javax.persistence.EntityManager
+import jakarta.persistence.EntityManager
 
 import jworkspace.weather.service.WeatherImporter
 import jworkspace.weather.service.WeatherImagesImporter
