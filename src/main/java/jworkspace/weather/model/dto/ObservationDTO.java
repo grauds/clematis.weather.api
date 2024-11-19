@@ -3,6 +3,7 @@ package jworkspace.weather.model.dto;
 import java.util.Date;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jworkspace.weather.model.WindDirection;
 import lombok.Data;
@@ -42,7 +43,7 @@ public class ObservationDTO {
      * Mean wind direction (compass points) at a height of 10-12 metres
      * above the earth’s surface over the 10-minute period immediately preceding the observation
      */
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private WindDirection dd;
     /**
      * Mean wind speed at a height of 10-12 metres above the earth’s surface over the

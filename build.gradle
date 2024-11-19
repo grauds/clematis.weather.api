@@ -68,8 +68,8 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-data-rest"
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    implementation "org.flywaydb:flyway-core:9.15.0"
-    implementation "org.flywaydb:flyway-mysql:9.15.0"
+    implementation "org.flywaydb:flyway-core:10.15.2"
+    implementation "org.flywaydb:flyway-mysql:10.15.2"
     implementation "mysql:mysql-connector-java:8.0.33"
 
     /*implementation 'org.springdoc:springdoc-openapi-ui:1.8.0'
