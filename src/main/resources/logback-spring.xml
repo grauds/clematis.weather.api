@@ -1,5 +1,5 @@
 <configuration scan="true" scanPeriod="30 seconds">
-    <springProperty name="LOG_PATH" source="logging.path" defaultValue="logs/"/>
+    <springProperty name="LOG_PATH" source="logging.file.path" defaultValue="logs/" />
 
     <jmxConfigurator/>
 
