@@ -86,15 +86,14 @@ dependencies {
 //    implementation "org.codehaus.groovy:groovy-all:3.0.21"
     implementation "org.spockframework:spock-core:2.2-groovy-3.0"
     implementation "org.apache.ivy:ivy:2.5.2"
-    implementation 'org.glassfish.main.external:jmxremote_optional-repackaged:5.0'
     implementation "org.modelmapper:modelmapper:3.1.1"
 
+    implementation 'org.glassfish.main.external:jmxremote_optional-repackaged:5.0'
     // to use regexp in logback.xml
-    implementation 'org.codehaus.janino:janino:3.1.6'
+    implementation 'org.codehaus.janino:janino:3.1.12'
 
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
     testCompileOnly (
-            "org.testcontainers:testcontainers:1.20.3",
-            "org.testcontainers:junit-jupiter:1.20.3",
             "com.github.spotbugs:spotbugs:4.8.4",
             "com.google.code.findbugs:annotations:3.0.1u2",
             "org.projectlombok:lombok"

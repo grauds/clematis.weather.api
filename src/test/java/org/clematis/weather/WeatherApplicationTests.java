@@ -16,39 +16,39 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import java.util.logging.Logger;
+
+import lombok.extern.java.Log;
 
 @Testcontainers
 @SpringBootTest(classes = WeatherApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @SuppressFBWarnings("RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE")
+@Log
 public class WeatherApplicationTests {
-
-    public static final Logger LOGGER = Logger.getLogger(WeatherApplication.class.getName());
 
     private static final DockerImageName MYSQL_80_IMAGE = DockerImageName.parse("mysql:8.0.36");
 
-    private final static MySQLContainer<?> container;
+    private final static MySQLContainer<?> CONTAINER;
 
     static {
-        container = new MySQLContainer<>(MYSQL_80_IMAGE)
+        CONTAINER = new MySQLContainer<>(MYSQL_80_IMAGE)
                 .withUsername("weather")
                 .withPassword("password");
-        container.start();
+        CONTAINER.start();
     }
 
     @DynamicPropertySource
     static void init(DynamicPropertyRegistry registry) {
-        registry.add("spring.datasource.url", container::getJdbcUrl);
-        registry.add("spring.datasource.password", container::getPassword);
-        registry.add("spring.datasource.username", container::getUsername);
+        registry.add("spring.datasource.url", CONTAINER::getJdbcUrl);
+        registry.add("spring.datasource.password", CONTAINER::getPassword);
+        registry.add("spring.datasource.username", CONTAINER::getUsername);
     }
 
     @Test
     public void canConnectToContainer() throws Exception {
         try (Connection connection = DriverManager
-                .getConnection(container.getJdbcUrl(), container.getUsername(), container.getPassword());
-            Statement stmt = connection.createStatement()) {
+                .getConnection(CONTAINER.getJdbcUrl(), CONTAINER.getUsername(), CONTAINER.getPassword());
+             Statement stmt = connection.createStatement()) {
 
             ResultSet rs = stmt.executeQuery("SELECT version()");
             Assertions.assertTrue(rs.next(), "has row");

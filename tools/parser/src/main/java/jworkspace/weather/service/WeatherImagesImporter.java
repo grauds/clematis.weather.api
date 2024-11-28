@@ -27,7 +27,7 @@ public class WeatherImagesImporter {
             try (Stream<Path> stream = Files.list(path)) {
                 stream.map(WeatherImageFactory::create)
                     .filter(Objects::nonNull)
-                    .collect(Collectors.toList())
+                    .toList()
                     .forEach((weatherImage) -> {
                         WeatherImage existing = session.find(WeatherImage.class, weatherImage.getKey());
                         if (existing == null) {
