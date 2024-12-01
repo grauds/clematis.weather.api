@@ -15,7 +15,7 @@ management:
 spring:
 
   profiles:
-    active: "dev"
+    active: ${SPRING_PROFILES_ACTIVE}
 
   sql:
     init:
@@ -26,10 +26,8 @@ spring:
     hikari:
       maximum-pool-size: 25
       minimum-idle: 1
-    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
     hibernate:
       ddl-auto: none
@@ -42,11 +40,6 @@ spring:
     enabled: true
     url: service:jmx:jmxmp://${JMXMP_HOST}:${JMXMP_PORT}/
 
-logging:
-  file:
-    path:
-      ${LOG_PATH}
-
 springdoc:
   swagger-ui:
     display-request-duration: true
@@ -55,3 +48,20 @@ springdoc:
     disable-swagger-default-url: true
     use-root-path: true
   show-actuator: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: staging
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+logging:
+  file:
+    path:
+      ${LOG_PATH}

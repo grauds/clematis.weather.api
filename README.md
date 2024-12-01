@@ -16,8 +16,6 @@ Get observations for the same date. Note, there are usually a series of observat
 curl --location 'http://[host]:[port]/observations/byDay?day=2021-04-12'
 ```
 
-**This app is beta, API is subject to change in the next updates**
-
 ## Quick Start
 
 Checkout the code
@@ -64,7 +62,7 @@ The suggested Docker compose configuration can be something like below:
         - "15089:5000"
         - "15090:5001"
       env_file:
-        - weather_api_qa.env
+        - .env
       volumes:
         - /home/clematis/weather/logs:/var/log/clematis
         - /home/clematis/weather/images:/home/clematis/weather/images

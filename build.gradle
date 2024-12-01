@@ -49,7 +49,6 @@ dependencies {
 
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-//    annotationProcessor 'com.google.auto.service:auto-service:1.0.1'
 
     compileOnly (
             'org.projectlombok:lombok',
@@ -62,7 +61,6 @@ dependencies {
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-   // implementation 'com.google.auto.service:auto-service:1.0'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     implementation "org.springframework.boot:spring-boot-starter-data-rest"
@@ -82,8 +80,8 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-api:2.3.0'
     implementation 'org.springdoc:springdoc-openapi-starter-common:2.6.0'
             */
+
     // for groovy
-//    implementation "org.codehaus.groovy:groovy-all:3.0.21"
     implementation "org.spockframework:spock-core:2.2-groovy-3.0"
     implementation "org.apache.ivy:ivy:2.5.2"
     implementation "org.modelmapper:modelmapper:3.1.1"

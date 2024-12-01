@@ -23,7 +23,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
  */
 @Component
 @SuppressFBWarnings
-@Profile(value = "qa")
+@Profile(value = "staging")
 class DataImporterConfig {
 
     @Value('${jworkspace.weather.images.dir}')
