@@ -84,7 +84,7 @@ dependencies {
     // for groovy
     implementation "org.spockframework:spock-core:2.2-groovy-3.0"
     implementation "org.apache.ivy:ivy:2.5.2"
-    implementation "org.modelmapper:modelmapper:3.1.1"
+    implementation "org.modelmapper:modelmapper:3.2.0"
 
     implementation 'org.glassfish.main.external:jmxremote_optional-repackaged:5.0'
     // to use regexp in logback.xml
