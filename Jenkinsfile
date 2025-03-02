@@ -19,15 +19,15 @@ pipeline {
     }
 
     stage('Get code') {
-      steps {
-        git branch: 'main', url: 'https://github.com/grauds/clematis.weather.api.git'
-         sh 'chmod +x gradlew'
-      }
+       steps {
+          cleanWs()
+          git branch: 'main', url: 'https://github.com/grauds/clematis.weather.api.git'
+          sh 'chmod +x gradlew'
+       }
     }
 
         stage('Gradle build') {
             steps {
-              cleanWs()
               sh './gradlew clean build'
             }
 
