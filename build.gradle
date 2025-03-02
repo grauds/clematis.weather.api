@@ -1,32 +1,29 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-        google()
-    }
-}
-
 plugins {
-    id "java"
+    id 'java'
+    id "jacoco"
+    id "checkstyle"
+
     id "groovy"
-    id "org.springframework.boot" version "3.3.5"
+    id "org.springframework.boot" version "3.4.3"
     id "io.spring.dependency-management" version "1.1.4"
 
     id "com.github.spotbugs" version "6.0.7"
-    id "jacoco"
-    id "checkstyle"
 
     id "org.flywaydb.flyway" version "9.8.1"
 
     id "com.palantir.docker" version "0.36.0"
     id "com.palantir.docker-run" version "0.36.0"
     id "com.palantir.docker-compose" version "0.36.0"
+
+    id "org.springdoc.openapi-gradle-plugin" version "1.9.0"
+}
+
+repositories {
+    mavenCentral()
 }
 
 group = 'org.clematis'
-version = '1.0.0-SNAPSHOT'
+version = '1.0.0'
 
 java {
     sourceCompatibility = '17'
@@ -40,10 +37,6 @@ configurations {
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation project(path: ':parser')
 
@@ -51,40 +44,32 @@ dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
     compileOnly (
-            'org.projectlombok:lombok',
-            "com.github.spotbugs:spotbugs:4.8.4",
-            "com.google.code.findbugs:annotations:3.0.1u2",
-            "org.apache.commons:commons-lang3",
-            "commons-io:commons-io:2.16.1",
+        'org.projectlombok:lombok',
+        'com.github.spotbugs:spotbugs:4.8.4',
+        'com.google.code.findbugs:annotations:3.0.1u2',
+        'org.apache.commons:commons-lang3',
+        'commons-io:commons-io:2.16.1'
     )
     checkstyle "com.puppycrawl.tools:checkstyle:10.9.3"
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
-    implementation "org.springframework.boot:spring-boot-starter-data-rest"
+    implementation "org.springframework.boot:spring-boot-starter-actuator"
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     implementation "org.flywaydb:flyway-core:10.15.2"
     implementation "org.flywaydb:flyway-mysql:10.15.2"
     implementation "mysql:mysql-connector-java:8.0.33"
+    implementation "org.modelmapper:modelmapper:3.2.0"
 
-    /*implementation 'org.springdoc:springdoc-openapi-ui:1.8.0'
-    implementation 'org.springdoc:springdoc-openapi-core:1.7.0'
-    implementation 'org.springdoc:springdoc-openapi-security:1.8.0'
-    implementation 'org.springdoc:springdoc-openapi-hateoas:1.8.0'
-    implementation 'org.springdoc:springdoc-openapi-data-rest:1.8.0'
-
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-api:2.3.0'
-    implementation 'org.springdoc:springdoc-openapi-starter-common:2.6.0'
-            */
+    implementation 'org.springdoc:springdoc-openapi-starter-common:2.8.5'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.5'
 
     // for groovy
     implementation "org.spockframework:spock-core:2.2-groovy-3.0"
     implementation "org.apache.ivy:ivy:2.5.2"
-    implementation "org.modelmapper:modelmapper:3.2.0"
 
     implementation 'org.glassfish.main.external:jmxremote_optional-repackaged:5.0'
     // to use regexp in logback.xml
@@ -109,33 +94,6 @@ dependencies {
     testImplementation 'org.testcontainers:mysql'
 }
 
-// ------------ Spotbugs configuration  ---------
-spotbugsMain {
-    reports {
-        xml {
-            enabled = false
-        }
-        html {
-            enabled = true
-            destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
-        }
-    }
-    ignoreFailures = true
-}
-
-spotbugsTest {
-    reports {
-        xml {
-            enabled = false
-        }
-        html {
-            enabled = true
-            destination = file("$buildDir/reports/spotbugs/test/spotbugs.html")
-        }
-    }
-    ignoreFailures = true
-}
-
 // ------------ Checkstyle configuration  ---------
 checkstyle {
     configProperties.configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
@@ -154,6 +112,14 @@ tasks.register('checkstyleReport') {
 
 tasks.withType(Checkstyle).configureEach {
     exclude '**/*Test*'
+}
+
+// ------------ Open API configuration  ---------
+
+openApi {
+    outputDir.set(file("docs"))
+    outputFileName.set("swagger.json")
+    waitTimeInSeconds.set(10)
 }
 
 // ------------ JaCoCo configuration  ---------
@@ -221,6 +187,33 @@ configurations.create('coverageDataElements') {
     outgoing.artifact(tasks.named("test").map { task ->
         task.extensions.getByType(JacocoTaskExtension).destinationFile
     })
+}
+
+// ------------ Spotbugs configuration  ---------
+spotbugsMain {
+    reports {
+        xml {
+            enabled = false
+        }
+        html {
+            enabled = true
+            destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
+        }
+    }
+    ignoreFailures = true
+}
+
+spotbugsTest {
+    reports {
+        xml {
+            enabled = false
+        }
+        html {
+            enabled = true
+            destination = file("$buildDir/reports/spotbugs/test/spotbugs.html")
+        }
+    }
+    ignoreFailures = true
 }
 
 docker {

@@ -1,0 +1,3119 @@
+{
+	"info": {
+		"_postman_id": "049c8ba2-5878-43b0-a2f0-f4712bd1f76c",
+		"name": "Weather API",
+		"description": "Clematis Weather API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "900216"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "images",
+					"item": [
+						{
+							"name": "search",
+							"item": [
+								{
+									"name": "execute Search-weatherimage-get",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/images/search/getDayImages?day=<dateTime>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"images",
+												"search",
+												"getDayImages"
+											],
+											"query": [
+												{
+													"key": "day",
+													"value": "<dateTime>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/hal+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/images/search/getDayImages?day=<dateTime>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														"search",
+														"getDayImages"
+													],
+													"query": [
+														{
+															"key": "day",
+															"value": "<dateTime>"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/hal+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"_embedded\": {\n    \"weatherImages\": [\n      {\n        \"exposureTime\": {\n          \"denominator\": \"<integer>\",\n          \"numerator\": \"<integer>\",\n          \"field\": {\n            \"zero\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            },\n            \"one\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            }\n          }\n        },\n        \"brightnessValue\": \"<double>\",\n        \"date\": \"<dateTime>\",\n        \"path\": \"<string>\",\n        \"_links\": {\n          \"commodo7\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"qui_ab\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"veniam_d1\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"in_5e2\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          }\n        }\n      },\n      {\n        \"exposureTime\": {\n          \"denominator\": \"<integer>\",\n          \"numerator\": \"<integer>\",\n          \"field\": {\n            \"zero\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            },\n            \"one\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            }\n          }\n        },\n        \"brightnessValue\": \"<double>\",\n        \"date\": \"<dateTime>\",\n        \"path\": \"<string>\",\n        \"_links\": {\n          \"in__bf\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"do_c\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"veniam_def\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"ad_4\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"eiusmod1f2\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"id_bf\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/images/search/getDayImages?day=<dateTime>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														"search",
+														"getDayImages"
+													],
+													"query": [
+														{
+															"key": "day",
+															"value": "<dateTime>"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "execute Search-weatherimage-get 1",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/images/search/getMonthImages?month=<dateTime>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"images",
+												"search",
+												"getMonthImages"
+											],
+											"query": [
+												{
+													"key": "month",
+													"value": "<dateTime>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/hal+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/images/search/getMonthImages?month=<dateTime>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														"search",
+														"getMonthImages"
+													],
+													"query": [
+														{
+															"key": "month",
+															"value": "<dateTime>"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/hal+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"_embedded\": {\n    \"weatherImages\": [\n      {\n        \"exposureTime\": {\n          \"denominator\": \"<integer>\",\n          \"numerator\": \"<integer>\",\n          \"field\": {\n            \"zero\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            },\n            \"one\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            }\n          }\n        },\n        \"brightnessValue\": \"<double>\",\n        \"date\": \"<dateTime>\",\n        \"path\": \"<string>\",\n        \"_links\": {\n          \"commodo7\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"qui_ab\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"veniam_d1\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"in_5e2\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          }\n        }\n      },\n      {\n        \"exposureTime\": {\n          \"denominator\": \"<integer>\",\n          \"numerator\": \"<integer>\",\n          \"field\": {\n            \"zero\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            },\n            \"one\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            }\n          }\n        },\n        \"brightnessValue\": \"<double>\",\n        \"date\": \"<dateTime>\",\n        \"path\": \"<string>\",\n        \"_links\": {\n          \"in__bf\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"do_c\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"veniam_def\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"ad_4\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"eiusmod1f2\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"id_bf\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/images/search/getMonthImages?month=<dateTime>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														"search",
+														"getMonthImages"
+													],
+													"query": [
+														{
+															"key": "month",
+															"value": "<dateTime>"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "execute Search-weatherimage-get 2",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/images/search/getYearImages?year=<dateTime>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"images",
+												"search",
+												"getYearImages"
+											],
+											"query": [
+												{
+													"key": "year",
+													"value": "<dateTime>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/hal+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/images/search/getYearImages?year=<dateTime>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														"search",
+														"getYearImages"
+													],
+													"query": [
+														{
+															"key": "year",
+															"value": "<dateTime>"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/hal+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"_embedded\": {\n    \"weatherImages\": [\n      {\n        \"exposureTime\": {\n          \"denominator\": \"<integer>\",\n          \"numerator\": \"<integer>\",\n          \"field\": {\n            \"zero\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            },\n            \"one\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            }\n          }\n        },\n        \"brightnessValue\": \"<double>\",\n        \"date\": \"<dateTime>\",\n        \"path\": \"<string>\",\n        \"_links\": {\n          \"commodo7\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"qui_ab\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"veniam_d1\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"in_5e2\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          }\n        }\n      },\n      {\n        \"exposureTime\": {\n          \"denominator\": \"<integer>\",\n          \"numerator\": \"<integer>\",\n          \"field\": {\n            \"zero\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            },\n            \"one\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            }\n          }\n        },\n        \"brightnessValue\": \"<double>\",\n        \"date\": \"<dateTime>\",\n        \"path\": \"<string>\",\n        \"_links\": {\n          \"in__bf\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"do_c\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"veniam_def\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"ad_4\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"eiusmod1f2\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"id_bf\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/images/search/getYearImages?year=<dateTime>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														"search",
+														"getYearImages"
+													],
+													"query": [
+														{
+															"key": "year",
+															"value": "<dateTime>"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "get Item Resource-weatherimage-get",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/images/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"images",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "get-weatherimage"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/hal+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/images/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/hal+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"exposureTime\": {\n    \"denominator\": \"<integer>\",\n    \"numerator\": \"<integer>\",\n    \"field\": {\n      \"zero\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      },\n      \"one\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      }\n    }\n  },\n  \"brightnessValue\": \"<double>\",\n  \"date\": \"<dateTime>\",\n  \"path\": \"<string>\",\n  \"_links\": {\n    \"mollit_df\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"exercitation_6\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/images/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "put Item Resource-weatherimage-put",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"key\": {\n    \"date\": \"<dateTime>\",\n    \"path\": \"<string>\"\n  },\n  \"exposureTime\": {\n    \"denominator\": \"<integer>\",\n    \"numerator\": \"<integer>\",\n    \"field\": {\n      \"zero\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      },\n      \"one\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      }\n    }\n  },\n  \"brightnessValue\": \"<double>\",\n  \"date\": \"<dateTime>\",\n  \"path\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/images/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"images",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "update-weatherimage"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/hal+json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"key\": {\n    \"date\": \"<dateTime>\",\n    \"path\": \"<string>\"\n  },\n  \"exposureTime\": {\n    \"denominator\": \"<integer>\",\n    \"numerator\": \"<integer>\",\n    \"field\": {\n      \"zero\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      },\n      \"one\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      }\n    }\n  },\n  \"brightnessValue\": \"<double>\",\n  \"date\": \"<dateTime>\",\n  \"path\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/images/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/hal+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"exposureTime\": {\n    \"denominator\": \"<integer>\",\n    \"numerator\": \"<integer>\",\n    \"field\": {\n      \"zero\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      },\n      \"one\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      }\n    }\n  },\n  \"brightnessValue\": \"<double>\",\n  \"date\": \"<dateTime>\",\n  \"path\": \"<string>\",\n  \"_links\": {\n    \"mollit_df\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"exercitation_6\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+										},
+										{
+											"name": "Created",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/hal+json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"key\": {\n    \"date\": \"<dateTime>\",\n    \"path\": \"<string>\"\n  },\n  \"exposureTime\": {\n    \"denominator\": \"<integer>\",\n    \"numerator\": \"<integer>\",\n    \"field\": {\n      \"zero\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      },\n      \"one\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      }\n    }\n  },\n  \"brightnessValue\": \"<double>\",\n  \"date\": \"<dateTime>\",\n  \"path\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/images/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/hal+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"exposureTime\": {\n    \"denominator\": \"<integer>\",\n    \"numerator\": \"<integer>\",\n    \"field\": {\n      \"zero\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      },\n      \"one\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      }\n    }\n  },\n  \"brightnessValue\": \"<double>\",\n  \"date\": \"<dateTime>\",\n  \"path\": \"<string>\",\n  \"_links\": {\n    \"mollit_df\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"exercitation_6\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+										},
+										{
+											"name": "No Content",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"key\": {\n    \"date\": \"<dateTime>\",\n    \"path\": \"<string>\"\n  },\n  \"exposureTime\": {\n    \"denominator\": \"<integer>\",\n    \"numerator\": \"<integer>\",\n    \"field\": {\n      \"zero\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      },\n      \"one\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      }\n    }\n  },\n  \"brightnessValue\": \"<double>\",\n  \"date\": \"<dateTime>\",\n  \"path\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/images/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "delete Item Resource-weatherimage-delete",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/images/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"images",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "delete-weatherimage"
+									},
+									"response": [
+										{
+											"name": "No Content",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/images/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/images/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "patch Item Resource-weatherimage-patch",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"key\": {\n    \"date\": \"<dateTime>\",\n    \"path\": \"<string>\"\n  },\n  \"exposureTime\": {\n    \"denominator\": \"<integer>\",\n    \"numerator\": \"<integer>\",\n    \"field\": {\n      \"zero\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      },\n      \"one\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      }\n    }\n  },\n  \"brightnessValue\": \"<double>\",\n  \"date\": \"<dateTime>\",\n  \"path\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/images/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"images",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "patch-weatherimage"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/hal+json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"key\": {\n    \"date\": \"<dateTime>\",\n    \"path\": \"<string>\"\n  },\n  \"exposureTime\": {\n    \"denominator\": \"<integer>\",\n    \"numerator\": \"<integer>\",\n    \"field\": {\n      \"zero\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      },\n      \"one\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      }\n    }\n  },\n  \"brightnessValue\": \"<double>\",\n  \"date\": \"<dateTime>\",\n  \"path\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/images/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/hal+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"exposureTime\": {\n    \"denominator\": \"<integer>\",\n    \"numerator\": \"<integer>\",\n    \"field\": {\n      \"zero\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      },\n      \"one\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      }\n    }\n  },\n  \"brightnessValue\": \"<double>\",\n  \"date\": \"<dateTime>\",\n  \"path\": \"<string>\",\n  \"_links\": {\n    \"mollit_df\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"exercitation_6\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+										},
+										{
+											"name": "No Content",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"key\": {\n    \"date\": \"<dateTime>\",\n    \"path\": \"<string>\"\n  },\n  \"exposureTime\": {\n    \"denominator\": \"<integer>\",\n    \"numerator\": \"<integer>\",\n    \"field\": {\n      \"zero\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      },\n      \"one\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      }\n    }\n  },\n  \"brightnessValue\": \"<double>\",\n  \"date\": \"<dateTime>\",\n  \"path\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/images/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"images",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "get Collection Resource-weatherimage-get",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/hal+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/images?page=0&size=20&sort=<string>&sort=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"images"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0",
+											"description": "Zero-based page index (0..N)"
+										},
+										{
+											"key": "size",
+											"value": "20",
+											"description": "The size of the page to be returned"
+										},
+										{
+											"key": "sort",
+											"value": "<string>",
+											"description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+										},
+										{
+											"key": "sort",
+											"value": "<string>",
+											"description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+										}
+									]
+								},
+								"description": "get-weatherimage"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/images?page=0&size=20&sort=<string>&sort=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"images"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "0"
+												},
+												{
+													"key": "size",
+													"value": "20"
+												},
+												{
+													"key": "sort",
+													"value": "<string>"
+												},
+												{
+													"key": "sort",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/hal+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"_embedded\": {\n    \"weatherImages\": [\n      {\n        \"exposureTime\": {\n          \"denominator\": \"<integer>\",\n          \"numerator\": \"<integer>\",\n          \"field\": {\n            \"zero\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            },\n            \"one\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            }\n          }\n        },\n        \"brightnessValue\": \"<double>\",\n        \"date\": \"<dateTime>\",\n        \"path\": \"<string>\",\n        \"_links\": {\n          \"velit_59\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"exercitation3c7\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          }\n        }\n      },\n      {\n        \"exposureTime\": {\n          \"denominator\": \"<integer>\",\n          \"numerator\": \"<integer>\",\n          \"field\": {\n            \"zero\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            },\n            \"one\": {\n              \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n            }\n          }\n        },\n        \"brightnessValue\": \"<double>\",\n        \"date\": \"<dateTime>\",\n        \"path\": \"<string>\",\n        \"_links\": {\n          \"quis_3bc\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"qui_6\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"aliquada\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"anim9b\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  },\n  \"page\": {\n    \"size\": \"<long>\",\n    \"totalElements\": \"<long>\",\n    \"totalPages\": \"<long>\",\n    \"number\": \"<long>\"\n  }\n}"
+								}
+							]
+						},
+						{
+							"name": "post Collection Resource-weatherimage-post",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"key\": {\n    \"date\": \"<dateTime>\",\n    \"path\": \"<string>\"\n  },\n  \"exposureTime\": {\n    \"denominator\": \"<integer>\",\n    \"numerator\": \"<integer>\",\n    \"field\": {\n      \"zero\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      },\n      \"one\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      }\n    }\n  },\n  \"brightnessValue\": \"<double>\",\n  \"date\": \"<dateTime>\",\n  \"path\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/images",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"images"
+									]
+								},
+								"description": "create-weatherimage"
+							},
+							"response": [
+								{
+									"name": "Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"key\": {\n    \"date\": \"<dateTime>\",\n    \"path\": \"<string>\"\n  },\n  \"exposureTime\": {\n    \"denominator\": \"<integer>\",\n    \"numerator\": \"<integer>\",\n    \"field\": {\n      \"zero\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      },\n      \"one\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      }\n    }\n  },\n  \"brightnessValue\": \"<double>\",\n  \"date\": \"<dateTime>\",\n  \"path\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/images",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"images"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/hal+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"exposureTime\": {\n    \"denominator\": \"<integer>\",\n    \"numerator\": \"<integer>\",\n    \"field\": {\n      \"zero\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      },\n      \"one\": {\n        \"value\": \"<Circular reference to #/components/schemas/Fraction detected>\"\n      }\n    }\n  },\n  \"brightnessValue\": \"<double>\",\n  \"date\": \"<dateTime>\",\n  \"path\": \"<string>\",\n  \"_links\": {\n    \"mollit_df\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"exercitation_6\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "observations",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "get Item Resource-observation-get",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/observations/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"observations",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "get-observation"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/hal+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/observations/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"observations",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/hal+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"t\": \"<float>\",\n  \"p\": \"<float>\",\n  \"u\": \"<float>\",\n  \"dd\": \"<string>\",\n  \"ff\": \"<string>\",\n  \"ff10\": \"<string>\",\n  \"ff3\": \"<string>\",\n  \"n\": \"<string>\",\n  \"ww\": \"<string>\",\n  \"w1\": \"<string>\",\n  \"w2\": \"<string>\",\n  \"tn\": \"<float>\",\n  \"tx\": \"<float>\",\n  \"cl\": \"<string>\",\n  \"nh\": \"<string>\",\n  \"h\": \"<string>\",\n  \"cm\": \"<string>\",\n  \"ch\": \"<string>\",\n  \"vv\": \"<float>\",\n  \"td\": \"<float>\",\n  \"rrr\": \"<float>\",\n  \"tr\": \"<float>\",\n  \"e\": \"<string>\",\n  \"tg\": \"<float>\",\n  \"sss\": \"<float>\",\n  \"eapostrophe\": \"<string>\",\n  \"po\": \"<float>\",\n  \"pa\": \"<float>\",\n  \"_links\": {\n    \"dolore2bc\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/observations/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"observations",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "put Item Resource-observation-put",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"key\": {\n    \"weatherStationId\": \"<integer>\",\n    \"date\": \"<dateTime>\"\n  },\n  \"t\": \"<float>\",\n  \"p\": \"<float>\",\n  \"u\": \"<float>\",\n  \"dd\": \"<string>\",\n  \"ff\": \"<string>\",\n  \"ff10\": \"<string>\",\n  \"ff3\": \"<string>\",\n  \"n\": \"<string>\",\n  \"ww\": \"<string>\",\n  \"w1\": \"<string>\",\n  \"w2\": \"<string>\",\n  \"tn\": \"<float>\",\n  \"tx\": \"<float>\",\n  \"cl\": \"<string>\",\n  \"nh\": \"<string>\",\n  \"h\": \"<string>\",\n  \"cm\": \"<string>\",\n  \"ch\": \"<string>\",\n  \"vv\": \"<float>\",\n  \"td\": \"<float>\",\n  \"rrr\": \"<float>\",\n  \"tr\": \"<float>\",\n  \"e\": \"<string>\",\n  \"tg\": \"<float>\",\n  \"sss\": \"<float>\",\n  \"eapostrophe\": \"<string>\",\n  \"po\": \"<float>\",\n  \"pa\": \"<float>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/observations/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"observations",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "update-observation"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/hal+json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"key\": {\n    \"weatherStationId\": \"<integer>\",\n    \"date\": \"<dateTime>\"\n  },\n  \"t\": \"<float>\",\n  \"p\": \"<float>\",\n  \"u\": \"<float>\",\n  \"dd\": \"<string>\",\n  \"ff\": \"<string>\",\n  \"ff10\": \"<string>\",\n  \"ff3\": \"<string>\",\n  \"n\": \"<string>\",\n  \"ww\": \"<string>\",\n  \"w1\": \"<string>\",\n  \"w2\": \"<string>\",\n  \"tn\": \"<float>\",\n  \"tx\": \"<float>\",\n  \"cl\": \"<string>\",\n  \"nh\": \"<string>\",\n  \"h\": \"<string>\",\n  \"cm\": \"<string>\",\n  \"ch\": \"<string>\",\n  \"vv\": \"<float>\",\n  \"td\": \"<float>\",\n  \"rrr\": \"<float>\",\n  \"tr\": \"<float>\",\n  \"e\": \"<string>\",\n  \"tg\": \"<float>\",\n  \"sss\": \"<float>\",\n  \"eapostrophe\": \"<string>\",\n  \"po\": \"<float>\",\n  \"pa\": \"<float>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/observations/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"observations",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/hal+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"t\": \"<float>\",\n  \"p\": \"<float>\",\n  \"u\": \"<float>\",\n  \"dd\": \"<string>\",\n  \"ff\": \"<string>\",\n  \"ff10\": \"<string>\",\n  \"ff3\": \"<string>\",\n  \"n\": \"<string>\",\n  \"ww\": \"<string>\",\n  \"w1\": \"<string>\",\n  \"w2\": \"<string>\",\n  \"tn\": \"<float>\",\n  \"tx\": \"<float>\",\n  \"cl\": \"<string>\",\n  \"nh\": \"<string>\",\n  \"h\": \"<string>\",\n  \"cm\": \"<string>\",\n  \"ch\": \"<string>\",\n  \"vv\": \"<float>\",\n  \"td\": \"<float>\",\n  \"rrr\": \"<float>\",\n  \"tr\": \"<float>\",\n  \"e\": \"<string>\",\n  \"tg\": \"<float>\",\n  \"sss\": \"<float>\",\n  \"eapostrophe\": \"<string>\",\n  \"po\": \"<float>\",\n  \"pa\": \"<float>\",\n  \"_links\": {\n    \"dolore2bc\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+										},
+										{
+											"name": "Created",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/hal+json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"key\": {\n    \"weatherStationId\": \"<integer>\",\n    \"date\": \"<dateTime>\"\n  },\n  \"t\": \"<float>\",\n  \"p\": \"<float>\",\n  \"u\": \"<float>\",\n  \"dd\": \"<string>\",\n  \"ff\": \"<string>\",\n  \"ff10\": \"<string>\",\n  \"ff3\": \"<string>\",\n  \"n\": \"<string>\",\n  \"ww\": \"<string>\",\n  \"w1\": \"<string>\",\n  \"w2\": \"<string>\",\n  \"tn\": \"<float>\",\n  \"tx\": \"<float>\",\n  \"cl\": \"<string>\",\n  \"nh\": \"<string>\",\n  \"h\": \"<string>\",\n  \"cm\": \"<string>\",\n  \"ch\": \"<string>\",\n  \"vv\": \"<float>\",\n  \"td\": \"<float>\",\n  \"rrr\": \"<float>\",\n  \"tr\": \"<float>\",\n  \"e\": \"<string>\",\n  \"tg\": \"<float>\",\n  \"sss\": \"<float>\",\n  \"eapostrophe\": \"<string>\",\n  \"po\": \"<float>\",\n  \"pa\": \"<float>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/observations/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"observations",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/hal+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"t\": \"<float>\",\n  \"p\": \"<float>\",\n  \"u\": \"<float>\",\n  \"dd\": \"<string>\",\n  \"ff\": \"<string>\",\n  \"ff10\": \"<string>\",\n  \"ff3\": \"<string>\",\n  \"n\": \"<string>\",\n  \"ww\": \"<string>\",\n  \"w1\": \"<string>\",\n  \"w2\": \"<string>\",\n  \"tn\": \"<float>\",\n  \"tx\": \"<float>\",\n  \"cl\": \"<string>\",\n  \"nh\": \"<string>\",\n  \"h\": \"<string>\",\n  \"cm\": \"<string>\",\n  \"ch\": \"<string>\",\n  \"vv\": \"<float>\",\n  \"td\": \"<float>\",\n  \"rrr\": \"<float>\",\n  \"tr\": \"<float>\",\n  \"e\": \"<string>\",\n  \"tg\": \"<float>\",\n  \"sss\": \"<float>\",\n  \"eapostrophe\": \"<string>\",\n  \"po\": \"<float>\",\n  \"pa\": \"<float>\",\n  \"_links\": {\n    \"dolore2bc\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+										},
+										{
+											"name": "No Content",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"key\": {\n    \"weatherStationId\": \"<integer>\",\n    \"date\": \"<dateTime>\"\n  },\n  \"t\": \"<float>\",\n  \"p\": \"<float>\",\n  \"u\": \"<float>\",\n  \"dd\": \"<string>\",\n  \"ff\": \"<string>\",\n  \"ff10\": \"<string>\",\n  \"ff3\": \"<string>\",\n  \"n\": \"<string>\",\n  \"ww\": \"<string>\",\n  \"w1\": \"<string>\",\n  \"w2\": \"<string>\",\n  \"tn\": \"<float>\",\n  \"tx\": \"<float>\",\n  \"cl\": \"<string>\",\n  \"nh\": \"<string>\",\n  \"h\": \"<string>\",\n  \"cm\": \"<string>\",\n  \"ch\": \"<string>\",\n  \"vv\": \"<float>\",\n  \"td\": \"<float>\",\n  \"rrr\": \"<float>\",\n  \"tr\": \"<float>\",\n  \"e\": \"<string>\",\n  \"tg\": \"<float>\",\n  \"sss\": \"<float>\",\n  \"eapostrophe\": \"<string>\",\n  \"po\": \"<float>\",\n  \"pa\": \"<float>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/observations/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"observations",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "delete Item Resource-observation-delete",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/observations/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"observations",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "delete-observation"
+									},
+									"response": [
+										{
+											"name": "No Content",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/observations/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"observations",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/observations/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"observations",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "patch Item Resource-observation-patch",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"key\": {\n    \"weatherStationId\": \"<integer>\",\n    \"date\": \"<dateTime>\"\n  },\n  \"t\": \"<float>\",\n  \"p\": \"<float>\",\n  \"u\": \"<float>\",\n  \"dd\": \"<string>\",\n  \"ff\": \"<string>\",\n  \"ff10\": \"<string>\",\n  \"ff3\": \"<string>\",\n  \"n\": \"<string>\",\n  \"ww\": \"<string>\",\n  \"w1\": \"<string>\",\n  \"w2\": \"<string>\",\n  \"tn\": \"<float>\",\n  \"tx\": \"<float>\",\n  \"cl\": \"<string>\",\n  \"nh\": \"<string>\",\n  \"h\": \"<string>\",\n  \"cm\": \"<string>\",\n  \"ch\": \"<string>\",\n  \"vv\": \"<float>\",\n  \"td\": \"<float>\",\n  \"rrr\": \"<float>\",\n  \"tr\": \"<float>\",\n  \"e\": \"<string>\",\n  \"tg\": \"<float>\",\n  \"sss\": \"<float>\",\n  \"eapostrophe\": \"<string>\",\n  \"po\": \"<float>\",\n  \"pa\": \"<float>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/observations/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"observations",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "patch-observation"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/hal+json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"key\": {\n    \"weatherStationId\": \"<integer>\",\n    \"date\": \"<dateTime>\"\n  },\n  \"t\": \"<float>\",\n  \"p\": \"<float>\",\n  \"u\": \"<float>\",\n  \"dd\": \"<string>\",\n  \"ff\": \"<string>\",\n  \"ff10\": \"<string>\",\n  \"ff3\": \"<string>\",\n  \"n\": \"<string>\",\n  \"ww\": \"<string>\",\n  \"w1\": \"<string>\",\n  \"w2\": \"<string>\",\n  \"tn\": \"<float>\",\n  \"tx\": \"<float>\",\n  \"cl\": \"<string>\",\n  \"nh\": \"<string>\",\n  \"h\": \"<string>\",\n  \"cm\": \"<string>\",\n  \"ch\": \"<string>\",\n  \"vv\": \"<float>\",\n  \"td\": \"<float>\",\n  \"rrr\": \"<float>\",\n  \"tr\": \"<float>\",\n  \"e\": \"<string>\",\n  \"tg\": \"<float>\",\n  \"sss\": \"<float>\",\n  \"eapostrophe\": \"<string>\",\n  \"po\": \"<float>\",\n  \"pa\": \"<float>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/observations/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"observations",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/hal+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"t\": \"<float>\",\n  \"p\": \"<float>\",\n  \"u\": \"<float>\",\n  \"dd\": \"<string>\",\n  \"ff\": \"<string>\",\n  \"ff10\": \"<string>\",\n  \"ff3\": \"<string>\",\n  \"n\": \"<string>\",\n  \"ww\": \"<string>\",\n  \"w1\": \"<string>\",\n  \"w2\": \"<string>\",\n  \"tn\": \"<float>\",\n  \"tx\": \"<float>\",\n  \"cl\": \"<string>\",\n  \"nh\": \"<string>\",\n  \"h\": \"<string>\",\n  \"cm\": \"<string>\",\n  \"ch\": \"<string>\",\n  \"vv\": \"<float>\",\n  \"td\": \"<float>\",\n  \"rrr\": \"<float>\",\n  \"tr\": \"<float>\",\n  \"e\": \"<string>\",\n  \"tg\": \"<float>\",\n  \"sss\": \"<float>\",\n  \"eapostrophe\": \"<string>\",\n  \"po\": \"<float>\",\n  \"pa\": \"<float>\",\n  \"_links\": {\n    \"dolore2bc\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+										},
+										{
+											"name": "No Content",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"key\": {\n    \"weatherStationId\": \"<integer>\",\n    \"date\": \"<dateTime>\"\n  },\n  \"t\": \"<float>\",\n  \"p\": \"<float>\",\n  \"u\": \"<float>\",\n  \"dd\": \"<string>\",\n  \"ff\": \"<string>\",\n  \"ff10\": \"<string>\",\n  \"ff3\": \"<string>\",\n  \"n\": \"<string>\",\n  \"ww\": \"<string>\",\n  \"w1\": \"<string>\",\n  \"w2\": \"<string>\",\n  \"tn\": \"<float>\",\n  \"tx\": \"<float>\",\n  \"cl\": \"<string>\",\n  \"nh\": \"<string>\",\n  \"h\": \"<string>\",\n  \"cm\": \"<string>\",\n  \"ch\": \"<string>\",\n  \"vv\": \"<float>\",\n  \"td\": \"<float>\",\n  \"rrr\": \"<float>\",\n  \"tr\": \"<float>\",\n  \"e\": \"<string>\",\n  \"tg\": \"<float>\",\n  \"sss\": \"<float>\",\n  \"eapostrophe\": \"<string>\",\n  \"po\": \"<float>\",\n  \"pa\": \"<float>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/observations/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"observations",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "get Collection Resource-observation-get",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/hal+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/observations?page=0&size=20&sort=<string>&sort=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"observations"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0",
+											"description": "Zero-based page index (0..N)"
+										},
+										{
+											"key": "size",
+											"value": "20",
+											"description": "The size of the page to be returned"
+										},
+										{
+											"key": "sort",
+											"value": "<string>",
+											"description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+										},
+										{
+											"key": "sort",
+											"value": "<string>",
+											"description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+										}
+									]
+								},
+								"description": "get-observation"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/observations?page=0&size=20&sort=<string>&sort=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"observations"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "0"
+												},
+												{
+													"key": "size",
+													"value": "20"
+												},
+												{
+													"key": "sort",
+													"value": "<string>"
+												},
+												{
+													"key": "sort",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/hal+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"_embedded\": {\n    \"observations\": [\n      {\n        \"t\": \"<float>\",\n        \"p\": \"<float>\",\n        \"u\": \"<float>\",\n        \"dd\": \"<string>\",\n        \"ff\": \"<string>\",\n        \"ff10\": \"<string>\",\n        \"ff3\": \"<string>\",\n        \"n\": \"<string>\",\n        \"ww\": \"<string>\",\n        \"w1\": \"<string>\",\n        \"w2\": \"<string>\",\n        \"tn\": \"<float>\",\n        \"tx\": \"<float>\",\n        \"cl\": \"<string>\",\n        \"nh\": \"<string>\",\n        \"h\": \"<string>\",\n        \"cm\": \"<string>\",\n        \"ch\": \"<string>\",\n        \"vv\": \"<float>\",\n        \"td\": \"<float>\",\n        \"rrr\": \"<float>\",\n        \"tr\": \"<float>\",\n        \"e\": \"<string>\",\n        \"tg\": \"<float>\",\n        \"sss\": \"<float>\",\n        \"eapostrophe\": \"<string>\",\n        \"po\": \"<float>\",\n        \"pa\": \"<float>\",\n        \"_links\": {\n          \"anim9\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          }\n        }\n      },\n      {\n        \"t\": \"<float>\",\n        \"p\": \"<float>\",\n        \"u\": \"<float>\",\n        \"dd\": \"<string>\",\n        \"ff\": \"<string>\",\n        \"ff10\": \"<string>\",\n        \"ff3\": \"<string>\",\n        \"n\": \"<string>\",\n        \"ww\": \"<string>\",\n        \"w1\": \"<string>\",\n        \"w2\": \"<string>\",\n        \"tn\": \"<float>\",\n        \"tx\": \"<float>\",\n        \"cl\": \"<string>\",\n        \"nh\": \"<string>\",\n        \"h\": \"<string>\",\n        \"cm\": \"<string>\",\n        \"ch\": \"<string>\",\n        \"vv\": \"<float>\",\n        \"td\": \"<float>\",\n        \"rrr\": \"<float>\",\n        \"tr\": \"<float>\",\n        \"e\": \"<string>\",\n        \"tg\": \"<float>\",\n        \"sss\": \"<float>\",\n        \"eapostrophe\": \"<string>\",\n        \"po\": \"<float>\",\n        \"pa\": \"<float>\",\n        \"_links\": {\n          \"in79\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"officiad\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"laborebc_\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"nostrudd\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"deserunt10b\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  },\n  \"page\": {\n    \"size\": \"<long>\",\n    \"totalElements\": \"<long>\",\n    \"totalPages\": \"<long>\",\n    \"number\": \"<long>\"\n  }\n}"
+								}
+							]
+						},
+						{
+							"name": "post Collection Resource-observation-post",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"key\": {\n    \"weatherStationId\": \"<integer>\",\n    \"date\": \"<dateTime>\"\n  },\n  \"t\": \"<float>\",\n  \"p\": \"<float>\",\n  \"u\": \"<float>\",\n  \"dd\": \"<string>\",\n  \"ff\": \"<string>\",\n  \"ff10\": \"<string>\",\n  \"ff3\": \"<string>\",\n  \"n\": \"<string>\",\n  \"ww\": \"<string>\",\n  \"w1\": \"<string>\",\n  \"w2\": \"<string>\",\n  \"tn\": \"<float>\",\n  \"tx\": \"<float>\",\n  \"cl\": \"<string>\",\n  \"nh\": \"<string>\",\n  \"h\": \"<string>\",\n  \"cm\": \"<string>\",\n  \"ch\": \"<string>\",\n  \"vv\": \"<float>\",\n  \"td\": \"<float>\",\n  \"rrr\": \"<float>\",\n  \"tr\": \"<float>\",\n  \"e\": \"<string>\",\n  \"tg\": \"<float>\",\n  \"sss\": \"<float>\",\n  \"eapostrophe\": \"<string>\",\n  \"po\": \"<float>\",\n  \"pa\": \"<float>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/observations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"observations"
+									]
+								},
+								"description": "create-observation"
+							},
+							"response": [
+								{
+									"name": "Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"key\": {\n    \"weatherStationId\": \"<integer>\",\n    \"date\": \"<dateTime>\"\n  },\n  \"t\": \"<float>\",\n  \"p\": \"<float>\",\n  \"u\": \"<float>\",\n  \"dd\": \"<string>\",\n  \"ff\": \"<string>\",\n  \"ff10\": \"<string>\",\n  \"ff3\": \"<string>\",\n  \"n\": \"<string>\",\n  \"ww\": \"<string>\",\n  \"w1\": \"<string>\",\n  \"w2\": \"<string>\",\n  \"tn\": \"<float>\",\n  \"tx\": \"<float>\",\n  \"cl\": \"<string>\",\n  \"nh\": \"<string>\",\n  \"h\": \"<string>\",\n  \"cm\": \"<string>\",\n  \"ch\": \"<string>\",\n  \"vv\": \"<float>\",\n  \"td\": \"<float>\",\n  \"rrr\": \"<float>\",\n  \"tr\": \"<float>\",\n  \"e\": \"<string>\",\n  \"tg\": \"<float>\",\n  \"sss\": \"<float>\",\n  \"eapostrophe\": \"<string>\",\n  \"po\": \"<float>\",\n  \"pa\": \"<float>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/observations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"observations"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/hal+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"t\": \"<float>\",\n  \"p\": \"<float>\",\n  \"u\": \"<float>\",\n  \"dd\": \"<string>\",\n  \"ff\": \"<string>\",\n  \"ff10\": \"<string>\",\n  \"ff3\": \"<string>\",\n  \"n\": \"<string>\",\n  \"ww\": \"<string>\",\n  \"w1\": \"<string>\",\n  \"w2\": \"<string>\",\n  \"tn\": \"<float>\",\n  \"tx\": \"<float>\",\n  \"cl\": \"<string>\",\n  \"nh\": \"<string>\",\n  \"h\": \"<string>\",\n  \"cm\": \"<string>\",\n  \"ch\": \"<string>\",\n  \"vv\": \"<float>\",\n  \"td\": \"<float>\",\n  \"rrr\": \"<float>\",\n  \"tr\": \"<float>\",\n  \"e\": \"<string>\",\n  \"tg\": \"<float>\",\n  \"sss\": \"<float>\",\n  \"eapostrophe\": \"<string>\",\n  \"po\": \"<float>\",\n  \"pa\": \"<float>\",\n  \"_links\": {\n    \"dolore2bc\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+								}
+							]
+						},
+						{
+							"name": "execute Search-observation-get",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/hal+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/observations/search/getDayObservations?day=<dateTime>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"observations",
+										"search",
+										"getDayObservations"
+									],
+									"query": [
+										{
+											"key": "day",
+											"value": "<dateTime>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/observations/search/getDayObservations?day=<dateTime>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"observations",
+												"search",
+												"getDayObservations"
+											],
+											"query": [
+												{
+													"key": "day",
+													"value": "<dateTime>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/hal+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"_embedded\": {\n    \"observations\": [\n      {\n        \"t\": \"<float>\",\n        \"p\": \"<float>\",\n        \"u\": \"<float>\",\n        \"dd\": \"<string>\",\n        \"ff\": \"<string>\",\n        \"ff10\": \"<string>\",\n        \"ff3\": \"<string>\",\n        \"n\": \"<string>\",\n        \"ww\": \"<string>\",\n        \"w1\": \"<string>\",\n        \"w2\": \"<string>\",\n        \"tn\": \"<float>\",\n        \"tx\": \"<float>\",\n        \"cl\": \"<string>\",\n        \"nh\": \"<string>\",\n        \"h\": \"<string>\",\n        \"cm\": \"<string>\",\n        \"ch\": \"<string>\",\n        \"vv\": \"<float>\",\n        \"td\": \"<float>\",\n        \"rrr\": \"<float>\",\n        \"tr\": \"<float>\",\n        \"e\": \"<string>\",\n        \"tg\": \"<float>\",\n        \"sss\": \"<float>\",\n        \"eapostrophe\": \"<string>\",\n        \"po\": \"<float>\",\n        \"pa\": \"<float>\",\n        \"_links\": {\n          \"eu32f\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"sint_8b_\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          }\n        }\n      },\n      {\n        \"t\": \"<float>\",\n        \"p\": \"<float>\",\n        \"u\": \"<float>\",\n        \"dd\": \"<string>\",\n        \"ff\": \"<string>\",\n        \"ff10\": \"<string>\",\n        \"ff3\": \"<string>\",\n        \"n\": \"<string>\",\n        \"ww\": \"<string>\",\n        \"w1\": \"<string>\",\n        \"w2\": \"<string>\",\n        \"tn\": \"<float>\",\n        \"tx\": \"<float>\",\n        \"cl\": \"<string>\",\n        \"nh\": \"<string>\",\n        \"h\": \"<string>\",\n        \"cm\": \"<string>\",\n        \"ch\": \"<string>\",\n        \"vv\": \"<float>\",\n        \"td\": \"<float>\",\n        \"rrr\": \"<float>\",\n        \"tr\": \"<float>\",\n        \"e\": \"<string>\",\n        \"tg\": \"<float>\",\n        \"sss\": \"<float>\",\n        \"eapostrophe\": \"<string>\",\n        \"po\": \"<float>\",\n        \"pa\": \"<float>\",\n        \"_links\": {\n          \"laborumd\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"pariatur2\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          },\n          \"culpa_59\": {\n            \"href\": \"<string>\",\n            \"hreflang\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"deprecation\": \"<string>\",\n            \"profile\": \"<string>\",\n            \"name\": \"<string>\",\n            \"templated\": \"<boolean>\"\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"ut_72\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"idc\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"officiaf\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/observations/search/getDayObservations?day=<dateTime>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"observations",
+												"search",
+												"getDayObservations"
+											],
+											"query": [
+												{
+													"key": "day",
+													"value": "<dateTime>"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "profile",
+					"item": [
+						{
+							"name": "list All Forms Of Metadata",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/hal+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"profile"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/hal+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/profile",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"profile"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/hal+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"_links\": {\n    \"enim_cb0\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+								}
+							]
+						},
+						{
+							"name": "descriptor",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/profile/images",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"images"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/profile/images",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"profile",
+												"images"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/alps+json"
+										}
+									],
+									"cookie": [],
+									"body": "\"<string>\""
+								}
+							]
+						},
+						{
+							"name": "descriptor 1",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/profile/observations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"observations"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/profile/observations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"profile",
+												"observations"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/alps+json"
+										}
+									],
+									"cookie": [],
+									"body": "\"<string>\""
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "images",
+			"item": [
+				{
+					"name": "get Year Images",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/hal+json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/images/byYear?year=<dateTime>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"images",
+								"byYear"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": "<dateTime>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/hal+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/images/byYear?year=<dateTime>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"images",
+										"byYear"
+									],
+									"query": [
+										{
+											"key": "year",
+											"value": "<dateTime>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/hal+json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"path\": \"<string>\",\n    \"date\": \"<dateTime>\"\n  },\n  {\n    \"path\": \"<string>\",\n    \"date\": \"<dateTime>\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "get Month Images",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/hal+json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/images/byMonth?month=<dateTime>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"images",
+								"byMonth"
+							],
+							"query": [
+								{
+									"key": "month",
+									"value": "<dateTime>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/hal+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/images/byMonth?month=<dateTime>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"images",
+										"byMonth"
+									],
+									"query": [
+										{
+											"key": "month",
+											"value": "<dateTime>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/hal+json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"path\": \"<string>\",\n    \"date\": \"<dateTime>\"\n  },\n  {\n    \"path\": \"<string>\",\n    \"date\": \"<dateTime>\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "get Day Images",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/hal+json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/images/byDay?day=<dateTime>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"images",
+								"byDay"
+							],
+							"query": [
+								{
+									"key": "day",
+									"value": "<dateTime>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/hal+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/images/byDay?day=<dateTime>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"images",
+										"byDay"
+									],
+									"query": [
+										{
+											"key": "day",
+											"value": "<dateTime>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/hal+json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"path\": \"<string>\",\n    \"date\": \"<dateTime>\"\n  },\n  {\n    \"path\": \"<string>\",\n    \"date\": \"<dateTime>\"\n  }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "actuator",
+			"item": [
+				{
+					"name": "env",
+					"item": [
+						{
+							"name": "Actuator web endpoint 'env'",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/vnd.spring-boot.actuator.v3+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/actuator/env?pattern=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actuator",
+										"env"
+									],
+									"query": [
+										{
+											"key": "pattern",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.spring-boot.actuator.v3+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/actuator/env?pattern=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"actuator",
+												"env"
+											],
+											"query": [
+												{
+													"key": "pattern",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.spring-boot.actuator.v3+json"
+										}
+									],
+									"cookie": [],
+									"body": "\"<object>\""
+								}
+							]
+						},
+						{
+							"name": "Actuator web endpoint 'env-toMatch'",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/vnd.spring-boot.actuator.v3+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/actuator/env/:toMatch",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actuator",
+										"env",
+										":toMatch"
+									],
+									"variable": [
+										{
+											"key": "toMatch",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.spring-boot.actuator.v3+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/actuator/env/:toMatch",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"actuator",
+												"env",
+												":toMatch"
+											],
+											"variable": [
+												{
+													"key": "toMatch",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.spring-boot.actuator.v3+json"
+										}
+									],
+									"cookie": [],
+									"body": "\"<object>\""
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/actuator/env/:toMatch",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"actuator",
+												"env",
+												":toMatch"
+											],
+											"variable": [
+												{
+													"key": "toMatch",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Actuator root web endpoint",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.spring-boot.actuator.v3+json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/actuator",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"actuator"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/vnd.spring-boot.actuator.v3+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/actuator",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actuator"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"proident1\": {\n    \"et_671\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"consequat_b4\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  },\n  \"aute_f3\": {\n    \"ullamco_f\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    },\n    \"enim_b67\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  },\n  \"Ut__5\": {\n    \"ade0\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  },\n  \"in_6dd\": {\n    \"aliquadec\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Actuator web endpoint 'info'",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.spring-boot.actuator.v3+json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/actuator/info",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"actuator",
+								"info"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/vnd.spring-boot.actuator.v3+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/actuator/info",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actuator",
+										"info"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								}
+							],
+							"cookie": [],
+							"body": "\"<object>\""
+						}
+					]
+				},
+				{
+					"name": "Actuator web endpoint 'health'",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.spring-boot.actuator.v3+json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/actuator/health",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/vnd.spring-boot.actuator.v3+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/actuator/health",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actuator",
+										"health"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								}
+							],
+							"cookie": [],
+							"body": "\"<object>\""
+						}
+					]
+				},
+				{
+					"name": "Actuator web endpoint 'beans'",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.spring-boot.actuator.v3+json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/actuator/beans",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"actuator",
+								"beans"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/vnd.spring-boot.actuator.v3+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/actuator/beans",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actuator",
+										"beans"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								}
+							],
+							"cookie": [],
+							"body": "\"<object>\""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Weather API",
+			"item": [
+				{
+					"name": "rp5",
+					"item": [
+						{
+							"name": "Prepare download",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "wmo_id",
+											"value": "27612",
+											"type": "text"
+										},
+										{
+											"key": "a_date1",
+											"value": "27.12.2022",
+											"type": "text"
+										},
+										{
+											"key": "a_date2",
+											"value": "27.12.2022",
+											"type": "text"
+										},
+										{
+											"key": "f_ed3",
+											"value": "12",
+											"type": "text"
+										},
+										{
+											"key": "f_ed4",
+											"value": "12",
+											"type": "text"
+										},
+										{
+											"key": "f_ed5",
+											"value": "27",
+											"type": "text"
+										},
+										{
+											"key": "f_pe",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "f_pe1",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "lng_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "xls",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://rp5.ru/responses/reFileSynop.php",
+									"protocol": "https",
+									"host": [
+										"rp5",
+										"ru"
+									],
+									"path": [
+										"responses",
+										"reFileSynop.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Download",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Get php session id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://rp5.ru/Weather_archive_in_Moscow",
+									"protocol": "https",
+									"host": [
+										"rp5",
+										"ru"
+									],
+									"path": [
+										"Weather_archive_in_Moscow"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Observations",
+					"item": [
+						{
+							"name": "Get observations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{weather_host}}/api/observations",
+									"protocol": "http",
+									"host": [
+										"{{weather_host}}"
+									],
+									"path": [
+										"api",
+										"observations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get images",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{weather_host}}/api/images",
+									"protocol": "http",
+									"host": [
+										"{{weather_host}}"
+									],
+									"path": [
+										"api",
+										"images"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Images",
+					"item": [
+						{
+							"name": "Get all images",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://{{weather_images}}/",
+									"protocol": "https",
+									"host": [
+										"{{weather_images}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get sample image",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{weather_images}}/20191007_063436080_iOS.jpg",
+									"protocol": "https",
+									"host": [
+										"{{weather_images}}"
+									],
+									"path": [
+										"20191007_063436080_iOS.jpg"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get image",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{weather_host}}/image?date=2021-04-12",
+									"protocol": "http",
+									"host": [
+										"{{weather_host}}"
+									],
+									"path": [
+										"image"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2021-04-12"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "get Day Observations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/hal+json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/observations/byDay?day=<dateTime>",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"observations",
+						"byDay"
+					],
+					"query": [
+						{
+							"key": "day",
+							"value": "<dateTime>",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/hal+json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/observations/byDay?day=<dateTime>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"observations",
+								"byDay"
+							],
+							"query": [
+								{
+									"key": "day",
+									"value": "<dateTime>"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/hal+json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n  {\n    \"date\": \"<dateTime>\",\n    \"t\": \"<float>\",\n    \"p\": \"<float>\",\n    \"u\": \"<float>\",\n    \"dd\": \"<string>\",\n    \"ff\": \"<string>\",\n    \"ff10\": \"<string>\",\n    \"ff3\": \"<string>\",\n    \"n\": \"<string>\",\n    \"ww\": \"<string>\",\n    \"w1\": \"<string>\",\n    \"w2\": \"<string>\",\n    \"tn\": \"<float>\",\n    \"tx\": \"<float>\",\n    \"cl\": \"<string>\",\n    \"nh\": \"<string>\",\n    \"h\": \"<string>\",\n    \"cm\": \"<string>\",\n    \"ch\": \"<string>\",\n    \"vv\": \"<float>\",\n    \"td\": \"<float>\",\n    \"rrr\": \"<float>\",\n    \"tr\": \"<float>\",\n    \"e\": \"<string>\",\n    \"tg\": \"<float>\",\n    \"sss\": \"<float>\",\n    \"eapostrophe\": \"<string>\",\n    \"po\": \"<float>\",\n    \"pa\": \"<float>\"\n  },\n  {\n    \"date\": \"<dateTime>\",\n    \"t\": \"<float>\",\n    \"p\": \"<float>\",\n    \"u\": \"<float>\",\n    \"dd\": \"<string>\",\n    \"ff\": \"<string>\",\n    \"ff10\": \"<string>\",\n    \"ff3\": \"<string>\",\n    \"n\": \"<string>\",\n    \"ww\": \"<string>\",\n    \"w1\": \"<string>\",\n    \"w2\": \"<string>\",\n    \"tn\": \"<float>\",\n    \"tx\": \"<float>\",\n    \"cl\": \"<string>\",\n    \"nh\": \"<string>\",\n    \"h\": \"<string>\",\n    \"cm\": \"<string>\",\n    \"ch\": \"<string>\",\n    \"vv\": \"<float>\",\n    \"td\": \"<float>\",\n    \"rrr\": \"<float>\",\n    \"tr\": \"<float>\",\n    \"e\": \"<string>\",\n    \"tg\": \"<float>\",\n    \"sss\": \"<float>\",\n    \"eapostrophe\": \"<string>\",\n    \"po\": \"<float>\",\n    \"pa\": \"<float>\"\n  }\n]"
+				}
+			]
+		},
+		{
+			"name": "get Image With Media Type",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "image/jpeg"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/image?date=<dateTime>",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"image"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "<dateTime>",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "image/jpeg"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/image?date=<dateTime>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"image"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "image/jpeg"
+						}
+					],
+					"cookie": [],
+					"body": "<byte>"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "{{weather_host}}",
+			"type": "string"
+		}
+	]
+}

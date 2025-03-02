@@ -1,0 +1,1843 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Weather API",
+    "description": "Clematis Weather API",
+    "version": "1.0.0",
+    "summary": "Hateoas Restful API for a local weather archive"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Actuator",
+      "description": "Monitor and interact",
+      "externalDocs": {
+        "description": "Spring Boot Actuator Web API Documentation",
+        "url": "https://docs.spring.io/spring-boot/docs/current/actuator-api/html/"
+      }
+    }
+  ],
+  "paths": {
+    "/api/images": {
+      "get": {
+        "tags": [
+          "weather-image-entity-controller"
+        ],
+        "description": "get-weatherimage",
+        "operationId": "getCollectionResource-weatherimage-get",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "minimum": 1
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelEntityModelWeatherImage"
+                }
+              },
+              "application/x-spring-data-compact+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelEntityModelWeatherImage"
+                }
+              },
+              "text/uri-list": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "weather-image-entity-controller"
+        ],
+        "description": "create-weatherimage",
+        "operationId": "postCollectionResource-weatherimage-post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeatherImageRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelWeatherImage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/images/search/getDayImages": {
+      "get": {
+        "tags": [
+          "weather-image-search-controller"
+        ],
+        "operationId": "executeSearch-weatherimage-get",
+        "parameters": [
+          {
+            "name": "day",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelEntityModelWeatherImage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/images/search/getMonthImages": {
+      "get": {
+        "tags": [
+          "weather-image-search-controller"
+        ],
+        "operationId": "executeSearch-weatherimage-get_1",
+        "parameters": [
+          {
+            "name": "month",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelEntityModelWeatherImage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/images/search/getYearImages": {
+      "get": {
+        "tags": [
+          "weather-image-search-controller"
+        ],
+        "operationId": "executeSearch-weatherimage-get_2",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelEntityModelWeatherImage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/images/{id}": {
+      "get": {
+        "tags": [
+          "weather-image-entity-controller"
+        ],
+        "description": "get-weatherimage",
+        "operationId": "getItemResource-weatherimage-get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelWeatherImage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "weather-image-entity-controller"
+        ],
+        "description": "update-weatherimage",
+        "operationId": "putItemResource-weatherimage-put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeatherImageRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelWeatherImage"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelWeatherImage"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "weather-image-entity-controller"
+        ],
+        "description": "delete-weatherimage",
+        "operationId": "deleteItemResource-weatherimage-delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "weather-image-entity-controller"
+        ],
+        "description": "patch-weatherimage",
+        "operationId": "patchItemResource-weatherimage-patch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeatherImageRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelWeatherImage"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/observations": {
+      "get": {
+        "tags": [
+          "observation-entity-controller"
+        ],
+        "description": "get-observation",
+        "operationId": "getCollectionResource-observation-get",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "minimum": 1
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelEntityModelObservation"
+                }
+              },
+              "application/x-spring-data-compact+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelEntityModelObservation"
+                }
+              },
+              "text/uri-list": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "observation-entity-controller"
+        ],
+        "description": "create-observation",
+        "operationId": "postCollectionResource-observation-post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObservationRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelObservation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/observations/search/getDayObservations": {
+      "get": {
+        "tags": [
+          "observation-search-controller"
+        ],
+        "operationId": "executeSearch-observation-get",
+        "parameters": [
+          {
+            "name": "day",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelEntityModelObservation"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/observations/{id}": {
+      "get": {
+        "tags": [
+          "observation-entity-controller"
+        ],
+        "description": "get-observation",
+        "operationId": "getItemResource-observation-get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelObservation"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "observation-entity-controller"
+        ],
+        "description": "update-observation",
+        "operationId": "putItemResource-observation-put",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObservationRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelObservation"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelObservation"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "observation-entity-controller"
+        ],
+        "description": "delete-observation",
+        "operationId": "deleteItemResource-observation-delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "observation-entity-controller"
+        ],
+        "description": "patch-observation",
+        "operationId": "patchItemResource-observation-patch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObservationRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelObservation"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/profile": {
+      "get": {
+        "tags": [
+          "profile-controller"
+        ],
+        "operationId": "listAllFormsOfMetadata",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RepresentationModelObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/profile/images": {
+      "get": {
+        "tags": [
+          "profile-controller"
+        ],
+        "operationId": "descriptor",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/alps+json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/schema+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/profile/observations": {
+      "get": {
+        "tags": [
+          "profile-controller"
+        ],
+        "operationId": "descriptor_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/alps+json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/schema+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/observations/byDay": {
+      "get": {
+        "tags": [
+          "observations-controller"
+        ],
+        "operationId": "getDayObservations",
+        "parameters": [
+          {
+            "name": "day",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ObservationDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/images/byYear": {
+      "get": {
+        "tags": [
+          "images-controller"
+        ],
+        "operationId": "getYearImages",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherImageDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/images/byMonth": {
+      "get": {
+        "tags": [
+          "images-controller"
+        ],
+        "operationId": "getMonthImages",
+        "parameters": [
+          {
+            "name": "month",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherImageDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/images/byDay": {
+      "get": {
+        "tags": [
+          "images-controller"
+        ],
+        "operationId": "getDayImages",
+        "parameters": [
+          {
+            "name": "day",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherImageDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/image": {
+      "get": {
+        "tags": [
+          "images-controller"
+        ],
+        "operationId": "getImageWithMediaType",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "byte"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actuator": {
+      "get": {
+        "tags": [
+          "Actuator"
+        ],
+        "summary": "Actuator root web endpoint",
+        "operationId": "links",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.spring-boot.actuator.v3+json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/Link"
+                    }
+                  }
+                }
+              },
+              "application/vnd.spring-boot.actuator.v2+json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/Link"
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/Link"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actuator/info": {
+      "get": {
+        "tags": [
+          "Actuator"
+        ],
+        "summary": "Actuator web endpoint \u0027info\u0027",
+        "operationId": "info",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.spring-boot.actuator.v3+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/vnd.spring-boot.actuator.v2+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actuator/health": {
+      "get": {
+        "tags": [
+          "Actuator"
+        ],
+        "summary": "Actuator web endpoint \u0027health\u0027",
+        "operationId": "health",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.spring-boot.actuator.v3+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/vnd.spring-boot.actuator.v2+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actuator/env": {
+      "get": {
+        "tags": [
+          "Actuator"
+        ],
+        "summary": "Actuator web endpoint \u0027env\u0027",
+        "operationId": "environment",
+        "parameters": [
+          {
+            "name": "pattern",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.spring-boot.actuator.v3+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/vnd.spring-boot.actuator.v2+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actuator/env/{toMatch}": {
+      "get": {
+        "tags": [
+          "Actuator"
+        ],
+        "summary": "Actuator web endpoint \u0027env-toMatch\u0027",
+        "operationId": "environmentEntry",
+        "parameters": [
+          {
+            "name": "toMatch",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.spring-boot.actuator.v3+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/vnd.spring-boot.actuator.v2+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/actuator/beans": {
+      "get": {
+        "tags": [
+          "Actuator"
+        ],
+        "summary": "Actuator web endpoint \u0027beans\u0027",
+        "operationId": "beans",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.spring-boot.actuator.v3+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/vnd.spring-boot.actuator.v2+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AbstractJsonSchemaPropertyObject": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "readOnly": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Item": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/AbstractJsonSchemaPropertyObject"
+            }
+          },
+          "requiredProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "JsonSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/AbstractJsonSchemaPropertyObject"
+            }
+          },
+          "requiredProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "definitions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Item"
+            }
+          },
+          "type": {
+            "type": "string"
+          },
+          "$schema": {
+            "type": "string"
+          }
+        }
+      },
+      "Link": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string"
+          },
+          "hreflang": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "deprecation": {
+            "type": "string"
+          },
+          "profile": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "templated": {
+            "type": "boolean"
+          }
+        }
+      },
+      "RepresentationModelObject": {
+        "type": "object",
+        "properties": {
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "Fraction": {
+        "type": "object",
+        "properties": {
+          "denominator": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numerator": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "field": {
+            "$ref": "#/components/schemas/FractionField"
+          }
+        }
+      },
+      "FractionField": {
+        "type": "object",
+        "properties": {
+          "zero": {
+            "$ref": "#/components/schemas/Fraction"
+          },
+          "one": {
+            "$ref": "#/components/schemas/Fraction"
+          }
+        }
+      },
+      "WeatherImageKey": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "path": {
+            "type": "string"
+          }
+        }
+      },
+      "EntityModelWeatherImage": {
+        "type": "object",
+        "properties": {
+          "exposureTime": {
+            "$ref": "#/components/schemas/Fraction"
+          },
+          "brightnessValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "path": {
+            "type": "string"
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "PageMetadata": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "PagedModelEntityModelWeatherImage": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "weatherImages": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EntityModelWeatherImage"
+                }
+              }
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "page": {
+            "$ref": "#/components/schemas/PageMetadata"
+          }
+        }
+      },
+      "CollectionModelEntityModelWeatherImage": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "weatherImages": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EntityModelWeatherImage"
+                }
+              }
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "ObservationKey": {
+        "type": "object",
+        "properties": {
+          "weatherStationId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "EntityModelObservation": {
+        "type": "object",
+        "properties": {
+          "t": {
+            "type": "number",
+            "format": "float"
+          },
+          "p": {
+            "type": "number",
+            "format": "float"
+          },
+          "u": {
+            "type": "number",
+            "format": "float"
+          },
+          "dd": {
+            "type": "string",
+            "enum": [
+              "NO_WIND",
+              "NORTH",
+              "NORTH_EAST",
+              "NORTH_WEST",
+              "NORTH_NORTHEAST",
+              "NORTH_NORTHWEST",
+              "EAST",
+              "EAST_NORTHEAST",
+              "EAST_NORTHWEST",
+              "EAST_SOUTHEAST",
+              "EAST_SOUTHWEST",
+              "WEST",
+              "WEST_NORTHEAST",
+              "WEST_NORTHWEST",
+              "WEST_SOUTHEAST",
+              "WEST_SOUTHWEST",
+              "SOUTH",
+              "SOUTH_EAST",
+              "SOUTH_WEST",
+              "SOUTH_SOUTHEAST",
+              "SOUTH_SOUTHWEST",
+              "VARIABLE_WIND"
+            ]
+          },
+          "ff": {
+            "type": "string"
+          },
+          "ff10": {
+            "type": "string"
+          },
+          "ff3": {
+            "type": "string"
+          },
+          "n": {
+            "type": "string"
+          },
+          "ww": {
+            "type": "string"
+          },
+          "w1": {
+            "type": "string"
+          },
+          "w2": {
+            "type": "string"
+          },
+          "tn": {
+            "type": "number",
+            "format": "float"
+          },
+          "tx": {
+            "type": "number",
+            "format": "float"
+          },
+          "cl": {
+            "type": "string"
+          },
+          "nh": {
+            "type": "string"
+          },
+          "h": {
+            "type": "string"
+          },
+          "cm": {
+            "type": "string"
+          },
+          "ch": {
+            "type": "string"
+          },
+          "vv": {
+            "type": "number",
+            "format": "float"
+          },
+          "td": {
+            "type": "number",
+            "format": "float"
+          },
+          "rrr": {
+            "type": "number",
+            "format": "float"
+          },
+          "tr": {
+            "type": "number",
+            "format": "float"
+          },
+          "e": {
+            "type": "string"
+          },
+          "tg": {
+            "type": "number",
+            "format": "float"
+          },
+          "sss": {
+            "type": "number",
+            "format": "float"
+          },
+          "eapostrophe": {
+            "type": "string"
+          },
+          "po": {
+            "type": "number",
+            "format": "float"
+          },
+          "pa": {
+            "type": "number",
+            "format": "float"
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "PagedModelEntityModelObservation": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "observations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EntityModelObservation"
+                }
+              }
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "page": {
+            "$ref": "#/components/schemas/PageMetadata"
+          }
+        }
+      },
+      "CollectionModelEntityModelObservation": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "observations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EntityModelObservation"
+                }
+              }
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "WeatherImageRequestBody": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "$ref": "#/components/schemas/WeatherImageKey"
+          },
+          "exposureTime": {
+            "$ref": "#/components/schemas/Fraction"
+          },
+          "brightnessValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "path": {
+            "type": "string"
+          }
+        }
+      },
+      "ObservationRequestBody": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "$ref": "#/components/schemas/ObservationKey"
+          },
+          "t": {
+            "type": "number",
+            "format": "float"
+          },
+          "p": {
+            "type": "number",
+            "format": "float"
+          },
+          "u": {
+            "type": "number",
+            "format": "float"
+          },
+          "dd": {
+            "type": "string",
+            "enum": [
+              "NO_WIND",
+              "NORTH",
+              "NORTH_EAST",
+              "NORTH_WEST",
+              "NORTH_NORTHEAST",
+              "NORTH_NORTHWEST",
+              "EAST",
+              "EAST_NORTHEAST",
+              "EAST_NORTHWEST",
+              "EAST_SOUTHEAST",
+              "EAST_SOUTHWEST",
+              "WEST",
+              "WEST_NORTHEAST",
+              "WEST_NORTHWEST",
+              "WEST_SOUTHEAST",
+              "WEST_SOUTHWEST",
+              "SOUTH",
+              "SOUTH_EAST",
+              "SOUTH_WEST",
+              "SOUTH_SOUTHEAST",
+              "SOUTH_SOUTHWEST",
+              "VARIABLE_WIND"
+            ]
+          },
+          "ff": {
+            "type": "string"
+          },
+          "ff10": {
+            "type": "string"
+          },
+          "ff3": {
+            "type": "string"
+          },
+          "n": {
+            "type": "string"
+          },
+          "ww": {
+            "type": "string"
+          },
+          "w1": {
+            "type": "string"
+          },
+          "w2": {
+            "type": "string"
+          },
+          "tn": {
+            "type": "number",
+            "format": "float"
+          },
+          "tx": {
+            "type": "number",
+            "format": "float"
+          },
+          "cl": {
+            "type": "string"
+          },
+          "nh": {
+            "type": "string"
+          },
+          "h": {
+            "type": "string"
+          },
+          "cm": {
+            "type": "string"
+          },
+          "ch": {
+            "type": "string"
+          },
+          "vv": {
+            "type": "number",
+            "format": "float"
+          },
+          "td": {
+            "type": "number",
+            "format": "float"
+          },
+          "rrr": {
+            "type": "number",
+            "format": "float"
+          },
+          "tr": {
+            "type": "number",
+            "format": "float"
+          },
+          "e": {
+            "type": "string"
+          },
+          "tg": {
+            "type": "number",
+            "format": "float"
+          },
+          "sss": {
+            "type": "number",
+            "format": "float"
+          },
+          "eapostrophe": {
+            "type": "string"
+          },
+          "po": {
+            "type": "number",
+            "format": "float"
+          },
+          "pa": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      },
+      "ObservationDTO": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "t": {
+            "type": "number",
+            "format": "float"
+          },
+          "p": {
+            "type": "number",
+            "format": "float"
+          },
+          "u": {
+            "type": "number",
+            "format": "float"
+          },
+          "dd": {
+            "type": "string",
+            "enum": [
+              "NO_WIND",
+              "NORTH",
+              "NORTH_EAST",
+              "NORTH_WEST",
+              "NORTH_NORTHEAST",
+              "NORTH_NORTHWEST",
+              "EAST",
+              "EAST_NORTHEAST",
+              "EAST_NORTHWEST",
+              "EAST_SOUTHEAST",
+              "EAST_SOUTHWEST",
+              "WEST",
+              "WEST_NORTHEAST",
+              "WEST_NORTHWEST",
+              "WEST_SOUTHEAST",
+              "WEST_SOUTHWEST",
+              "SOUTH",
+              "SOUTH_EAST",
+              "SOUTH_WEST",
+              "SOUTH_SOUTHEAST",
+              "SOUTH_SOUTHWEST",
+              "VARIABLE_WIND"
+            ]
+          },
+          "ff": {
+            "type": "string"
+          },
+          "ff10": {
+            "type": "string"
+          },
+          "ff3": {
+            "type": "string"
+          },
+          "n": {
+            "type": "string"
+          },
+          "ww": {
+            "type": "string"
+          },
+          "w1": {
+            "type": "string"
+          },
+          "w2": {
+            "type": "string"
+          },
+          "tn": {
+            "type": "number",
+            "format": "float"
+          },
+          "tx": {
+            "type": "number",
+            "format": "float"
+          },
+          "cl": {
+            "type": "string"
+          },
+          "nh": {
+            "type": "string"
+          },
+          "h": {
+            "type": "string"
+          },
+          "cm": {
+            "type": "string"
+          },
+          "ch": {
+            "type": "string"
+          },
+          "vv": {
+            "type": "number",
+            "format": "float"
+          },
+          "td": {
+            "type": "number",
+            "format": "float"
+          },
+          "rrr": {
+            "type": "number",
+            "format": "float"
+          },
+          "tr": {
+            "type": "number",
+            "format": "float"
+          },
+          "e": {
+            "type": "string"
+          },
+          "tg": {
+            "type": "number",
+            "format": "float"
+          },
+          "sss": {
+            "type": "number",
+            "format": "float"
+          },
+          "eapostrophe": {
+            "type": "string"
+          },
+          "po": {
+            "type": "number",
+            "format": "float"
+          },
+          "pa": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      },
+      "WeatherImageDTO": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Links": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/Link"
+        }
+      }
+    }
+  }
+}
