@@ -190,31 +190,13 @@ configurations.create('coverageDataElements') {
 }
 
 // ------------ Spotbugs configuration  ---------
-spotbugsMain {
-    reports {
-        xml {
-            enabled = false
-        }
-        html {
-            enabled = true
-            destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
-        }
-    }
+
+spotbugs {
+    reportsDir = file("${layout.buildDirectory.asFile.get()}/reports/spotbugs/main/spotbugs.html")
     ignoreFailures = true
 }
 
-spotbugsTest {
-    reports {
-        xml {
-            enabled = false
-        }
-        html {
-            enabled = true
-            destination = file("$buildDir/reports/spotbugs/test/spotbugs.html")
-        }
-    }
-    ignoreFailures = true
-}
+// ----------- Docker configuration -------------
 
 docker {
     name = "atroshin/${project.name}:${version}"

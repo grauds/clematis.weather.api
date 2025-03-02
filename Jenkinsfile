@@ -27,6 +27,7 @@ pipeline {
 
         stage('Gradle build') {
             steps {
+              cleanWs()
               sh './gradlew clean build'
             }
 
