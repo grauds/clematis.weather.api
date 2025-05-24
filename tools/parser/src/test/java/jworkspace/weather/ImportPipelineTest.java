@@ -1,7 +1,7 @@
 package jworkspace.weather;
 /* ----------------------------------------------------------------------------
    Java Workspace
-   Copyright (C) 1999 - 2022 Anton Troshin
+   Copyright (C) 1999-2025 Anton Troshin
 
    This file is part of Java Workspace.
 
@@ -41,7 +41,7 @@ import org.junit.jupiter.api.Test;
  */
 public class ImportPipelineTest {
 
-    private static final int TEST_DATA_SIZE = 67049;
+    private static final int TEST_DATA_SIZE = 69037;
 
     private static SessionFactory sessionFactory;
 

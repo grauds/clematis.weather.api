@@ -4,16 +4,12 @@ plugins {
     id 'checkstyle'
 
     id 'groovy'
-    id 'org.springframework.boot' version '3.4.3'
+    id 'org.springframework.boot' version '3.5.0'
     id 'io.spring.dependency-management' version '1.1.4'
 
     id 'com.github.spotbugs' version '6.0.7'
 
     id "org.flywaydb.flyway" version "9.8.1"
-
-    id "com.palantir.docker" version "0.36.0"
-    id "com.palantir.docker-run" version "0.36.0"
-    id "com.palantir.docker-compose" version "0.36.0"
 
     id "org.springdoc.openapi-gradle-plugin" version "1.9.0"
 }
@@ -102,10 +98,10 @@ checkstyle {
 
 tasks.register('checkstyleReport') {
     doLast {
-        if (file("${buildDir}/reports/checkstyle/${project.ext.checkType}.xml").exists()) {
-            ant.xslt(in: "${buildDir}/reports/checkstyle/${project.ext.checkType}.xml",
+        if (file("${rootProject.layout.buildDirectory}/reports/checkstyle/${project.ext.checkType}.xml").exists()) {
+            ant.xslt(in: "${rootProject.layout.buildDirectory}/reports/checkstyle/${project.ext.checkType}.xml",
                     style: "${project.rootDir}/config/checkstyle/checkstyle.xsl",
-                    out: "${buildDir}/reports/checkstyle/checkstyle_${project.ext.checkType}.html")
+                    out: "${rootProject.layout.buildDirectory}/reports/checkstyle/checkstyle_${project.ext.checkType}.html")
         }
     }
 }
@@ -194,26 +190,6 @@ configurations.create('coverageDataElements') {
 spotbugs {
     reportsDir = file("${layout.buildDirectory.asFile.get()}/reports/spotbugs/main/spotbugs.html")
     ignoreFailures = true
-}
-
-// ----------- Docker configuration -------------
-
-docker {
-    name = "atroshin/${project.name}:${version}"
-    dockerfile = file('Dockerfile')
-    copySpec.from("${buildDir}").into("build")
-    pull true
-    noCache true
-}
-
-dockerCompose {
-    dockerComposeFile file("${project.rootDir}/docker/docker-compose.yml")
-}
-
-dockerRun {
-    name 'clematis.weather.api'
-    image "atroshin/${project.name}:${version}"
-    ports '18087:8080'
 }
 
 springBoot {
