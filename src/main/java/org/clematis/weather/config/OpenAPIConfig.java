@@ -2,7 +2,6 @@ package org.clematis.weather.config;
 
 import static org.springdoc.core.utils.Constants.ALL_PATTERN;
 import org.springdoc.core.models.GroupedOpenApi;
-import org.springdoc.core.properties.SwaggerUiConfigProperties;
 import org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointProperties;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +17,7 @@ import io.swagger.v3.oas.models.info.Info;
  */
 @Configuration
 @ComponentScan(
-    basePackages = {"org.springdoc"}
+    basePackages = {"org.clematis.weather"}
 )
 public class OpenAPIConfig {
 
@@ -34,11 +33,36 @@ public class OpenAPIConfig {
     }
 
     public Info getInfo() {
-        return new Info().title("Weather API")
-                .summary("Hateoas Restful API for a local weather archive")
-                .description("")
-                .version(buildProperties.getVersion())
-                .description(buildProperties.getName());
+        return new Info().title("Clematis Weather API")
+            .summary("Hateoas Restful API for weather images")
+            .description(buildProperties.getName())
+            .version(buildProperties.getVersion());
+    }
+
+    @Bean
+    public GroupedOpenApi observationsApi() {
+        return GroupedOpenApi.builder()
+            .group("Observations")
+            .pathsToMatch("/api/observations/**")
+            .addOpenApiCustomizer(openApi -> openApi.info(
+                new Info()
+                    .title("Observations API")
+                    .version(buildProperties.getVersion())
+            ))
+            .build();
+    }
+
+    @Bean
+    public GroupedOpenApi imagesApi() {
+        return GroupedOpenApi.builder()
+            .group("Images")
+            .pathsToMatch("/api/images/**")
+            .addOpenApiCustomizer(openApi -> openApi.info(
+                new Info()
+                    .title("Weather Images API")
+                    .version(buildProperties.getVersion())
+            ))
+            .build();
     }
 
     @Bean
@@ -54,28 +78,4 @@ public class OpenAPIConfig {
             )
             .build();
     }
-
-    @Bean
-    public GroupedOpenApi observationsApi() {
-        return GroupedOpenApi.builder()
-                .group("Observations")
-                .pathsToMatch("/api/observations")
-                .build();
-    }
-
-    @Bean
-    public GroupedOpenApi imagesApi() {
-        return GroupedOpenApi.builder()
-            .group("Images")
-            .pathsToMatch("/api/images")
-            .build();
-    }
-
-    @Bean
-    SwaggerUiConfigProperties swaggerUiConfig() {
-        SwaggerUiConfigProperties config = new SwaggerUiConfigProperties();
-        config.setShowCommonExtensions(true);
-        return config;
-    }
-
 }

@@ -2,16 +2,17 @@ plugins {
     id 'java'
     id 'jacoco'
     id 'checkstyle'
-
     id 'groovy'
-    id 'org.springframework.boot' version '3.5.0'
+
+    id 'org.springframework.boot' version '3.5.5'
     id 'io.spring.dependency-management' version '1.1.4'
 
-    id 'com.github.spotbugs' version '6.0.7'
+    id 'com.github.spotbugs' version '6.1.6'
 
     id "org.flywaydb.flyway" version "9.8.1"
 
     id "org.springdoc.openapi-gradle-plugin" version "1.9.0"
+    id "org.asciidoctor.jvm.convert" version "4.0.4"
 }
 
 repositories {
@@ -26,6 +27,7 @@ java {
 }
 
 configurations {
+    asciidoctorExtensions
     implementation.exclude group: "org.slf4j", module: "slf4j-log4j12"
     implementation.exclude group: "org.slf4j", module: "slf4j-simple"
     compileOnly {
@@ -38,6 +40,7 @@ dependencies {
 
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
 
     compileOnly (
         'org.projectlombok:lombok',
@@ -60,16 +63,21 @@ dependencies {
     implementation "mysql:mysql-connector-java:8.0.33"
     implementation "org.modelmapper:modelmapper:3.2.0"
 
-    implementation 'org.springdoc:springdoc-openapi-starter-common:2.8.5'
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.5'
+    implementation 'org.springdoc:springdoc-openapi-starter-common:2.8.13'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.13'
 
     // for groovy
-    implementation "org.spockframework:spock-core:2.2-groovy-3.0"
+    implementation "org.apache.groovy:groovy-all:4.0.28"
+    implementation "org.spockframework:spock-core:2.3-groovy-4.0"
     implementation "org.apache.ivy:ivy:2.5.2"
 
     implementation 'org.glassfish.main.external:jmxremote_optional-repackaged:5.0'
     // to use regexp in logback.xml
     implementation 'org.codehaus.janino:janino:3.1.12'
+
+    testImplementation ('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
 
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
     testCompileOnly (
@@ -80,14 +88,16 @@ dependencies {
 
     testImplementation "org.apache.commons:commons-lang3:3.15.0"
 
-    testImplementation ('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
-
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.apache.httpcomponents.client5:httpclient5'
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.testcontainers:mysql'
+
+    testImplementation 'org.springframework.restdocs:spring-restdocs-restassured'
+}
+
+ext {
+    snippetsDir = file("${layout.buildDirectory.asFile.get()}/generated-snippets")
 }
 
 // ------------ Checkstyle configuration  ---------
@@ -98,10 +108,10 @@ checkstyle {
 
 tasks.register('checkstyleReport') {
     doLast {
-        if (file("${rootProject.layout.buildDirectory}/reports/checkstyle/${project.ext.checkType}.xml").exists()) {
-            ant.xslt(in: "${rootProject.layout.buildDirectory}/reports/checkstyle/${project.ext.checkType}.xml",
+        if (file("${layout.buildDirectory.asFile.get()}/reports/checkstyle/${project.ext.checkType}.xml").exists()) {
+            ant.xslt(in: "${layout.buildDirectory.asFile.get()}/reports/checkstyle/${project.ext.checkType}.xml",
                     style: "${project.rootDir}/config/checkstyle/checkstyle.xsl",
-                    out: "${rootProject.layout.buildDirectory}/reports/checkstyle/checkstyle_${project.ext.checkType}.html")
+                    out: "${layout.buildDirectory.asFile.get()}/reports/checkstyle/checkstyle_${project.ext.checkType}.html")
         }
     }
 }
@@ -119,9 +129,6 @@ openApi {
 }
 
 // ------------ JaCoCo configuration  ---------
-ext {
-    setProperty('snippetsDir', file("build/generated-snippets"))
-}
 
 tasks.named('test') {
     useJUnitPlatform()
@@ -139,7 +146,7 @@ test {
 }
 
 jacocoTestReport {
-    dependsOn test // tests are required to run before generating the report
+    dependsOn test
     reports {
         xml.required = true
         csv.required = false
@@ -186,10 +193,50 @@ configurations.create('coverageDataElements') {
 }
 
 // ------------ Spotbugs configuration  ---------
-
 spotbugs {
     reportsDir = file("${layout.buildDirectory.asFile.get()}/reports/spotbugs/main/spotbugs.html")
     ignoreFailures = true
+}
+
+// ----------- Spring Rest Doc ------------------
+
+asciidoctor {
+    dependsOn test
+    options doctype: 'book'
+    attributes = [
+            'source-highlighter': 'highlightjs',
+            'imagesdir'         : './images',
+            'toc'               : 'left',
+            'toclevels'         : 3,
+            'numbered'          : '',
+            'icons'             : 'font',
+            'setanchors'        : '',
+            'idprefix'          : '',
+            'idseparator'       : '-',
+            'docinfo1'          : '',
+            'safe-mode-unsafe'  : '',
+            'allow-uri-read'    : '',
+            'snippets'          : snippetsDir,
+            linkattrs           : true,
+            encoding            : 'utf-8'
+    ]
+
+    inputs.dir snippetsDir
+    outputDir "build/asciidoc"
+    sourceDir 'src/docs/asciidocs'
+    baseDir sourceDir
+    sources {
+        include 'api.adoc'
+    }
+}
+
+// ----------- Packaging ------------------------
+
+bootJar {
+    dependsOn asciidoctor
+    from ("${asciidoctor.outputDir}") {
+        into 'static/docs'
+    }
 }
 
 springBoot {

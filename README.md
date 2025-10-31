@@ -79,15 +79,15 @@ java $JAVA_OPTS -Dspring.profiles.active=$ENV_NAME -jar app.jar
 ```
 
 ### Default Data
-The weather observations data included into the repository is taken by the weather station Moscow, Russia, WMO_ID=27612. These files are available at http://rp5.ru/archive.php?wmo_id=27612&lang=en, thanks to 'Reliable Prognosis', rp5.ru, © Raspisaniye Pogodi Ltd., 2004-2024. The set of images is not available publicly at the moment. 
+The weather observations data included in the repository is taken by the weather station Moscow, Russia, WMO_ID=27612. These files are available at http://rp5.ru/archive.php?wmo_id=27612&lang=en, thanks to 'Reliable Prognosis', rp5.ru, © Raspisaniye Pogodi Ltd., 2004-2024. The set of images is not available publicly at the moment. 
 
 ### Custom Data Retrieval
 
 To get another set of data:
 
-1. Open the countries selector https://rp5.ru/Weather_in_the_world, choose the desired location, for instance Greece, Epirus, Ioannina: https://rp5.ru/Weather_in_Ioannina. 
-2. Click on weather archive link next to the location name: https://rp5.ru/Weather_archive_in_Ioannina_(airport)
-3. Select date range, format CVS, unicode encoding and click 'Download'. 
+1. Open the country selector https://rp5.ru/Weather_in_the_world, choose the desired location, for instance Greece, Epirus, Ioannina: https://rp5.ru/Weather_in_Ioannina. 
+2. Click on a weather archive link next to the location name: https://rp5.ru/Weather_archive_in_Ioannina_(airport)
+3. Select date range, format CVS, Unicode encoding and click Download. 
 
 <img src="./docs/selector.png" alt="drawing" width="50%"/>
 
