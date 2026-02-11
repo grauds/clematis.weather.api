@@ -6,11 +6,12 @@ version '0.0.1-SNAPSHOT'
 
 dependencies {
 
-    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.42'
 
     compileOnly (
-      "org.projectlombok:lombok:1.18.34",
-      "com.google.code.findbugs:annotations:3.0.1u2",
+      'org.projectlombok:lombok:1.18.42',
+      "com.github.spotbugs:spotbugs:4.9.8",
+      "com.github.spotbugs:spotbugs-annotations:4.9.8",
       "org.hibernate:hibernate-core:6.5.3.Final" // this dependency isn't managed by spring
     )
 
