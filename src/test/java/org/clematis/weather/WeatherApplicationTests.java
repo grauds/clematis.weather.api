@@ -26,7 +26,7 @@ import lombok.extern.java.Log;
 @Log
 public class WeatherApplicationTests {
 
-    private static final DockerImageName MYSQL_80_IMAGE = DockerImageName.parse("mysql:8.0.36");
+    private static final DockerImageName MYSQL_80_IMAGE = DockerImageName.parse("mysql:8.0.42");
 
     private final static MySQLContainer<?> CONTAINER;
 
