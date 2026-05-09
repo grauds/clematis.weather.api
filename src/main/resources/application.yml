@@ -53,7 +53,7 @@ springdoc:
 spring:
   config:
     activate:
-      on-profile: staging
+      on-profile: prod
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
