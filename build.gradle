@@ -1,11 +1,11 @@
 plugins {
     id 'java'
-    id 'jacoco'
+    id 'jacoco-report-aggregation'
     id 'checkstyle'
     id 'groovy'
     id 'com.github.spotbugs' version '6.1.6'
 
-    id 'org.springframework.boot' version '3.5.10'
+    id 'org.springframework.boot' version '3.5.13'
     id 'io.spring.dependency-management' version '1.1.4'
 
     id "org.flywaydb.flyway" version "9.8.1"
@@ -57,9 +57,7 @@ dependencies {
     compileOnly (
             'org.projectlombok:lombok:1.18.42',
             "com.github.spotbugs:spotbugs:4.9.8",
-            "com.github.spotbugs:spotbugs-annotations:4.9.8",
-            'org.apache.commons:commons-lang3',
-            'commons-io:commons-io:2.16.1'
+            "com.github.spotbugs:spotbugs-annotations:4.9.8"
     )
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -96,8 +94,6 @@ dependencies {
             "com.github.spotbugs:spotbugs:4.9.8",
             "com.github.spotbugs:spotbugs-annotations:4.9.8"
     )
-
-    testImplementation "org.apache.commons:commons-lang3:3.15.0"
 
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.apache.httpcomponents.client5:httpclient5'
@@ -206,7 +202,7 @@ configurations.create('coverageDataElements') {
 // ------------ Spotbugs configuration  ---------
 spotbugs {
     toolVersion = '4.9.8'
-    reportsDir = file("${layout.buildDirectory.asFile.get()}/reports/spotbugs/main/spotbugs.html")
+    reportsDir = layout.buildDirectory.dir("reports/spotbugs/main/spotbugs.html")
     ignoreFailures = true
 }
 
@@ -234,9 +230,9 @@ asciidoctor {
     ]
 
     inputs.dir snippetsDir
-    outputDir "build/asciidoc"
-    sourceDir 'src/docs/asciidocs'
-    baseDir sourceDir
+    outputDir = "build/asciidoc"
+    sourceDir = file('src/docs/asciidocs')
+    baseDir = sourceDir
     sources {
         include 'api.adoc'
     }
