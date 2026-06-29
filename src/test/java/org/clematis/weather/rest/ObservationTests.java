@@ -1,6 +1,7 @@
 package org.clematis.weather.rest;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import jworkspace.weather.model.Observation;
 import jworkspace.weather.model.dto.WeatherImageDTO;
@@ -36,16 +37,17 @@ public class ObservationTests extends HateoasApiTests {
         HttpHeaders headers = new HttpHeaders();
 
         Map<String, String> uriParam = new HashMap<>();
-        uriParam.put("date", "2005-02-02");
-
-        ResponseEntity<WeatherImageDTO[]> images = getRestTemplateWithHalMessageConverter()
-            .exchange("/observations/byDay?day={date}",
+        uriParam.put("dateTime", "2005-02-02 09:00:00");
+        uriParam.put("stationId", "27612");
+//api/observations/search/findByStationDayAndHour?dateTime=2025-06-23 09:00:00&stationId=27612
+        ResponseEntity<PagedModel<WeatherImageDTO>> images = getRestTemplateWithHalMessageConverter()
+            .exchange("/api/observations/search/findByStationDayAndHour?dateTime={dateTime}&stationId={stationId}",
                 HttpMethod.GET,
                 new HttpEntity<>(headers),
                 new ParameterizedTypeReference<>() {},
                 uriParam);
         Assertions.assertEquals(HttpStatus.OK, images.getStatusCode());
         Assertions.assertNotNull(images.getBody());
-        Assertions.assertEquals(7, images.getBody().length);
+        Assertions.assertEquals(1, images.getBody().getContent().size());
     }
 }

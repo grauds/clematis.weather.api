@@ -27,7 +27,8 @@ public class ObservationRepositoryTests extends WeatherApplicationTests {
 
     @Test
     public void findDayObservations() throws ParseException {
-        List<Observation> observations = observationRepository.getDayObservations(
+        List<Observation> observations = observationRepository.findByStationDayAndHour(
+            27612,
             new SimpleDateFormat(DATE_FORMAT).parse("2005-02-02")
         );
         Assertions.assertEquals(7, observations.size());
