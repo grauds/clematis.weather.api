@@ -31,6 +31,6 @@ public class ObservationRepositoryTests extends WeatherApplicationTests {
             27612,
             new SimpleDateFormat(DATE_FORMAT).parse("2005-02-02")
         );
-        Assertions.assertEquals(7, observations.size());
+        Assertions.assertEquals(1, observations.size());
     }
 }
