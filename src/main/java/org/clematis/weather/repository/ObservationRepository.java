@@ -13,9 +13,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import jworkspace.weather.model.Observation;
 import jworkspace.weather.model.ObservationKey;
 
-/**
- * @author Anton Troshin
- */
 @RepositoryRestResource(path = "observations")
 public interface ObservationRepository extends JpaRepository<Observation, ObservationKey> {
    /**
