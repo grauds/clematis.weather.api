@@ -23,7 +23,8 @@ public interface ImagesRepository extends JpaRepository<WeatherImage, WeatherIma
             UNION ALL SELECT *, 0 AS is_exact FROM images WHERE MONTH(date) = MONTH(:date)
                        AND DAYOFMONTH(date) = DAYOFMONTH(:date)
                        AND YEAR(date) != YEAR(:date)
-        ORDER BY is_exact DESC, ABS(YEAR(date) - YEAR(:date)), RAND() LIMIT 1
+        ORDER BY is_exact DESC, ABS(CAST(YEAR(date) AS SIGNED) - CAST(YEAR(:date) AS SIGNED)), RAND() LIMIT 1
+
         """,
         nativeQuery = true
     )
