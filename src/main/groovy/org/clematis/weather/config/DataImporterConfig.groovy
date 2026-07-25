@@ -30,7 +30,7 @@ class DataImporterConfig {
     private String path
 
     @Bean
-    CommandLineRunner importWeather(EntityManager entityManager, TransactionTemplate transactionTemplate) {
+    static CommandLineRunner importWeather(EntityManager entityManager, TransactionTemplate transactionTemplate) {
         return (args) -> transactionTemplate.execute(new TransactionCallbackWithoutResult() {
             @Override
             protected void doInTransactionWithoutResult(TransactionStatus status) {

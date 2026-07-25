@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 import org.clematis.weather.repository.ImagesRepository;
+import org.clematis.weather.repository.ObservationSimilarityRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import jworkspace.weather.model.ObservationProjection;
 import jworkspace.weather.model.WeatherImage;
 import jworkspace.weather.model.dto.WeatherImageDTO;
 import lombok.extern.java.Log;
@@ -33,6 +35,9 @@ public class ImagesController {
 
     @Autowired
     private ImagesRepository imagesRepository;
+
+    @Autowired
+    private ObservationSimilarityRepository observationSimilarityRepository;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -125,9 +130,31 @@ public class ImagesController {
             .collect(Collectors.toList());
     }
 
-    /**
-     * Helper method to reduce duplicate I/O logic code
-     */
+    @SuppressWarnings("checkstyle:MagicNumber")
+    @GetMapping(value = "/images/byObservation")
+    public List<WeatherImageDTO> getObservationImages(
+        @RequestParam("stationId") Integer stationId,
+        @RequestParam("profile") String profile,
+        @RequestParam("targetDate") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date dateTime
+    ) {
+        List<WeatherImage> images = imagesRepository.getObservationImages(dateTime);
+        if (images.isEmpty()) {
+            List<ObservationProjection> similarObservations =
+                observationSimilarityRepository.findSimilarObservations(stationId, dateTime, profile, 3);
+
+            for (ObservationProjection similar : similarObservations) {
+                List<WeatherImage> fallbackImages = imagesRepository.getObservationImages(similar.getDate());
+                if (!fallbackImages.isEmpty()) {
+                    images = fallbackImages;
+                    break;
+                }
+            }
+        }
+        return images.stream()
+            .map(weatherImage -> modelMapper.map(weatherImage, WeatherImageDTO.class))
+            .collect(Collectors.toList());
+    }
+
     private byte[] returnImageBytesOrEmpty(Optional<WeatherImage> optionalImage) {
         return optionalImage.map(image -> {
             try {

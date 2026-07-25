@@ -1,9 +1,5 @@
 package jworkspace.weather.parser
 
-import jworkspace.weather.model.Observation
-import jworkspace.weather.model.ObservationKey
-import jworkspace.weather.model.WindDirection
-
 /* ----------------------------------------------------------------------------
    Java Workspace
    Copyright (C) 1999 - 2022 Anton Troshin
@@ -32,6 +28,10 @@ import jworkspace.weather.model.WindDirection
 
 import java.text.DateFormat
 import java.text.SimpleDateFormat
+
+import jworkspace.weather.model.Observation
+import jworkspace.weather.model.ObservationKey
+import jworkspace.weather.model.WindDirection
 
 import org.apache.commons.csv.CSVParser
 import org.slf4j.Logger
@@ -72,7 +72,7 @@ class WeatherParser extends AbstractCsvReader<Observation> {
         int counter = 0
 
         return parser.records.stream().filter( {
-            return it.recordNumber > 8
+            return it.recordNumber > 6 // skip header
         }).map({
             // "T";"Po";"P";"Pa";"U";"DD";"Ff";"ff10";"ff3";"N";"WW";"W1";"W2";"Tn";"Tx";"Cl";"Nh";
             // "H";"Cm";"Ch";"VV";"Td";"RRR";"tR";"E";"Tg";"E'";"sss"
@@ -115,7 +115,7 @@ class WeatherParser extends AbstractCsvReader<Observation> {
             } catch (IllegalArgumentException ignored) {
                 // skip the record
                 counter++
-                String record = "Unparseable record " + it.values
+                String record = "Unparseable record " + it.recordNumber
                 String message = String.format(" in %s column: %s" , pos, ignored.getMessage())
                 LOG.error(record + message)
                 println record + message

@@ -98,4 +98,19 @@ public interface ImagesRepository extends JpaRepository<WeatherImage, WeatherIma
     List<WeatherImage> getYearImages(
         @Param("year") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date
     );
+
+    /**
+     * Finds images where this specific observation hour is the absolute closest match.
+     * Boundaries: [obs - 90 mins, obs + 90 mins)
+     */
+    @RestResource(path = "getObservationImages", rel = "getObservationImages")
+    @Query(value = """
+        SELECT * FROM images
+        WHERE date >= DATE_SUB(:observationTime, INTERVAL 90 MINUTE)
+          AND date < DATE_ADD(:observationTime, INTERVAL 90 MINUTE)
+        ORDER BY ABS(TIMESTAMPDIFF(SECOND, date, :observationTime)) ASC
+        """, nativeQuery = true)
+    List<WeatherImage> getObservationImages(@Param("observationTime") Date observationTime);
+
+
 }

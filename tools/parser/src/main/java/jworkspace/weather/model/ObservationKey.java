@@ -11,9 +11,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-/**
- * @author Anton Troshin
- */
+
 @Embeddable
 @Data
 @EqualsAndHashCode
