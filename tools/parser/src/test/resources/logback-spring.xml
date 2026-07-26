@@ -60,6 +60,5 @@
     <logger name="org.clematis" level="${LOG_LEVEL}"/>
     <logger name="jworkspace" level="${LOG_LEVEL}"/>
     <logger name="org.springframework" level="${LOG_LEVEL}"/>
-    <logger name="org.hibernate.SQL" level="ERROR"/>
 
 </configuration>

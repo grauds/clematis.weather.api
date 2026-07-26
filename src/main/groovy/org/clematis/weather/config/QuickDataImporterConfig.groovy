@@ -18,9 +18,6 @@ import org.springframework.transaction.support.TransactionCallbackWithoutResult
 import org.springframework.transaction.support.TransactionTemplate
 
 
-/**
- * @author Anton Troshin
- */
 @Component
 @SuppressFBWarnings
 @Profile(value = "dev")
@@ -35,21 +32,11 @@ class QuickDataImporterConfig {
             @Override
             protected void doInTransactionWithoutResult(TransactionStatus status) {
                 Session session = entityManager.unwrap(Session.class)
-                if (session.createQuery("select 1 from Observation").list().isEmpty()) {
-                    WeatherImporter.loadWeatherData(session)
-                }
-            }
-        })
-    }
-
-    @Bean
-    CommandLineRunner importWeatherImages(EntityManager entityManager, TransactionTemplate transactionTemplate) {
-        return (args) -> transactionTemplate.execute(new TransactionCallbackWithoutResult() {
-            @Override
-            protected void doInTransactionWithoutResult(TransactionStatus status) {
-                Session session = entityManager.unwrap(Session.class)
                 if (session.createQuery("select 1 from WeatherImage").list().isEmpty()) {
                     WeatherImagesImporter.loadWeatherImages(Path.of(path), session)
+                }
+                if (session.createQuery("select 1 from Observation").list().isEmpty()) {
+                    WeatherImporter.loadWeatherData(session)
                 }
             }
         })

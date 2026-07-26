@@ -39,7 +39,7 @@ import jworkspace.weather.model.Observation;
  * <p>
  * Every field is nullable because the archive is full of gaps - snow depth and soil temperature
  * are only reported at some hours of the day, and whole columns are empty for the earlier years.
- * {@link ObservationSimilarity} skips the features that are missing on either side rather than
+ * {@link ObservationSimilarityCalculator} skips the features that are missing on either side rather than
  * treating a gap as a zero.
  * </p>
  *

@@ -32,7 +32,7 @@ import java.util.Map;
  * How much each feature counts towards the difference between two observations.
  * <p>
  * A weight of zero drops the feature entirely. Weights need not sum to anything in particular -
- * {@link ObservationSimilarity} divides by the weight it actually managed to use, so that
+ * {@link ObservationSimilarityCalculator} divides by the weight it actually managed to use, so that
  * observations with gaps in the archive are still comparable.
  * </p>
  * @param values the weights for each feature

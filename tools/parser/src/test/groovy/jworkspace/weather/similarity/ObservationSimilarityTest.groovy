@@ -13,7 +13,7 @@ class ObservationSimilarityTest {
         Assertions.assertEquals(1, result.size())
         Assertions.assertEquals(
                 0.0,
-                ObservationSimilarity.between(result.get(0), result.get(0), SimilarityWeights.PHOTO)
+                ObservationSimilarityCalculator.between(result.get(0), result.get(0), SimilarityWeights.PHOTO)
         )
     }
 
@@ -32,11 +32,11 @@ class ObservationSimilarityTest {
         Assertions.assertEquals(2, result.size())
         Assertions.assertEquals(
                 0.1655913435549812,
-                ObservationSimilarity.between(result.get(0), result.get(1), SimilarityWeights.PHOTO)
+                ObservationSimilarityCalculator.between(result.get(0), result.get(1), SimilarityWeights.PHOTO)
         )
         Assertions.assertEquals(
                 0.1655913435549812,
-                ObservationSimilarity.between(result.get(1), result.get(0), SimilarityWeights.PHOTO)
+                ObservationSimilarityCalculator.between(result.get(1), result.get(0), SimilarityWeights.PHOTO)
         )
     }
 
@@ -46,7 +46,7 @@ class ObservationSimilarityTest {
         Assertions.assertEquals(2, result.size())
         Assertions.assertEquals(
                 0.8579980398225965,
-                ObservationSimilarity.between(result.get(0), result.get(1), SimilarityWeights.PHOTO)
+                ObservationSimilarityCalculator.between(result.get(0), result.get(1), SimilarityWeights.PHOTO)
         )
     }
 }

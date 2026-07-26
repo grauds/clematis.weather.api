@@ -39,9 +39,9 @@ import jworkspace.weather.model.Observation;
  * of the features that were actually evaluated.
  * </p>
  */
-public final class ObservationSimilarity {
+public final class ObservationSimilarityCalculator {
 
-    private ObservationSimilarity() {}
+    private ObservationSimilarityCalculator() {}
 
     /**
      * @param first   the first weather observation, never null

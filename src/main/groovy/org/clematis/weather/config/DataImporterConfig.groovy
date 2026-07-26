@@ -18,9 +18,6 @@ import org.springframework.transaction.support.TransactionTemplate
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 
-/**
- * @author Anton Troshin
- */
 @Component
 @SuppressFBWarnings
 @Profile(value = "prod")
@@ -30,22 +27,14 @@ class DataImporterConfig {
     private String path
 
     @Bean
-    static CommandLineRunner importWeather(EntityManager entityManager, TransactionTemplate transactionTemplate) {
+    CommandLineRunner importWeather(EntityManager entityManager, TransactionTemplate transactionTemplate) {
         return (args) -> transactionTemplate.execute(new TransactionCallbackWithoutResult() {
             @Override
             protected void doInTransactionWithoutResult(TransactionStatus status) {
                 Session session = entityManager.unwrap(Session.class)
+                WeatherImagesImporter.loadWeatherImages(Path.of(path), session)
+                session.flush()
                 WeatherImporter.loadWeatherData(session)
-            }
-        })
-    }
-
-    @Bean
-    CommandLineRunner importWeatherImages(EntityManager entityManager, TransactionTemplate transactionTemplate) {
-        return (args) -> transactionTemplate.execute(new TransactionCallbackWithoutResult() {
-            @Override
-            protected void doInTransactionWithoutResult(TransactionStatus status) {
-                WeatherImagesImporter.loadWeatherImages(Path.of(path), entityManager.unwrap(Session.class))
             }
         })
     }
