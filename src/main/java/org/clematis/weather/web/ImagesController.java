@@ -43,13 +43,50 @@ public class ImagesController {
     private ModelMapper modelMapper;
 
     /**
+     * Finds the closest matching weather image for a specific target day across the matrix,
+     * returning the raw JPEG image byte payload.
+     * <p>
+     * URL: /api/weather-matches/image/similar?stationId=27612&profile=PHOTO&dateTime=2025-06-30 12:00:00
+     */
+    @SuppressWarnings("checkstyle:MagicNumber")
+    @GetMapping(value = "/image/similar", produces = MediaType.IMAGE_JPEG_VALUE)
+    @ResponseBody
+    public byte[] getSimilarDayImageWithFallback(
+        @RequestParam("stationId") Integer stationId,
+        @RequestParam("profile") String profile,
+        @RequestParam("dateTime") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date date
+    ) {
+        // Attempt to resolve images mapped to the exact requested timestamp
+        List<WeatherImage> images = imagesRepository.getObservationImages(date);
+
+        // Fallback to similar matrix observations if no exact match is found
+        if (images.isEmpty()) {
+            List<ObservationProjection> similarObservations =
+                observationSimilarityRepository.findSimilarObservations(stationId, date, profile, 3);
+
+            for (ObservationProjection similar : similarObservations) {
+                List<WeatherImage> fallbackImages = imagesRepository.getObservationImages(similar.getDate());
+                if (!fallbackImages.isEmpty()) {
+                    images = fallbackImages;
+                    break; // Break loop early as soon as an historical proxy image is located
+                }
+            }
+        }
+
+        // Extract the first available image frame safely, wrapping it in an Optional container
+        Optional<WeatherImage> optionalImage = images.stream().findFirst();
+        return returnImageBytesOrEmpty(optionalImage);
+    }
+
+    /**
      * Get a random image for a specific day with a fallback to the same day/month in other years.
      * URL: /image/random?date=2025-06-30
      */
     @GetMapping(value = "/image/random", produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
     public byte[] getRandomDayImageWithFallback(
-        @RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
+        @RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date
+    ) {
 
         Optional<WeatherImage> optionalImage = imagesRepository.getRandomDayImageWithFallback(date);
         return returnImageBytesOrEmpty(optionalImage);
