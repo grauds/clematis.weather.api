@@ -27,6 +27,7 @@ package jworkspace.weather;
 
 import jworkspace.weather.model.Observation;
 import jworkspace.weather.model.ObservationSimilarity;
+import jworkspace.weather.model.WeatherImage;
 import jworkspace.weather.service.WeatherImporter;
 
 import org.hibernate.Session;
@@ -54,6 +55,7 @@ public class ImportPipelineTest {
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(Observation.class);
         configuration.addAnnotatedClass(ObservationSimilarity.class);
+        configuration.addAnnotatedClass(WeatherImage.class);
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         configuration.setProperty("hibernate.connection.driver_class", "org.h2.Driver");
         configuration.setProperty("hibernate.connection.url", "jdbc:h2:./src/test/resources/db/mem;MODE=MySQL");
