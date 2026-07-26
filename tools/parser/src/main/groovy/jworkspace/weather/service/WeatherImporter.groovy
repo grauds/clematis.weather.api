@@ -110,18 +110,20 @@ class WeatherImporter {
             }
 
             LOG.info("Loading photo-proximal station observations from database layer...")
-            // Dynamic batch HQL to extract base photo observation rows cleanly
-            StringBuilder hql = new StringBuilder()
-            hql.append("FROM Observation o WHERE o.key.weatherStationId = :stationId AND (")
 
-            // Process photo dates in chunks if rawPhotoDates count scales unexpectedly
+            // Build a fast, lightweight Native SQL query string instead of HQL
+            StringBuilder sql = new StringBuilder()
+            sql.append("SELECT * FROM observations o WHERE o.station_id = :stationId AND (")
+
             for (int i = 0; i < rawPhotoDates.size(); i++) {
-                if (i > 0) hql.append(" OR ")
-                hql.append("o.key.date BETWEEN :startPhoto_" + i + " AND :endPhoto_" + i)
+                if (i > 0) sql.append(" OR ")
+                // Target your exact column names in MySQL (e.g., station_id, date)
+                sql.append("o.date BETWEEN :startPhoto_" + i + " AND :endPhoto_" + i)
             }
-            hql.append(")")
+            sql.append(")")
 
-            var photoQuery = statelessSession.createQuery(hql.toString(), Observation.class)
+            // Bind the Native Query directly to Observation Entity map structure
+            var photoQuery = statelessSession.createNativeQuery(sql.toString(), Observation.class)
                     .setParameter("stationId", 27612)
 
             long ninetyMinutesMs = 90 * 60 * 1000L
@@ -132,6 +134,7 @@ class WeatherImporter {
             }
 
             List<Observation> photoCoveredObservations = photoQuery.getResultList()
+            LOG.info("Matched ${photoCoveredObservations.size()} base weather observations within photo frames.")
 
             // =========================================================================
             // LOAD EXISTING SIMILARITY KEYS TO PREVENT RE-RUN DUPLICATION CRASHES
