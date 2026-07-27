@@ -113,7 +113,7 @@ class WeatherImporter {
 
             // Build a fast, lightweight Native SQL query string instead of HQL
             StringBuilder sql = new StringBuilder()
-            sql.append("SELECT * FROM observations o WHERE o.station_id = :stationId AND (")
+            sql.append("SELECT * FROM observations o WHERE o.weather_station_id = :stationId AND (")
 
             for (int i = 0; i < rawPhotoDates.size(); i++) {
                 if (i > 0) sql.append(" OR ")
