@@ -145,7 +145,7 @@ class WeatherImporter {
                     ObservationSimilarityKey.class)
                     .setParameter("stationId", 27612)
                     .getResultStream()
-                    .map({ id -> "${id.dateA.getTime()}_${id.dateB.getTime()}" })
+                    .map({ id -> "${id.dateA.getTime()}_${id.dateB.getTime()}".toString() })
                     .collect(Collectors.toSet())
 
             // =========================================================================
