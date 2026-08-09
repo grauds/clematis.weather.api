@@ -17,6 +17,7 @@ import org.testcontainers.utility.DockerImageName;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
+import java.time.Duration;
 import lombok.extern.java.Log;
 
 @Testcontainers
@@ -32,6 +33,7 @@ public class WeatherApplicationTests {
 
     static {
         CONTAINER = new MySQLContainer<>(MYSQL_80_IMAGE)
+                .withStartupTimeout(Duration.ofMinutes(3))
                 .withUsername("weather")
                 .withPassword("password");
         CONTAINER.start();
