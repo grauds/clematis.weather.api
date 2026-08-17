@@ -25,9 +25,6 @@ package jworkspace.weather.similarity;
   ----------------------------------------------------------------------------
 */
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-
 import jworkspace.weather.model.Observation;
 
 /**
@@ -52,8 +49,8 @@ public final class ObservationSimilarityCalculator {
      */
     public static Double between(Observation first, Observation second, SimilarityWeights weights) {
 
-        ObservationFeatures featuresFirst = extractFeatures(first);
-        ObservationFeatures featuresSecond = extractFeatures(second);
+        ObservationFeatures featuresFirst = ObservationFeatures.of(first);
+        ObservationFeatures featuresSecond = ObservationFeatures.of(second);
 
         double accumulatedDistance = 0.0;
         double accumulatedWeight = 0.0;
@@ -74,68 +71,4 @@ public final class ObservationSimilarityCalculator {
         return accumulatedWeight == 0.0 ? null : accumulatedDistance / accumulatedWeight;
     }
 
-    private static ObservationFeatures extractFeatures(Observation observation) {
-        if (observation == null) {
-            return new ObservationFeatures(
-                null, null, null, null, null, null, null, null, null, null, null, null, null
-            );
-        }
-
-        Float temperature = observation.getT() == null ? null : observation.getT();
-        Float humidity = observation.getU() == null ? null : observation.getU();
-        Float pressure = observation.getP() == null ? null : observation.getP();
-        Float visibility = observation.getVv() == null ? null : observation.getVv();
-        Float precipitation = observation.getRrr() == null ? null : observation.getRrr();
-        Float snowDepth = observation.getSss() == null ? null : observation.getSss();
-
-        Float dewPointSpread = null;
-        if (observation.getT() != null && observation.getTd() != null) {
-            dewPointSpread = observation.getT() - observation.getTd();
-        }
-
-        Float windSpeed = parseWindSpeed(observation.getFf());
-        Float windBearing = WindDirections.degrees(observation.getDd());
-        Float cloudCover = parseCloudCover(observation.getN());
-
-        WeatherPhenomenon phenomenon = WeatherPhenomenon.of(observation.getWw());
-
-        int dayOfYear = 0;
-        int hourOfDay = 0;
-        if (observation.getKey() != null && observation.getKey().getDate() != null) {
-            LocalDateTime dateTime = observation.getKey().getDate().toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDateTime();
-            dayOfYear = dateTime.getDayOfYear();
-            hourOfDay = dateTime.getHour();
-        }
-
-        return new ObservationFeatures(
-            temperature,
-            dewPointSpread,
-            humidity,
-            pressure,
-            cloudCover,
-            windSpeed,
-            windBearing,
-            visibility,
-            precipitation,
-            snowDepth,
-            phenomenon,
-            dayOfYear,
-            hourOfDay
-        );
-    }
-
-    private static Float parseWindSpeed(String ff) {
-        if (ff != null && !ff.isBlank()) {
-            try {
-                return Float.parseFloat(ff.trim());
-            } catch (NumberFormatException _) {}
-        }
-        return null;
-    }
-
-    private static Float parseCloudCover(String n) {
-        return CloudAmount.fraction(n);
-    }
 }

@@ -123,14 +123,15 @@ public class ObservationVPTree {
         if (dist <= maxDistance) {
             if (pq.size() < k) {
                 pq.add(new SearchResult(node.observation, dist));
-            } else if (dist < pq.peek().distance) {
+            } else if (pq.peek() != null && dist < pq.peek().distance) {
                 pq.poll();
                 pq.add(new SearchResult(node.observation, dist));
             }
         }
 
         // Determine the dynamic bounding sphere radius based on our heap capacity
-        double bound = (pq.size() < k) ? maxDistance : pq.peek().distance;
+        double bound = (pq.size() < k) ? maxDistance
+            : (pq.peek() != null ? pq.peek().distance : Double.MAX_VALUE);
 
         // Traverse down tree paths selectively, bypassing unaligned segments
         if (dist < node.radius) {

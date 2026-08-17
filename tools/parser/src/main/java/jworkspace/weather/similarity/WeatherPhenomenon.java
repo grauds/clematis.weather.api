@@ -57,7 +57,13 @@ public record WeatherPhenomenon(
      * Nothing of note was reported. Almost half of the archive looks like this.
      */
     public static final WeatherPhenomenon NONE =
-        new WeatherPhenomenon(Precipitation.NONE, Obscuration.NONE, Intensity.UNKNOWN, false, false);
+        new WeatherPhenomenon(
+            Precipitation.NONE,
+            Obscuration.NONE,
+            Intensity.UNKNOWN,
+            false,
+            false
+        );
 
     /**
      * How much of the overall difference each axis accounts for. These sum to one.
@@ -65,7 +71,8 @@ public record WeatherPhenomenon(
     private static final double PRECIPITATION_SHARE = 0.50;
     private static final double OBSCURATION_SHARE = 0.25;
     private static final double INTENSITY_SHARE = 0.15;
-    private static final double THUNDERSTORM_SHARE = 0.10;
+    private static final double THUNDERSTORM_SHARE = 0.07;
+    private static final double SHOWER_SHARE = 0.03;
 
     private static final double MATCH = 0.0;
     private static final double MISMATCH = 1.0;
@@ -74,7 +81,7 @@ public record WeatherPhenomenon(
      * The shares that remain once no intensity is known on either side.
      */
     private static final double SHARES_WITHOUT_INTENSITY =
-        PRECIPITATION_SHARE + OBSCURATION_SHARE + THUNDERSTORM_SHARE;
+        PRECIPITATION_SHARE + OBSCURATION_SHARE + THUNDERSTORM_SHARE + SHOWER_SHARE;
 
     /**
      * Reports often carry a trailing measurement clause such as
@@ -119,7 +126,8 @@ public record WeatherPhenomenon(
 
         double total = PRECIPITATION_SHARE * precipitation.distance(other.precipitation)
             + OBSCURATION_SHARE * obscuration.distance(other.obscuration)
-            + THUNDERSTORM_SHARE * (thunderstorm == other.thunderstorm ? MATCH : MISMATCH);
+            + THUNDERSTORM_SHARE * (thunderstorm == other.thunderstorm ? MATCH : MISMATCH)
+            + SHOWER_SHARE * (shower == other.shower ? MATCH : MISMATCH);
 
         Double intensityDistance = intensity.distance(other.intensity);
         if (intensityDistance == null) {

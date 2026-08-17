@@ -27,9 +27,6 @@ package jworkspace.weather.similarity;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Date;
-
-import org.apache.commons.lang3.math.NumberUtils;
 
 import jworkspace.weather.model.Observation;
 
@@ -75,42 +72,75 @@ public record ObservationFeatures(
     Integer dayOfYear,
     Integer hourOfDay
 ) {
+
     /**
      * Extracts the comparable features of an observation.
      *
-     * @param observation the observation to read, never null
+     * @param observation the observation to read should not be null
      * @return its features, with a null entry wherever the archive has a gap
      */
     public static ObservationFeatures of(Observation observation) {
+        if (observation == null) {
+            return new ObservationFeatures(
+                null, null, null, null, null, null, null, null, null, null, null, null, null
+            );
+        }
 
-        LocalDateTime moment = toLocalDateTime(observation.getKey() == null ? null : observation.getKey().getDate());
+        Float temperature = observation.getT() == null ? null : observation.getT();
+        Float humidity = observation.getU() == null ? null : observation.getU();
+        Float pressure = observation.getP() == null ? null : observation.getP();
+        Float visibility = observation.getVv() == null ? null : observation.getVv();
+        Float precipitation = observation.getRrr() == null ? null : observation.getRrr();
+        Float snowDepth = observation.getSss() == null ? null : observation.getSss();
+
+        Float dewPointSpread = null;
+        if (observation.getT() != null && observation.getTd() != null) {
+            dewPointSpread = observation.getT() - observation.getTd();
+        }
+
+        Float windSpeed = parseWindSpeed(observation.getFf());
+        Float windBearing = WindDirections.degrees(observation.getDd());
+        Float cloudCover = parseCloudCover(observation.getN());
+
+        WeatherPhenomenon phenomenon = WeatherPhenomenon.of(observation.getWw());
+
+        Integer dayOfYear = null;
+        Integer hourOfDay = null;
+        if (observation.getKey() != null && observation.getKey().getDate() != null) {
+            LocalDateTime dateTime = observation.getKey().getDate().toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime();
+            dayOfYear = dateTime.getDayOfYear();
+            hourOfDay = dateTime.getHour();
+        }
 
         return new ObservationFeatures(
-            observation.getT(),
-            spread(observation.getT(), observation.getTd()),
-            observation.getU(),
-            observation.getP(),
-            CloudAmount.fraction(observation.getN()),
-            parseFloat(observation.getFf()),
-            WindDirections.degrees(observation.getDd()),
-            observation.getVv(),
-            observation.getRrr(),
-            observation.getSss(),
-            WeatherPhenomenon.of(observation.getWw()),
-            moment == null ? null : moment.getDayOfYear(),
-            moment == null ? null : moment.getHour()
+            temperature,
+            dewPointSpread,
+            humidity,
+            pressure,
+            cloudCover,
+            windSpeed,
+            windBearing,
+            visibility,
+            precipitation,
+            snowDepth,
+            phenomenon,
+            dayOfYear,
+            hourOfDay
         );
     }
 
-    private static Float spread(Float temperature, Float dewPoint) {
-        return temperature == null || dewPoint == null ? null : temperature - dewPoint;
+    private static Float parseWindSpeed(String ff) {
+        if (ff != null && !ff.isBlank()) {
+            try {
+                return Float.parseFloat(ff.trim());
+            } catch (NumberFormatException _) {}
+        }
+        return null;
     }
 
-    private static Float parseFloat(String text) {
-        return NumberUtils.isParsable(text) ? Float.parseFloat(text) : null;
-    }
-
-    private static LocalDateTime toLocalDateTime(Date date) {
-        return date == null ? null : LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+    private static Float parseCloudCover(String n) {
+        return CloudAmount.fraction(n);
     }
 }
