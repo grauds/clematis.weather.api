@@ -41,7 +41,7 @@ class TestDataImporterConfig {
                 for (Observation observation : result) {
                     Observation existing = session.find(Observation.class, observation.getKey())
                     if (existing == null) {
-                        session.saveOrUpdate(observation)
+                        session.persist(observation)
                     }
                 }
             }

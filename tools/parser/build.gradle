@@ -24,8 +24,8 @@ dependencies {
     )
 
     // for groovy
-    implementation "org.apache.groovy:groovy-all:4.0.28"
-    implementation "org.spockframework:spock-core:2.3-groovy-4.0"
+    implementation "org.apache.groovy:groovy-all:5.0.2"
+    implementation "org.spockframework:spock-core:2.4-groovy-5.0"
     implementation "org.apache.ivy:ivy:2.5.2"
 
     // for parsing CSV files

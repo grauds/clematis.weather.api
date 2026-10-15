@@ -5,8 +5,8 @@ plugins {
     id 'groovy'
     id 'com.github.spotbugs' version '6.1.6'
 
-    id 'org.springframework.boot' version '3.5.13'
-    id 'io.spring.dependency-management' version '1.1.4'
+    id 'org.springframework.boot' version '4.0.0'
+    id 'io.spring.dependency-management' version '1.1.7'
 
     id "org.flywaydb.flyway" version "9.8.1"
 
@@ -14,12 +14,8 @@ plugins {
     id "org.asciidoctor.jvm.convert" version "4.0.4"
 }
 
-repositories {
-    mavenCentral()
-}
-
 group = 'org.clematis'
-version = '1.0.0-SNAPSHOT'
+version = '1.0.1'
 
 java {
     toolchain {
@@ -66,18 +62,19 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-flyway'
 
     implementation "org.flywaydb:flyway-core:10.15.2"
     implementation "org.flywaydb:flyway-mysql:10.15.2"
     implementation "mysql:mysql-connector-java:8.0.33"
     implementation "org.modelmapper:modelmapper:3.2.0"
 
-    implementation 'org.springdoc:springdoc-openapi-starter-common:2.8.13'
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.13'
+    implementation 'org.springdoc:springdoc-openapi-starter-common:3.1.1'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.1'
 
     // for groovy
-    implementation "org.apache.groovy:groovy-all:4.0.28"
-    implementation "org.spockframework:spock-core:2.3-groovy-4.0"
+    implementation "org.apache.groovy:groovy-all:5.0.2"
+    implementation "org.spockframework:spock-core:2.4-groovy-5.0"
     implementation "org.apache.ivy:ivy:2.5.2"
 
     implementation 'org.glassfish.main.external:jmxremote_optional-repackaged:5.0'
@@ -97,10 +94,10 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.apache.httpcomponents.client5:httpclient5'
-    testImplementation 'org.testcontainers:junit-jupiter'
-    testImplementation 'org.testcontainers:mysql'
+    testImplementation 'org.testcontainers:testcontainers-junit-jupiter:2.0.2'
+    testImplementation 'org.testcontainers:testcontainers-mysql:2.0.2'
 
-    testImplementation 'org.springframework.restdocs:spring-restdocs-restassured'
+    testImplementation 'org.springframework.restdocs:spring-restdocs-restassured:3.0.6'
 }
 
 ext {
