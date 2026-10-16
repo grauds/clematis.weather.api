@@ -5,7 +5,7 @@ plugins {
     id 'groovy'
     id 'com.github.spotbugs' version '6.1.6'
 
-    id 'org.springframework.boot' version '4.0.0'
+    id 'org.springframework.boot' version '4.1.1'
     id 'io.spring.dependency-management' version '1.1.7'
 
     id "org.flywaydb.flyway" version "9.8.1"
@@ -33,7 +33,7 @@ configurations {
         extendsFrom annotationProcessor
     }
     // Avoid pulling legacy FindBugs annotations that don't contain SuppressMatchType
-    all {
+    configureEach {
         exclude group: "com.google.code.findbugs", module: "annotations"
         exclude group: "com.google.code.findbugs", module: "findbugs-annotations"
     }
@@ -45,7 +45,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.42'
     checkstyle "com.puppycrawl.tools:checkstyle:10.17.0"
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+    asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor:3.0.3'
 
     spotbugs "com.github.spotbugs:spotbugs:4.9.8"
     spotbugs "com.github.spotbugs:spotbugs-annotations:4.9.8"
@@ -62,8 +62,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-flyway'
 
+    implementation 'org.springframework.boot:spring-boot-starter-flyway'
     implementation "org.flywaydb:flyway-core:10.15.2"
     implementation "org.flywaydb:flyway-mysql:10.15.2"
     implementation "org.modelmapper:modelmapper:3.2.0"
