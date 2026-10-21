@@ -47,6 +47,13 @@ logging:
     path:
       ${LOG_PATH}
 
+clematis:
+  transactionId:
+    httpHeader:
+      Transaction-ID
+    logKey:
+      transactionId
+
 springdoc:
   swagger-ui:
     display-request-duration: true
