@@ -7,9 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.persistence.autoconfigure.EntityScan
 import org.springframework.context.annotation.Bean
 
-/**
- * @author Anton Troshin
- */
+
 @SpringBootApplication
 @EntityScan(basePackages = ["jworkspace", "org.clematis.weather"])
 @SuppressWarnings(["PMD", "checkstyle:hideutilityclassconstructor"])

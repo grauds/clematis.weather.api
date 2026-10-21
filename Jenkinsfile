@@ -5,6 +5,8 @@ pipeline {
         REMOTE_USER = "anton"
         SSH_DEST = "${REMOTE_USER}@${REMOTE_HOST}"
         REMOTE_APP_DIR = "/home/anton/deploy/weather/api"
+        USERNAME = "grauds"
+        TOKEN = credentials('GITHUB_PERSONAL_TOKEN')
     }
 
     stages {
@@ -30,11 +32,16 @@ pipeline {
             }
         }
 
-        stage('Gradle build') {
+        stage('Gradle Build') {
             steps {
-                sh './gradlew clean build --no-daemon'
+                withCredentials([usernamePassword(credentialsId: 'artifactory-admin-token',
+                                                 passwordVariable: 'ARTIFACTORY_PASSWORD',
+                                                 usernameVariable: 'ARTIFACTORY_USER')]) {
+                    withEnv(['USE_ARTIFACTORY=true']) {
+                        sh './gradlew clean build  --refresh-dependencies'
+                    }
+                }
             }
-
         }
 
         stage('Dependency-Check') {

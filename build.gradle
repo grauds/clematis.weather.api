@@ -15,7 +15,7 @@ plugins {
 }
 
 group = 'org.clematis'
-version = '1.0.1'
+version = '1.0.2'
 
 java {
     toolchain {
@@ -72,6 +72,8 @@ dependencies {
 
     implementation 'org.springdoc:springdoc-openapi-starter-common:3.1.1'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.1'
+
+    implementation 'org.clematis:clematis-commons-spring-boot-3:1.0.0-SNAPSHOT'
 
     // for groovy
     implementation "org.apache.groovy:groovy-all:5.0.2"
