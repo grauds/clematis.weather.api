@@ -3,6 +3,8 @@
 
     <jmxConfigurator/>
 
+    <conversionRule conversionWord="mdc" converterClass="org.clematis.logging.CustomMDCConverter" />
+
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <target>System.out</target>
         <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
@@ -18,12 +20,12 @@
             <OnMatch>DENY</OnMatch>
         </filter>
         <encoder>
-            <pattern>[%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX"}] [%thread] %level %logger{5} - %msg%n</pattern>
+            <pattern>[%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX"}] [%thread] %level %logger{5} - %mdc %msg%n</pattern>
         </encoder>
     </appender>
 
-    <property name="LOG_HISTORY" value="7"/>
-    <property name="LOG_LEVEL" value="INFO"/>
+    <property name="LOG_HISTORY" value="7" />
+    <property name="LOG_LEVEL" value="INFO" />
 
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
 
@@ -48,7 +50,7 @@
             <OnMatch>DENY</OnMatch>
         </filter>
         <encoder>
-            <pattern>[%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX"}] [%thread] %level %logger{5} - %msg%n</pattern>
+            <pattern>[%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX"}] [%thread] %level %logger{5} - %mdc %msg%n</pattern>
         </encoder>
     </appender>
 
