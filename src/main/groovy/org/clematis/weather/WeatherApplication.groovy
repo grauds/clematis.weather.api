@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.persistence.autoconfigure.EntityScan
 import org.springframework.context.annotation.Bean
 
-@EntityScan(basePackages = ["jworkspace", "org.clematis.weather", "org.clematis.logging"])
+@EntityScan(basePackages = ["jworkspace", "org.clematis.weather"])
 @SuppressWarnings(["PMD", "checkstyle:hideutilityclassconstructor"])
 @SuppressFBWarnings("EI_EXPOSE_REP")
 class WeatherApplication {
